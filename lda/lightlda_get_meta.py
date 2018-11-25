@@ -3,7 +3,7 @@
 """
 @Author  : Joshua
 @Time    : 2018/11/23 18:42
-@File    : news_get_meta.py
+@File    : lightlda_get_meta.py
 @Desc    : 
 """
 

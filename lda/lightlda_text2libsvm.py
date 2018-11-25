@@ -3,7 +3,7 @@
 """
 @Author  : Joshua
 @Time    : 2018/11/23 20:32
-@File    : news_text2libsvm.py
+@File    : lightlda_text2libsvm.py
 @Desc    : 
 """
 """
@@ -39,6 +39,8 @@ while line:
     col = line.strip().split(' ')
     if len(col) == 3:
         doc_id = int(col[0])
+        # 当word_id开始索引为0时就不需要减一
+        # word_id = int(col[1])
         word_id = int(col[1]) - 1
         word_count = int(col[2])
         if word_id not in word_dict:
