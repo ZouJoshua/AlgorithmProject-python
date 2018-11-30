@@ -10,6 +10,7 @@
 
 import commands
 import os
+import subprocess
 
 main = "./lightlda_result_parser"
 if os.path.exists(main):
@@ -24,3 +25,5 @@ print(data)
 
 print('*' * 10)
 os.system(main)
+
+
