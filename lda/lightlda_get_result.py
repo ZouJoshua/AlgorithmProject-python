@@ -12,7 +12,14 @@
 从lightlda获取topic结果
 """
 
+
+import numpy as np
+import scipy.sparse as sparse
+
 class LDAResult:
+
+    def __init__(self):
+
 
     @staticmethod
     def loadVocabs(ori_path):
@@ -55,15 +62,14 @@ class LDAResult:
                     break
         return result
 
+    @staticmethod
+    def loadTopicWordModel(topic_word_path, topic_summary_path):
+        """
 
-
-
-    def loadTopicWordModel(self, topic_word_path, topic_summary):
-        pass
-
-    # 得到文档-主题概率分布
-    def loadDocTopicModel(self, doc_topic_path):
-        pass
+        :param topic_word_path: lightlda 生成的 server_0_table_0.model
+        :param topic_summary_path: lightlda 生成的 server_0_table_1.model
+        :return:
+        """
 
     # 每个主题的前10个关键词写入到output_topic_topn_words中
     def dump_topic_topn_words(self,output_topic_topn_words,topn=20):
@@ -91,7 +97,7 @@ if __name__ == "__main__":
         """
         得到每篇文章的所属主题（top3）
         :param doc_topic_path: lightlda 模型生成的doc_topic.0文件
-        :return:
+        :return: 稀疏矩阵
         """
         result = []
         with open(doc_topic_path, 'r', encoding='utf-8') as f:
