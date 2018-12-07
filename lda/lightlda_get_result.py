@@ -72,7 +72,7 @@ class LDAResult:
         """
 
     # 每个主题的前10个关键词写入到output_topic_topn_words中
-    def dump_topic_topn_words(self,output_topic_topn_words,topn=20):
+    def dump_topic_topn_words(self, output_topic_topn_words, topn=20):
         pass
 
 
