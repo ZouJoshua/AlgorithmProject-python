@@ -18,7 +18,12 @@ import scipy.sparse as sparse
 
 class LDAResult:
 
-    def __init__(self):
+    def __init__(self, alpha, beta, topic_num, vocab_num, doc_num):
+        self.a = alpha
+        self.b = beta
+        self.tn = topic_num
+        self.vn = vocab_num
+        self.dn = doc_num
 
 
     @staticmethod
@@ -35,32 +40,38 @@ class LDAResult:
                 out.append(line.strip())
         return out
 
-    @staticmethod
-    def loadDocTopicModel(doc_topic_path):
+
+    def loadDocTopicModel(self, doc_topic_path):
         """
         得到文档-主题概率分布,得到每篇文章的所属主题（top3）
         :param doc_topic_path: lightlda 模型生成的doc_topic.0文件
-        :return:
+        :return: doc_topic_mat[topic_id][doc_id] = topic_cnt
         """
         result = []
         with open(doc_topic_path, 'r', encoding='utf-8') as f:
+            row = []
+            col = []
+            data = []
             while True:
                 line = f.readline().strip('\n').split('  ')  # 两个空格分割
                 if line:
                     docID = line[0]
                     topic_list = line[1:][0].split(' ')  # 一个空格分割
-                    topic_dic = {}
                     for topic in topic_list:
                         if topic:
-                            kv = topic.split(':')
-                            topic_dic[kv[0]] = kv[1]
-                    line_json = dict()
-                    line_json["docid"] = docID
-                    line_json["topic"] = topic_dic
-                    result.append(line_json)
+                            topic_info = topic.split(':')
+                            assert topic_info.__len__() == 2
+                            topic_id = topic_info[0]
+                            topic_cnt = topic_info[1]
+                            row.append(topic_id)
+                            col.append(docID)
+                            data.append(topic_cnt)
                 else:
                     break
-        return result
+        assert row.__len__() == data.__len__()
+        assert col.__len__() == data.__len__()
+        doc_topic_mat = sparse.csr_matrix((data, (row, col)), shape=(self.tn, self.dn))
+        return doc_topic_mat
 
     @staticmethod
     def loadTopicWordModel(topic_word_path, topic_summary_path):
