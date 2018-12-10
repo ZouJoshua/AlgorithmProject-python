@@ -55,10 +55,10 @@ class LDAResult {
         int topic_num;  //主题数目
         int vocab_num;  //词数目
         int doc_num;    //文档数目
-        double** doc_topic_mat=0;   //二维数组, 文档_主题概率矩阵[topic_num][doc_num]
-        double** topic_vocab_mat=0; //二维数组, 主题_词概率矩阵[vocab_num][topic_num]
-        Item**   doc_word_info=0;   //二维数组, 每个文档的topN个词的信息矩阵[doc_num][n]
-        Item**   topic_word_info=0; //二维数组, 每个主题的topN个词的信息矩阵[topic_num][n]
+        double** doc_topic_mat;   //二维数组, 文档_主题概率矩阵[topic_num][doc_num]
+        double** topic_vocab_mat; //二维数组, 主题_词概率矩阵[vocab_num][topic_num]
+        Item**   doc_word_info;   //二维数组, 每个文档的topN个词的信息矩阵[doc_num][n]
+        Item**   topic_word_info; //二维数组, 每个主题的topN个词的信息矩阵[topic_num][n]
         vector<string> words;
 
     public:
