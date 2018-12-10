@@ -15,6 +15,8 @@
 
 import numpy as np
 import scipy.sparse as sparse
+import json
+
 
 class LDAResult:
 
@@ -151,6 +153,17 @@ class LDAResult:
         :return:
         """
         all_topic_words = self._get_all_topic_words()
+        topn_list = list()
+        with open(output_topic_topn_words, 'w', encoding='utf-8') as json_file:
+            for topic in all_topic_words:
+                topn_topic = dict()
+                topn_topic["topic_id"] = topic["topic_id"]
+                topic_sort_list = sorted(topic["words"].iteritems, key=lambda topic:topic[1], reverse=True)
+                topn_list_tmp = topic_sort_list[:topn]
+                topn_topic["words"] = dict(topn_list_tmp)
+                topn_list.append(topn_topic)
+                json_file.write(json.dumps(topn_topic))
+                json_file.write('\n')
 
 
     def _get_all_topic_words(self):
@@ -160,17 +173,17 @@ class LDAResult:
         :return: list[{"topic_id": id, "words":{"word": prob}},...]
         """
         vocabs = self.loadVocabs()
-        mat_csc = self.loadTopicWordModel().tocsc()
+        mat_csc = sparse.csc_matrix(self.loadTopicWordModel())
         m, n = mat_csc.get_shape()
         all_topic_words = list()
-        for col_index in n:
+        for col_index in range(n):
             topic_words_dict = dict()
             data = mat_csc.getcol(col_index).data
             row = mat_csc.getcol(col_index).indices
-            row_len = row.shape(0)
+            row_len = row.shape[0]
             topic_words_dict["topic_id"] = col_index
             topic_words_dict["words"] = dict()
-            for index in row_len:
+            for index in range(row_len):
                 prob = data[index]
                 word = vocabs[int(row[index])]
                 topic_words_dict["words"][word] = prob
@@ -198,3 +211,4 @@ if __name__ == "__main__":
                     vocab_path=vocab_path, doc_topic_path=doc_topic_path,
                     topic_word_path=topic_word_path, topic_summary_path=topic_summary)
 
+    lda.dump_topic_topn_words(output_topic_topn_words)
