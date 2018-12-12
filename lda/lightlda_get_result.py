@@ -16,7 +16,7 @@
 import numpy as np
 import scipy.sparse as sparse
 import json
-
+import gc
 
 class LDAResult:
 
@@ -100,6 +100,9 @@ class LDAResult:
         doc_cnts_factor = doc_cnts + factor
         assert doc_topic_mat.shape[1] == doc_cnts_factor.shape[1]
         doc_topic_prob_mat = (doc_topic_mat.toarray() + self.a) / doc_cnts_factor
+        # 释放内存
+        del doc_topic_mat
+        gc.collect()
 
         return doc_topic_prob_mat
 
@@ -137,12 +140,17 @@ class LDAResult:
             line_str = f.readline().strip('\n')
             if line_str:
                 topic_cnts = [float(topic_info.split(':')[1]) for topic_info in line_str.split(' ')[1:]]
+                print(len(topic_cnts))
             pass
         # 计算概率
         factor = self.vn * self.b  # 归一化因子
         topic_cnts_factor = np.array(topic_cnts) + factor
         topic_vocab_prob_mat = (topic_vocab_mat.toarray() + self.b) / topic_cnts_factor
-
+        # 释放内存
+        del topic_vocab_mat
+        gc.collect()
+        print('-------------释放矩阵topic_vocab_mat内存---------------')
+        print('----------------得到主题-词概率矩阵------------------')
         return topic_vocab_prob_mat
 
     def dump_topic_topn_words(self, output_topic_topn_words, topn=20):
@@ -150,10 +158,11 @@ class LDAResult:
         每个主题的前20个关键词写入到output_topic_topn_words中
         :param output_topic_topn_words: 主题的 topn 关键词输出文件
         :param topn: 前20个关键词
-        :return:
+        :return: file
         """
         all_topic_words = self._get_all_topic_words()
         topn_list = list()
+        print('-----------开始写入结果文件--------------')
         with open(output_topic_topn_words, 'w', encoding='utf-8') as json_file:
             for topic in all_topic_words:
                 topn_topic = dict()
@@ -165,6 +174,17 @@ class LDAResult:
                 json_file.write(json.dumps(topn_topic))
                 json_file.write('\n')
 
+    def dump_doc_topn_words(self, output_doc_topn_words, topn):
+        """
+        每篇文档的前n个关键词写入到output_doc_topn_words中
+        :param output_doc_topn_words: 文档的 topn 关键词文件
+        :param topn: 前20个关键词
+        :return:
+        """
+        doc_word_info = self._get_doc_words(topn)
+
+    def _get_doc_words(self):
+        pass
 
     def _get_all_topic_words(self):
         """
@@ -188,7 +208,14 @@ class LDAResult:
                 word = vocabs[int(row[index])]
                 topic_words_dict["words"][word] = prob
             all_topic_words.append(topic_words_dict)
+            del data, row, topic_words_dict
+            gc.collect()
 
+        # 释放内存
+        del mat_csc
+        gc.collect()
+        print('----------释放矩阵 mat_csc 内存-------------')
+        print('----------得到所有主题-词dict-------------')
         return all_topic_words
 
 if __name__ == "__main__":
