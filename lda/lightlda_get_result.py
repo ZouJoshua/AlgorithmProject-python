@@ -16,6 +16,7 @@
 import numpy as np
 import scipy.sparse as sparse
 import json
+import time
 import gc
 
 class LDAResult:
@@ -66,6 +67,7 @@ class LDAResult:
             offset = 0
         else:
             offset = 1
+        s = time.time()
         with open(self.dtp, 'r', encoding='utf-8') as f:
             row = []
             col = []
@@ -90,20 +92,26 @@ class LDAResult:
                         continue
                 else:
                     break
+        e = time.time()
+        print('>>>>>>>>>>读取文件耗时{}'.format(e - s))
         assert row.__len__() == data.__len__()
         assert col.__len__() == data.__len__()
         doc_topic_mat = sparse.csr_matrix((data, (row, col)), shape=(self.tn, self.dn))
         # 计数（每个文档对应的主题数量和，即包含词的数目）
         doc_cnts = doc_topic_mat.sum(axis=0)
         # 计算概率
+        s1 = time.time()
         factor = self.tn * self.a
         doc_cnts_factor = doc_cnts + factor
         assert doc_topic_mat.shape[1] == doc_cnts_factor.shape[1]
         doc_topic_prob_mat = (doc_topic_mat.toarray() + self.a) / doc_cnts_factor
+        e1 = time.time()
+        print(">>>>>>>>>>计算概率矩阵耗时{}".format(e1 - s1))
         # 释放内存
         del doc_topic_mat
         gc.collect()
-
+        print('------------------释放矩阵doc_topic_mat内存------------------')
+        print('------------------文档-主题概率分布矩阵------------------')
         return doc_topic_prob_mat
 
     def loadTopicWordModel(self):
@@ -114,6 +122,7 @@ class LDAResult:
         row = []
         col = []
         data = []
+        s = time.time()
         with open(self.twp, 'r', encoding='utf-8') as f:
             while True:
                 line_str = f.readline().strip('\n')
@@ -132,6 +141,8 @@ class LDAResult:
                         continue
                 else:
                     break
+        e = time.time()
+        print('>>>>>>>>>>读取文件耗时{}'.format(e - s))
         assert row.__len__() == data.__len__()
         assert col.__len__() == data.__len__()
         topic_vocab_mat = sparse.csr_matrix((data, (row, col)), shape=(self.vn, self.tn))
@@ -140,17 +151,19 @@ class LDAResult:
             line_str = f.readline().strip('\n')
             if line_str:
                 topic_cnts = [float(topic_info.split(':')[1]) for topic_info in line_str.split(' ')[1:]]
-                print(len(topic_cnts))
             pass
         # 计算概率
+        s1 = time.time()
         factor = self.vn * self.b  # 归一化因子
         topic_cnts_factor = np.array(topic_cnts) + factor
         topic_vocab_prob_mat = (topic_vocab_mat.toarray() + self.b) / topic_cnts_factor
+        e1 = time.time()
+        print(">>>>>>>>>>计算概率矩阵耗时{}".format(e1 - s1))
         # 释放内存
         del topic_vocab_mat
         gc.collect()
-        print('-------------释放矩阵topic_vocab_mat内存---------------')
-        print('----------------得到主题-词概率矩阵------------------')
+        print('------------------释放矩阵topic_vocab_mat内存------------------')
+        print('------------------得到主题-词概率矩阵------------------')
         return topic_vocab_prob_mat
 
     def dump_topic_topn_words(self, output_topic_topn_words, topn=20):
@@ -160,33 +173,18 @@ class LDAResult:
         :param topn: 前20个关键词
         :return: file
         """
-        all_topic_words = self._get_all_topic_words()
-        topn_list = list()
-        print('-----------开始写入结果文件--------------')
-        with open(output_topic_topn_words, 'w', encoding='utf-8') as json_file:
-            for topic in all_topic_words:
-                topn_topic = dict()
-                topn_topic["topic_id"] = topic["topic_id"]
-                topic_sort_list = sorted(topic["words"].iteritems, key=lambda topic:topic[1], reverse=True)
-                topn_list_tmp = topic_sort_list[:topn]
-                topn_topic["words"] = dict(topn_list_tmp)
-                topn_list.append(topn_topic)
-                json_file.write(json.dumps(topn_topic))
-                json_file.write('\n')
+        return self._get_topn_topic_words(output_topic_topn_words, topn)
 
     def dump_doc_topn_words(self, output_doc_topn_words, topn):
         """
         每篇文档的前n个关键词写入到output_doc_topn_words中
         :param output_doc_topn_words: 文档的 topn 关键词文件
         :param topn: 前20个关键词
-        :return:
+        :return: file
         """
-        doc_word_info = self._get_doc_words(topn)
+        return self._get_topn_doc_words(output_doc_topn_words, topn)
 
-    def _get_doc_words(self):
-        pass
-
-    def _get_all_topic_words(self):
+    def _get_topn_topic_words(self, output_topic_topn_words, topn):
         """
         生成所有主题-词dict
         :param topic_vocab_prob_mat: 主题—词概率矩阵
@@ -195,28 +193,41 @@ class LDAResult:
         vocabs = self.loadVocabs()
         mat_csc = sparse.csc_matrix(self.loadTopicWordModel())
         m, n = mat_csc.get_shape()
-        all_topic_words = list()
+        f = open(output_topic_topn_words, 'w', encoding='utf-8')
+        print('------------------处理排序------------------')
         for col_index in range(n):
-            topic_words_dict = dict()
+            topn_topic_words_dict = dict()
             data = mat_csc.getcol(col_index).data
             row = mat_csc.getcol(col_index).indices
             row_len = row.shape[0]
-            topic_words_dict["topic_id"] = col_index
-            topic_words_dict["words"] = dict()
+            topn_topic_words_dict["topic_id"] = col_index
+            topic_words_dict = dict()
             for index in range(row_len):
                 prob = data[index]
                 word = vocabs[int(row[index])]
-                topic_words_dict["words"][word] = prob
-            all_topic_words.append(topic_words_dict)
+                topic_words_dict[word] = prob
+            s = time.time()
+            topic_sort_list = sorted(topic_words_dict.items(), key=lambda words: words[1], reverse=True)
+            e = time.time()
+            print('>>>>>>>>>>Topic{} 排序耗时{}'.format(col_index, (e - s)))
+            topn_list_tmp = topic_sort_list[:topn]
+            topn_topic_words_dict["words"] = dict(topn_list_tmp)
+            f.write(json.dumps(topn_topic_words_dict))
+            f.write('\n')
             del data, row, topic_words_dict
             gc.collect()
-
+        f.close()
         # 释放内存
         del mat_csc
         gc.collect()
-        print('----------释放矩阵 mat_csc 内存-------------')
-        print('----------得到所有主题-词dict-------------')
-        return all_topic_words
+        print('------------------已释放矩阵mat_csc内存------------------')
+        print('------------------得到topn主题-词文件------------------')
+
+    def _get_topn_doc_words(self, output_doc_topn_words, topn):
+        pass
+
+
+
 
 if __name__ == "__main__":
 
@@ -226,13 +237,6 @@ if __name__ == "__main__":
     vocab_path = "vocab.news.txt"
     output_doc_topn_words = "doc.topn"
     output_topic_topn_words = "topic.topn"
-
-    # lda = LDAResult(alpha=0.1 , beta=0.01 , topic_num=500 , vocab_num=1479643 , doc_num=26893850)
-    # lda.loadVocabs(ori_word_path)
-    # print("加载完毕!")
-    # lda.loadTopicWordModel(topic_word_path, topic_summary)
-    # lda.loadDocTopicModel(doc_topic_path)
-    # lda.dump_topic_topn_words(output_topic_topn_words, 10)
 
     lda = LDAResult(alpha=0.05, beta=0.01, topic_num=1000, vocab_num=2022810, doc_num=2019265,
                     vocab_path=vocab_path, doc_topic_path=doc_topic_path,
