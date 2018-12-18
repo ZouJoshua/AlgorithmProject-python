@@ -18,6 +18,8 @@ import scipy.sparse as sparse
 import json
 import time
 import gc
+import os
+
 
 class LDAResult:
 
@@ -166,7 +168,7 @@ class LDAResult:
         print('------------------得到主题-词概率矩阵------------------')
         return topic_vocab_prob_mat
 
-    def dump_topic_topn_words(self, output_topic_topn_words, topn=20):
+    def dump_topic_topn_words(self, output_topic_topn_words, topn=100):
         """
         每个主题的前20个关键词写入到output_topic_topn_words中
         :param output_topic_topn_words: 主题的 topn 关键词输出文件
@@ -226,20 +228,43 @@ class LDAResult:
     def _get_topn_doc_words(self, output_doc_topn_words, topn):
         pass
 
+    def get_list_of_topic_topn(self, output_topic_topn_words, re_write_topic_topn_words):
+        print('------------------将topn文件转化为可上传至hdfs的json文件------------------')
+        if os.path.exists(output_topic_topn_words):
+            f = open(output_topic_topn_words, 'r', encoding='utf-8')
+            fout = open(re_write_topic_topn_words, 'w', encoding='utf-8')
+            lines = f.readlines()
+            for line in lines:
+                re_write_json = dict()
+                line_json = json.loads(line.strip('\n'))
+                re_write_json['topic_id'] = line_json['topic_id']
+                re_write_json['words'] = list()
+                for word, prob in line_json['words'].items():
+                    word_tuple = (word, prob)
+                    re_write_json['words'].append(word_tuple)
+                fout.write(json.dumps(re_write_json))
+                fout.write('\n')
+            f.close()
+            fout.close()
+        else:
+            raise Exception('请检查文件路径')
+
 
 
 
 if __name__ == "__main__":
 
-    doc_topic_path = "doc_topic.0"
-    topic_word_path = "server_0_table_0.model"
-    topic_summary = "server_0_table_1.model"
-    vocab_path = "vocab.news.txt"
-    output_doc_topn_words = "doc.topn"
-    output_topic_topn_words = "topic.topn"
+    doc_topic_path = "../data/doc_topic.0"
+    topic_word_path = "../data/server_0_table_0.model"
+    topic_summary = "../data/server_0_table_1.model"
+    vocab_path = "../data/vocab.news.txt"
+    output_doc_topn_words = "../data/doc.topn"
+    output_topic_topn_words = "../data/topic.topn"
+    re_write_topic_topn_words = "../data/topic.top100"
 
     lda = LDAResult(alpha=0.05, beta=0.01, topic_num=1000, vocab_num=2022810, doc_num=2019265,
                     vocab_path=vocab_path, doc_topic_path=doc_topic_path,
                     topic_word_path=topic_word_path, topic_summary_path=topic_summary)
 
-    lda.dump_topic_topn_words(output_topic_topn_words)
+    # lda.dump_topic_topn_words(output_topic_topn_words)
+    lda.get_list_of_topic_topn(output_topic_topn_words, re_write_topic_topn_words)
