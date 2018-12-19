@@ -107,20 +107,20 @@ class LDAModel(object):
         # ndsum,每各doc中词的总数
         self.ndsum = np.zeros(dpre.docs_count, dtype="int")
         self.Z = np.array(
-            [[0 for y in xrange(dpre.docs[x].length)] for x in xrange(dpre.docs_count)])  # M*doc.size()，文档中词的主题分布
+            [[0 for y in range(dpre.docs[x].length)] for x in range(dpre.docs_count)])  # M*doc.size()，文档中词的主题分布
 
         # 随机先分配类型，为每个文档中的各个单词分配主题
-        for x in xrange(len(self.Z)):
+        for x in range(len(self.Z)):
             self.ndsum[x] = self.dpre.docs[x].length
-            for y in xrange(self.dpre.docs[x].length):
+            for y in range(self.dpre.docs[x].length):
                 topic = random.randint(0, self.K - 1)  # 随机取一个主题
                 self.Z[x][y] = topic  # 文档中词的主题分布
                 self.nw[self.dpre.docs[x].words[y]][topic] += 1
                 self.nd[x][topic] += 1
                 self.nwsum[topic] += 1
 
-        self.theta = np.array([[0.0 for y in xrange(self.K)] for x in xrange(self.dpre.docs_count)])
-        self.phi = np.array([[0.0 for y in xrange(self.dpre.words_count)] for x in xrange(self.K)])
+        self.theta = np.array([[0.0 for y in range(self.K)] for x in range(self.dpre.docs_count)])
+        self.phi = np.array([[0.0 for y in range(self.dpre.words_count)] for x in range(self.K)])
 
     def sampling(self, i, j):
         # 换主题
@@ -140,10 +140,10 @@ class LDAModel(object):
                  (self.nd[i] + self.alpha) / (self.ndsum[i] + Kalpha)
 
         # 随机更新主题的吗
-        # for k in xrange(1,self.K):
+        # for k in range(1,self.K):
         #     self.p[k] += self.p[k-1]
         # u = random.uniform(0,self.p[self.K-1])
-        # for topic in xrange(self.K):
+        # for topic in range(self.K):
         #     if self.p[topic]>u:
         #         break
 
@@ -159,9 +159,9 @@ class LDAModel(object):
 
     def est(self):
         # Consolelogger.info(u"迭代次数为%s 次" % self.iter_times)
-        for x in xrange(self.iter_times):
-            for i in xrange(self.dpre.docs_count):
-                for j in xrange(self.dpre.docs[i].length):
+        for x in range(self.iter_times):
+            for i in range(self.dpre.docs_count):
+                for j in range(self.dpre.docs[i].length):
                     topic = self.sampling(i, j)
                     self.Z[i][j] = topic
         logger.info(u"迭代完成。")
@@ -173,26 +173,26 @@ class LDAModel(object):
         self.save()
 
     def _theta(self):
-        for i in xrange(self.dpre.docs_count):  # 遍历文档的个数词
+        for i in range(self.dpre.docs_count):  # 遍历文档的个数词
             self.theta[i] = (self.nd[i] + self.alpha) / (self.ndsum[i] + self.K * self.alpha)
 
     def _phi(self):
-        for i in xrange(self.K):
+        for i in range(self.K):
             self.phi[i] = (self.nw.T[i] + self.beta) / (self.nwsum[i] + self.dpre.words_count * self.beta)
 
     def save(self):
         # 保存theta文章-主题分布
         logger.info(u"文章-主题分布已保存到%s" % self.thetafile)
         with codecs.open(self.thetafile, 'w') as f:
-            for x in xrange(self.dpre.docs_count):
-                for y in xrange(self.K):
+            for x in range(self.dpre.docs_count):
+                for y in range(self.K):
                     f.write(str(self.theta[x][y]) + '\t')
                 f.write('\n')
         # 保存phi词-主题分布
         logger.info(u"词-主题分布已保存到%s" % self.phifile)
         with codecs.open(self.phifile, 'w') as f:
-            for x in xrange(self.K):
-                for y in xrange(self.dpre.words_count):
+            for x in range(self.K):
+                for y in range(self.dpre.words_count):
                     f.write(str(self.phi[x][y]) + '\t')
                 f.write('\n')
         # 保存参数设置
@@ -208,30 +208,30 @@ class LDAModel(object):
 
         with codecs.open(self.topNfile, 'w', 'utf-8') as f:
             self.top_words_num = min(self.top_words_num, self.dpre.words_count)
-            for x in xrange(self.K):
-                f.write(u'第' + str(x) + u'类：' + '\n')
+            for x in range(self.K):
+                f.write('第' + str(x) + '类：' + '\n')
                 twords = []
-                twords = [(n, self.phi[x][n]) for n in xrange(self.dpre.words_count)]
+                twords = [(n, self.phi[x][n]) for n in range(self.dpre.words_count)]
                 twords.sort(key=lambda i: i[1], reverse=True)
-                for y in xrange(self.top_words_num):
+                for y in range(self.top_words_num):
                     word = OrderedDict({value: key for key, value in self.dpre.word2id.items()})[twords[y][0]]
                     f.write('\t' * 2 + word + '\t' + str(twords[y][1]) + '\n')
         # 保存最后退出时，文章的词分派的主题的结果
         logger.info(u"文章-词-主题分派结果已保存到%s" % self.tassginfile)
         with codecs.open(self.tassginfile, 'w') as f:
-            for x in xrange(self.dpre.docs_count):
-                for y in xrange(self.dpre.docs[x].length):
+            for x in range(self.dpre.docs_count):
+                for y in range(self.dpre.docs[x].length):
                     f.write(str(self.dpre.docs[x].words[y]) + ':' + str(self.Z[x][y]) + '\t')
                 f.write('\n')
-        logger.info(u"模型训练完成。")
+        logger.info("模型训练完成。")
 
 
 # 数据预处理，即：生成d（）单词序列，以及词汇表
 def preprocessing():
-    logger.info(u'载入数据......')
+    logger.info('载入数据......')
     with codecs.open(trainfile, 'r', 'utf-8') as f:
         docs = f.readlines()
-    logger.debug(u"载入完成,准备生成字典对象和统计文本数据...")
+    logger.debug("载入完成,准备生成字典对象和统计文本数据...")
     # 大的文档集
     dpre = DataPreProcessing()
     items_idx = 0
