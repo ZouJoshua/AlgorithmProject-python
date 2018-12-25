@@ -30,7 +30,7 @@ import json
 import time
 from ast import literal_eval
 
-from lda.basic import log
+from nlp.lda.basic import log
 
 
 class EnPreprocess(object):
