@@ -15,7 +15,7 @@ def create_vocabulary(word2vec_model_path, name_scope=''):
     :return: {单词：索引}表和{索引：单词}表
     """
     # TODO：这里需要加参数
-    cache_path = "/Volumes/Katherine_Cai/NLP/apus/real_data/news_classification/textcnn/cache_vocabulary_pik/" + name_scope + "_word_vocabulary.pik"
+    cache_path = "/data/caifuli/news_classification/textcnn/cache_vocabulary_pik/" + name_scope + "_word_vocabulary.pik"
     print("cache_path:", cache_path, "file_exists:", os.path.exists(cache_path))
 
     if os.path.exists(cache_path):  # 如果缓存文件存在，则直接读取
@@ -46,14 +46,14 @@ def create_vocabulary(word2vec_model_path, name_scope=''):
     return vocabulary_word2idx, vocabulary_idx2word
 
 
-def create_label_vocabulary(training_data_dir_path='/Volumes/Katherine_Cai/NLP/apus/real_data/news_classification/data', name_scope=''):
+def create_label_vocabulary(training_data_dir_path='/data/caifuli/news_classification/data', name_scope=''):
     """
     创建标签映射  label is sorted. 1 is high frequency, 2 is low frequency.
     :param training_data_path: 带label的训练语料
     :return: label2idx和idx2label
     """
     print("building vocabulary_label_sorted. training_data_dir__path:", training_data_dir_path)
-    cache_path = '/Volumes/Katherine_Cai/NLP/apus/real_data/news_classification/textcnn/cache_vocabulary_label_pik/' + name_scope + "_label_vocabulary.pik"
+    cache_path = '/data/caifuli/news_classification/textcnn/cache_vocabulary_label_pik/' + name_scope + "_label_vocabulary.pik"
     print("cache_path:", cache_path, "file_exists:", os.path.exists(cache_path))
 
     if os.path.exists(cache_path):  # 如果缓存文件存在，则直接读取
@@ -99,7 +99,7 @@ def sort_by_value(d):   # 根据value排序，返回降序后的key的列表
     return [backitems[i][1] for i in range(0, len(backitems))]
 
 
-def load_data(vocabulary_word2idx, label2idx, valid_portion=0.2, training_data_dir_path='/Volumes/Katherine_Cai/NLP/apus/real_data/news_classification/data'):  # n_words=100000
+def load_data(vocabulary_word2idx, label2idx, valid_portion=0.2, training_data_dir_path='/data/caifuli/news_classification/data'):  # n_words=100000
     """
     划分训练集、测试集、验证集
     :param vocabulary_word2index: word2idx映射

@@ -1,6 +1,6 @@
 import json
 
-dataPath = "/Volumes/Katherine_Cai/NLP/apus/real_data/news_classification/top_test_data_content+title_json2"
+dataPath = "/data/caifuli/news_classification/top_test_data_content+title_json"
 
 labels_right = []
 labels_predict = []

@@ -1,4 +1,11 @@
-# -*- coding: utf8 -*-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+@Author  : Joshua
+@Time    : 2019/1/3 15:55
+@File    : sub_category_model.py
+@Desc    : 二级分类模型 - fasttext
+"""
 
 import json
 import random
@@ -11,18 +18,16 @@ from preprocess.util import clean_string
 
 
 # 制作label映射map
-label_idx_map = {"entertainment": "15", "sports": "6", "sport": "6", "national": "4", "international": "3", "world": "3", "business": "8",
-                 "lifestyle": "12", "technology": "10", "tech": "10", "auto": "7", "science": "7"}
-idx_label_map = {"3": "international", "4": "national", "6": "sports", "8": "business", "10": "technology",
-                 "7": "auto or science", "12": "lifestyle", "15": "entertainment"}
+label_idx_map = {"crime": "401", "education": "402", "law": "403", "politics": "404"}
+idx_label_map = {"401": "crime", "402": "education", "403": "law", "404": "politics"}
 
 class_cnt_map = {}
-trainingDir = "/data/caifuli/news_classification/data"
-train_data_path = "/data/caifuli/news_classification/top_training_data_content+title"
-test_data_path = "/data/caifuli/news_classification/top_test_data_content+title"
-test_data_json_path = "/data/caifuli/news_classification/top_test_data_content+title_json"
-test_data_json_path1 = "/data/caifuli/news_classification/top_test_data_content+title_json2"
-model_path = "/data/caifuli/news_classification/ft_model_top_content+title"
+trainingDir = "/data/zoushuai/news_content/sub_classification_model/national"
+train_data_path = "/data/zoushuai/news_content/sub_classification_model/national/sub_training_data_content+title"
+test_data_path = "/data/zoushuai/news_content/sub_classification_model/national/sub_test_data_content+title"
+test_data_json_path = "/data/zoushuai/news_content/sub_classification_model/national/sub_test_data_content+title_json"
+test_data_json_path1 = "/data/zoushuai/news_content/sub_classification_model/national/sub_test_data_content+title_json2"
+model_path = "/data/zoushuai/news_content/sub_classification_model/national/ft_model_sub_content+title"
 
 fnames = os.listdir(trainingDir)
 fnames.remove('.DS_Store')
