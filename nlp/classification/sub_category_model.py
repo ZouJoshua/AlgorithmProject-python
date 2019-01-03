@@ -14,7 +14,7 @@ from pyquery import PyQuery
 import logging
 import re
 import os
-from .preprocess.util import clean_string
+from nlp.classification.preprocess.util import clean_string
 
 
 # 制作label映射map
@@ -30,7 +30,6 @@ test_data_json_path1 = "/data/zoushuai/news_content/sub_classification_model/nat
 model_path = "/data/zoushuai/news_content/sub_classification_model/national/ft_model_sub_content+title"
 
 fnames = os.listdir(trainingDir)
-fnames.remove('.DS_Store')
 for fname in fnames:
     with open(os.path.join(trainingDir, fname),  "r") as input_f, open(train_data_path, "a") as train_f, open(test_data_path, "a") as test_f, open(test_data_json_path, "a") as test_json_f:
         lines = input_f.readlines()
@@ -40,41 +39,32 @@ for fname in fnames:
                 line = json.loads(line)
                 title = line["title"]
                 content = ""
-                if line['top_category'] in ['shopping', 'aoto']:
-                    continue
-                else:
-                    label = str(label_idx_map[line['top_category'].strip().lower()])
-                    if "html" in line:
-                        content = line["html"]
-                    elif "content" in line:
-                        content = line["content"]
-                    desc = clean_string((title + content).lower())  # 清洗数据
+                label = str(label_idx_map[line['two_level'].strip().lower()])
+                if "html" in line:
+                    content = line["html"]
+                elif "content" in line:
+                    content = line["content"]
+                desc = clean_string((title + content).lower())  # 清洗数据
 
-                    # 统计各个类别的样本数，分出训练集和测试集
-                    if label in class_cnt_map and desc != "":
-                        class_cnt_map[label] += 1
-                    elif desc != "":
-                        class_cnt_map[label] = 1
+                # 统计各个类别的样本数，分出训练集和测试集
+                if label in class_cnt_map and desc != "":
+                    class_cnt_map[label] += 1
+                elif desc != "":
+                    class_cnt_map[label] = 1
 
-                    if class_cnt_map[label] <= 150000 and desc != "":
-                        # pass
-                        new_text = desc + "\t__label__" + label
-                        train_f.write(new_text + "\n")
-                    elif desc != "":
-                        new_text = desc + "\t__label__" + label
-                        test_f.write(new_text + "\n")
-                        test_json_f.write(json.dumps(line) + "\n")
-
-                    if (label == '7' or label == '12' or label == '3' or label == '10')and class_cnt_map[label] <= 100000 and desc != "":
-                        new_text = desc + "\t__label__" + label
-                        test_f.write(new_text + "\n")
-                        test_json_f.write(json.dumps(line) + "\n")
-
+                if class_cnt_map[label] <= 150000 and desc != "":
+                    # pass
+                    new_text = desc + "\t__label__" + label
+                    train_f.write(new_text + "\n")
+                elif desc != "":
+                    new_text = desc + "\t__label__" + label
+                    test_f.write(new_text + "\n")
+                    test_json_f.write(json.dumps(line) + "\n")
             except:
-                print(line)
+                print("error")
                 pass
 
-print(class_cnt_map)
+# print(class_cnt_map)
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 # 训练模型
@@ -95,7 +85,7 @@ with open(test_data_json_path, 'r') as test_json_f, open(test_data_json_path1, "
         title = line["title"]
         content_list = []
         content = ""
-        label = str(label_idx_map[line['top_category'].lower().strip()])
+        label = str(label_idx_map[line['two_level'].lower().strip()])
         if "html" in line:
             content = line["html"]
         elif "content" in line:
