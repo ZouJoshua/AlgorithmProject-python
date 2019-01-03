@@ -14,7 +14,7 @@ from pyquery import PyQuery
 import logging
 import re
 import os
-from preprocess.util import clean_string
+from .preprocess.util import clean_string
 
 
 # 制作label映射map
