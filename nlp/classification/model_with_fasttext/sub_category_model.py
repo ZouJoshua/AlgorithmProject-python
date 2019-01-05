@@ -15,7 +15,9 @@ import logging
 import re
 import os
 from nlp.classification.preprocess.util import clean_string
+from nlp.classification.model_evaluate.calculate_p_r_f import evaluate_model
 from sklearn import cross_validation
+from sklearn.model_selection import KFold,StratifiedKFold
 
 # 制作label映射map
 label_idx_map = {"crime": "401", "education": "402", "law": "403", "politics": "404"}
@@ -31,36 +33,88 @@ model_path = "/data/zoushuai/news_content/sub_classification_model/national/ft_m
 
 class SubCategoryModel(object):
 
-    def __init__(self, dataDir, category='national', model_level='two_level'):
+    def __init__(self, dataDir, category='national', k=5, model_level='two_level'):
         if os.path.exists(dataDir) and os.path.isdir(dataDir):
             self._datadir = dataDir
         else:
             raise Exception('数据路径不存在，请检查路径')
         self._level = model_level
         self.cg = category
-
+        self.k = k
 
     def _preprocess_data(self):
         fnames = os.listdir(self._datadir)
         datafiles = [os.path.join(self._datadir, fname) for fname in fnames]
+        class_cnt = dict()
+        train_format_data = list()
         for datafile in datafiles:
-            dataf = open(datafile, 'r')
-            while True:
-                line = dataf.readline().strip('\n')
-
-
-
+            dataf = open(datafile, 'r', encoding='utf-8')
+            data_all = dataf.readlines()
+            # random.shuffle(data_all)
+            # data_count = len(data_all)
+            for li in data_all:
+                line = li.strip('\n')
+                dataX, dataY = self._preline(line)
+                _data = dataX + "\t__label__" + dataY
+                train_format_data.append(_data)
+                if dataY in class_cnt and dataX != "":
+                    class_cnt[dataY] += 1
+                elif dataX != "":
+                    class_cnt[dataY] = 1
             dataf.close()
+        self.generate_kfold_data(train_format_data)
 
-    def _mkdir_path(self, k):
-        model_path = os.path.join(self._datadir, "{}_model_{}".format(self.cg, k))
+
+    def generate_kfold_data(self, train_format_data):
+        """
+        分层k折交叉验证
+        :param train_format_data:
+        :return:
+        """
+        datax = [i.split('\t__label__')[0] for i in train_format_data]
+        datay = [i.split('\t__label__')[1] for i in train_format_data]
+        skf = StratifiedKFold(n_splits=self.k)
+        i = 0
+        for train_index, test_index in skf.split(datax, datay):
+            i += 1
+            train_label_count = self._label_count([datay[i] for i in train_index])
+            test_label_count = self._label_count([datay[j] for j in test_index])
+            train_data = [train_format_data[i] for i in train_index]
+            test_data = [train_format_data[j] for j in test_index]
+            model_data_path = self._mkdir_path(i)
+            train_file = os.path.join(model_data_path, 'train.txt')
+            test_file = os.path.join(model_data_path, 'test.txt')
+            self.write_file(train_file, train_data)
+            self.write_file(test_file, test_data)
+            print('文件:{}\n训练数据类别统计：{}'.format(train_file, train_label_count))
+            print('文件:{}\n测试数据类别统计：{}'.format(test_file, test_label_count))
+
+    def _label_count(self, label_list):
+        label_count = dict()
+        for i in label_list:
+            if i in label_count:
+                label_count[i] += 1
+            else:
+                label_count[i] = 1
+        return label_count
+
+    def write_file(self, file, data):
+        with open(file, 'w', encoding='utf-8') as f:
+            for line in data:
+                f.write(line)
+                f.write('\n')
+        return
+
+    def _mkdir_path(self, i):
+        model_path = os.path.join(self._datadir, "{}_model_{}".format(self.cg, i))
         if not os.path.exists(model_path):
             # os.mkdir(model_path)
             model_data_path = os.path.join(model_path, "data")
             os.makedirs(model_data_path)
+            return model_data_path
         else:
-            print('已存在该路径')
-        return model_path, model_data_path
+            raise Exception('已存在该路径')
+
 
     def _get_label(self):
         pass
@@ -81,40 +135,25 @@ class SubCategoryModel(object):
         dataX = clean_string((title + content).lower())  # 清洗数据
         return dataX, dataY
 
-    for fname in fnames:
-        with open(os.path.join(trainingDir, fname),  "r") as input_f, \
-                open(train_data_path, "a") as train_f, \
-                open(test_data_path, "a") as test_f, \
-                open(test_data_json_path, "a") as test_json_f:
-            lines = input_f.readlines()
-            # random.shuffle(lines)
-                # 统计各个类别的样本数，分出训练集和测试集
-            if label in class_cnt_map and desc != "":
-                class_cnt_map[label] += 1
-            elif desc != "":
-                class_cnt_map[label] = 1
+    def train_model(self):
+        train_precision = dict()
+        test_precision = dict()
+        for i in range(self.k):
+            data_dir = "{}_model_{}".format(self.cg, i+1)
+            model_path = os.path.join(self._datadir, data_dir)
+            train_data_path = os.path.join(model_path, 'data', 'train.txt')
+            test_data_path = os.path.join(model_path, 'data', 'test.txt')
+            classifier = fasttext.supervised(train_data_path, model_path, label_prefix="__label__")
+            train_pred = classifier.test(train_data_path)
+            test_pred = classifier.test(test_data_path)
+            train_precision["model_{}".format(i+1)] = train_pred.precision
+            test_precision["model_{}".format(i+1)] = test_pred.precision
+            print("在训练集{}上的准确率：\n{}".format(data_dir, train_pred.precision))
+            print("在测试集{}上的准确率：\n{}".format(data_dir, test_pred.precision))
 
-            if class_cnt_map[label] <= 150000 and desc != "":
-                # pass
-                new_text = desc + "\t__label__" + label
-                train_f.write(new_text + "\n")
-            elif desc != "":
-                new_text = desc + "\t__label__" + label
-                test_f.write(new_text + "\n")
-                test_json_f.write(json.dumps(line) + "\n")
+    def evaluate_model(self, datapath):
+        return evaluate_model(datapath)
 
-# print(class_cnt_map)
-
-logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
-# 训练模型
-classifier = fasttext.supervised(train_data_path, model_path, label_prefix="__label__")
-test_pred = classifier.test(test_data_path)
-train_pred = classifier.test(train_data_path)
-print("在测试集上的准确率：")
-print(test_pred.precision)
-
-print("在训练集上的准确率：")
-print(train_pred.precision)
 
 
 with open(test_data_json_path, 'r') as test_json_f, open(test_data_json_path1, "a") as test_json_f1:
