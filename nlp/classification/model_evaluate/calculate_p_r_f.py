@@ -1,19 +1,20 @@
 import json
 
 dataPath = "/data/caifuli/news_classification/top_test_data_content+title_json"
+model_num = 'national_model_1'
 
-def evaluate_model(dataPath):
+def evaluate_model(dataPath, model_level='two_level', model_num='national_model_1'):
     labels_right = []
     labels_predict = []
     with open(dataPath, "r") as fr:
         lines = fr.readlines()
         for line in lines:
             line = json.loads(line)
-            true_category = line['top_category'].lower().strip()
+            true_category = line[model_level].lower().strip()
             if true_category in ['shopping', 'aoto', 'world', 'sport', 'tech']:
                 continue
             labels_right.append(true_category)
-            labels_predict.append(line['predict_sub_category'])
+            labels_predict.append(line['predict_{}'.format(model_level)])
     text_labels = list(set(labels_right))
     text_predict_labels = list(set(labels_predict))
 
@@ -29,6 +30,7 @@ def evaluate_model(dataPath):
     # print(B)
     # print(C)
     # 计算准确率，召回率，F值
+    print('计算模型{}效果'.format(model_num))
     for key in B:
         try:
             r = float(A[key]) / float(B[key])
