@@ -8,16 +8,22 @@
 """
 
 import json
-import random
 import fasttext
 from pyquery import PyQuery
-import logging
-import re
 import os
+from os.path import dirname
 from nlp.classification.preprocess.util import clean_string
 from nlp.classification.model_evaluate.calculate_p_r_f import evaluate_model
-from sklearn import cross_validation
 from sklearn.model_selection import KFold, StratifiedKFold
+import sys
+
+root_path = dirname(dirname(dirname(os.path.realpath(__file__))))
+class_path = dirname(dirname(os.path.realpath(__file__)))
+# print(root_path)
+# print(class_path)
+sys.path.append(dirname(root_path))
+sys.path.append(class_path)
+
 
 # 制作label映射map
 label_idx_map = {"crime": "401", "education": "402", "law": "403", "politics": "404"}
@@ -127,12 +133,13 @@ class SubCategoryModel(object):
                     f.write('\n')
             elif file_format == 'json':
                 for line in data:
-                    line_json = json.loads(line)
-                    f.write(line_json)
+                    # line_json = json.dumps(line)
+                    f.write(line)
                     f.write('\n')
         return
 
     def train_model(self):
+        self.preprocess_data()
         train_precision = dict()
         test_precision = dict()
         for i in range(self.k):
@@ -159,12 +166,13 @@ class SubCategoryModel(object):
                 open(json_out_file, 'w', encoding='utf-8') as joutfile:
             lines = jfile.readlines()
             for line in lines:
+                _line = json.loads(line)
                 _data = self._preline(line)
                 labels = classifier.predict_proba([_data])
-                line['predict_{}'.format(self._level)] = idx_label_map[labels[0][0][0].replace("'", "").replace("__label__", "")]
+                _line['predict_{}'.format(self._level)] = idx_label_map[labels[0][0][0].replace("'", "").replace("__label__", "")]
                 # print(line['predict_top_category'])
-                line['predict_{}_proba'.format(self._level)] = labels[0][0][1]
-                joutfile.write(json.dumps(line) + "\n")
+                _line['predict_{}_proba'.format(self._level)] = labels[0][0][1]
+                joutfile.write(json.dumps(_line) + "\n")
 
 
     def evaluate_model(self, datapath, model_level, model_num):
