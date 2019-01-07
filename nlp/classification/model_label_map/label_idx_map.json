@@ -1,0 +1,28 @@
+{
+    "one_level": {
+        "all": {
+            "entertainment": "15",
+            "sports": "6",
+            "national": "4",
+            "international": "3",
+            "world": "3",
+            "business": "8",
+            "lifestyle": "12",
+            "technology": "10",
+            "tech": "10",
+            "auto": "7",
+            "science": "7"
+        }
+    },
+    "two_level": {
+        "national": {
+            "crime": "401",
+            "education": "402",
+            "law": "403",
+            "politics": "404"
+        },
+        "entertainment": { },
+        "lifestyle": { },
+        "sports": { }
+    }
+}
