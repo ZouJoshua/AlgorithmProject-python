@@ -7,23 +7,26 @@
 @Desc    : 二级分类模型 - fasttext
 """
 
-import json
-import fasttext
-from pyquery import PyQuery
 import os
 from os.path import dirname
-from nlp.classification.preprocess.util import clean_string
-from nlp.classification.model_evaluate.calculate_p_r_f import evaluate_model
-from sklearn.model_selection import KFold, StratifiedKFold
 import sys
-import time
-
-
-
 root_path = dirname(dirname(dirname(dirname(os.path.realpath(__file__)))))
 class_path = dirname(dirname(os.path.realpath(__file__)))
 sys.path.append(root_path)
 sys.path.append(dirname(class_path))
+
+
+import json
+import fasttext
+from pyquery import PyQuery
+from nlp.classification.preprocess.util import clean_string
+from nlp.classification.model_evaluate.calculate_p_r_f import evaluate_model
+from sklearn.model_selection import KFold, StratifiedKFold
+import time
+
+
+
+
 
 
 class SubCategoryModel(object):
