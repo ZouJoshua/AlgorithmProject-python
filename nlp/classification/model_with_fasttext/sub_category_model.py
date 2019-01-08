@@ -26,9 +26,6 @@ import time
 
 
 
-
-
-
 class SubCategoryModel(object):
 
     def __init__(self, dataDir, category='national', k=5, model_level='two_level'):
@@ -157,7 +154,7 @@ class SubCategoryModel(object):
             s = time.time()
             _model = "{}_model_{}".format(self.cg, i+1)
             data_path = os.path.join(self._datadir, _model)
-            model_path = os.path.join(data_path, _model)
+            model_path = os.path.join(data_path, '{}_sub_classification_model'.format(self.cg))
             train_data_path = os.path.join(data_path, 'data', 'train.txt')
             test_data_path = os.path.join(data_path, 'data', 'test.txt')
             test_check_path = os.path.join(data_path, 'data', 'test_check.json')

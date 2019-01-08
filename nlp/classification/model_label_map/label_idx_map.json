@@ -19,7 +19,8 @@
             "crime": "401",
             "education": "402",
             "law": "403",
-            "politics": "404"
+            "politics": "404",
+            "society others": "405"
         },
         "entertainment": { },
         "lifestyle": { },
