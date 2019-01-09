@@ -74,7 +74,7 @@ class SubCategoryModel(object):
             content = line_json["content"]
         elif "html" in line_json:
             content = self._parse_html(line_json["html"])
-        dataX = clean_string((title + content).lower())  # 清洗数据
+        dataX = clean_string((title + '.' + content).lower())  # 清洗数据
         _data = dataX + "\t__label__" + dataY
         return _data
 
@@ -150,7 +150,7 @@ class SubCategoryModel(object):
         return
 
     def train_model(self):
-        self.preprocess_data()
+        # self.preprocess_data()
         train_precision = dict()
         test_precision = dict()
         for i in range(self.k):
@@ -164,7 +164,7 @@ class SubCategoryModel(object):
             test_check_pred_path = os.path.join(data_path, 'data', 'test_check_pred.json')
             train_check_path = os.path.join(data_path, 'data', 'train_check.json')
             train_check_pred_path = os.path.join(data_path, 'data', 'train_check_pred.json')
-            classifier = fasttext.supervised(train_data_path, model_path, label_prefix="__label__")
+            classifier = fasttext.supervised(train_data_path, model_path, label_prefix="__label__", lr=0.1, epoch=100, dim=300)
             train_pred = classifier.test(train_data_path)
             test_pred = classifier.test(test_data_path)
             train_precision["model_{}".format(i+1)] = train_pred.precision
@@ -191,6 +191,8 @@ class SubCategoryModel(object):
                 # print(line['predict_top_category'])
                 _line['predict_{}_proba'.format(self._level)] = labels[0][0][1]
                 joutfile.write(json.dumps(_line) + "\n")
+                del line
+                del _line
             e = time.time()
             print('预测及写入文件耗时{}'.format(e - s))
     def evaluate_model(self, datapath, model_level, model_num):
@@ -219,6 +221,7 @@ if __name__ == '__main__':
     s = time.time()
     dataDir = "/data/zoushuai/news_content/sub_classification_model/national"
     sub_model = SubCategoryModel(dataDir, category='national', k=5, model_level='two_level')
+    # sub_model.preprocess_data()
     train_precision, test_precision = sub_model.train_model()
     e = time.time()
     print('训练二级分类模型耗时{}'.format(e - s))
