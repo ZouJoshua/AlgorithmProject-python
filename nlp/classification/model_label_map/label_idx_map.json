@@ -20,16 +20,7 @@
             "education": "402",
             "law": "403",
             "politics": "404",
-            "people or groups": "405",
-            "others": "406",
-            "accidents": "406",
-            "public benefit": "406",
-            "environment": "406",
-            "medical": "406",
-            "events": "406",
-            "military": "406",
-            "traffic": "406",
-            "food security": "406"
+            "society others": "405"
         },
         "entertainment": { },
         "lifestyle": { },
