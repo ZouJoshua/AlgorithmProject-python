@@ -22,7 +22,17 @@
             "politics": "404",
             "society others": "405"
         },
-        "entertainment": { },
+        "entertainment": {
+          "bollywood": "1501",
+          "celebrity": "1502",
+          "gossip": "1503",
+          "tv": "1504",
+          "movie": "1505",
+          "music": "1506",
+          "comic": "1507",
+          "hollywood": "1508",
+          "others": "1509"
+        },
         "lifestyle": { },
         "sports": { }
     }
