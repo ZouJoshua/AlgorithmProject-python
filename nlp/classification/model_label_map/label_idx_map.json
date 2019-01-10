@@ -25,14 +25,13 @@
         },
         "entertainment": {
           "bollywood": "1501",
-          "celebrity": "1502",
-          "gossip": "1503",
-          "tv": "1504",
-          "movie": "1505",
+          "celebrity&gossip": "1502",
+          "tv": "1503",
+          "movie": "1504",
+          "cartoon&comics": "1505",
           "music": "1506",
-          "comic": "1507",
-          "hollywood": "1508",
-          "others": "1509"
+          "hollywood": "1507",
+          "others": "1508"
         },
         "lifestyle": { },
         "sports": { }
