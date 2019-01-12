@@ -81,7 +81,7 @@ class SubCategoryModel(object):
         _data = title_dataX + "\t__label__" + content_dataX + "\t__label__" + dataY
         return _data
 
-    def _preline_title(self, line, model_type="default"):
+    def _preline_type(self, line, model_type="title"):
         line_json = json.loads(line)
         dataY = str(self.label_idx_map[line_json[self._level].strip().lower()])
         content = ""
@@ -89,14 +89,19 @@ class SubCategoryModel(object):
             content = line_json["content"]
         elif "html" in line_json:
             content = self._parse_html(line_json["html"])
-        title = line_json["title"]
-        if
+        title = line_json['title']
         title_dataX = clean_string((title).lower())
-        content_dataX = clean_string((content).lower())  # 清洗数据
         _title = title_dataX + "\t__label__" + dataY
+        content_dataX = clean_string((content).lower())  # 清洗数据
         _content = content_dataX + "\t__label__" + dataY
-        if
-        return _title, _content
+        if model_type == 'title':
+            return _title
+        elif model_type == 'content':
+            return _content
+        else:
+            dataX = clean_string((title + '.' + content).lower())  # 清洗数据
+            _data = dataX + "\t__label__" + dataY
+            return _data
 
 
     def _generate_kfold_data(self, data_all):
@@ -117,23 +122,29 @@ class SubCategoryModel(object):
             e2 = time.time()
             train_label_count = self._label_count([self.idx_label_map[Y[i]] for i in train_index])
             test_label_count = self._label_count([self.idx_label_map[Y[j]] for j in test_index])
-            train_data = [self._preline_two(data_all[i]) for i in train_index]
-            test_data = [self._preline(data_all[j]) for j in test_index]
+            title_train_data = [self._preline_type(data_all[i], model_type='title') for i in train_index]
+            title_test_data = [self._preline_type(data_all[j], model_type='title') for j in test_index]
+            content_train_data = [self._preline_type(data_all[i], model_type='content') for i in train_index]
+            content_test_data = [self._preline_type(data_all[j], model_type='content') for j in test_index]
             train_check = [data_all[i] for i in train_index]
             test_check = [data_all[i] for i in test_index]
             e3 = time.time()
             print('数据分训练集、测试集耗时{}'.format(e3 - e2))
             model_data_path = self._mkdir_path(i)
-            train_file = os.path.join(model_data_path, 'train.txt')
-            test_file = os.path.join(model_data_path, 'test.txt')
+            title_train_file = os.path.join(model_data_path, 'title_train.txt')
+            title_test_file = os.path.join(model_data_path, 'title_test.txt')
+            content_train_file = os.path.join(model_data_path, 'content_train.txt')
+            content_test_file = os.path.join(model_data_path, 'content_train.txt')
             train_check_file = os.path.join(model_data_path, 'train_check.json')
             test_check_file = os.path.join(model_data_path, 'test_check.json')
-            self.write_file(train_file, train_data, 'txt')
-            self.write_file(test_file, test_data, 'txt')
+            self.write_file(title_train_file, title_train_data, 'txt')
+            self.write_file(title_test_file, title_test_data, 'txt')
+            self.write_file(content_train_file, content_train_data, 'txt')
+            self.write_file(content_test_file, content_test_data, 'txt')
             self.write_file(train_check_file, train_check, 'json')
             self.write_file(test_check_file, test_check, 'json')
-            print('文件:{}\n训练数据类别统计：{}'.format(train_file, train_label_count))
-            print('文件:{}\n测试数据类别统计：{}'.format(test_file, test_label_count))
+            print('文件:{}\n训练数据类别统计：{}'.format(title_train_file, train_label_count))
+            print('文件:{}\n测试数据类别统计：{}'.format(title_test_file, test_label_count))
 
     def _label_count(self, label_list):
         label_count = dict()
@@ -179,34 +190,49 @@ class SubCategoryModel(object):
             _model = "{}_model_{}".format(self.cg, i+1)
             data_path = os.path.join(self._datadir, _model)
             model_path = os.path.join(data_path, '{}_sub_classification_model'.format(self.cg))
-            train_data_path = os.path.join(data_path, 'data', 'train.txt')
-            test_data_path = os.path.join(data_path, 'data', 'test.txt')
-            test_check_path = os.path.join(data_path, 'data', 'test_check.json')
-            test_check_pred_path = os.path.join(data_path, 'data', 'test_check_pred.json')
+            title_train_data_path = os.path.join(data_path, 'data', 'title_train.txt')
+            title_test_data_path = os.path.join(data_path, 'data', 'title_test.txt')
+            content_train_data_path = os.path.join(data_path, 'data', 'content_train.txt')
+            content_test_data_path = os.path.join(data_path, 'data', 'content_test.txt')
             train_check_path = os.path.join(data_path, 'data', 'train_check.json')
-            train_check_pred_path = os.path.join(data_path, 'data', 'train_check_pred.json')
-            classifier = fasttext.supervised(train_data_path, model_path, label_prefix="__label__", lr=0.1, epoch=20, dim=200)
-            train_pred = classifier.test(train_data_path)
-            test_pred = classifier.test(test_data_path)
-            train_precision["model_{}".format(i+1)] = train_pred.precision
-            test_precision["model_{}".format(i+1)] = test_pred.precision
-            print("在训练集{}上的准确率：\n{}".format(_model, train_pred.precision))
-            print("在测试集{}上的准确率：\n{}".format(_model, test_pred.precision))
+            test_check_path = os.path.join(data_path, 'data', 'test_check.json')
+            title_train_check_pred_path = os.path.join(data_path, 'data', 'title_train_check_pred.json')
+            title_test_check_pred_path = os.path.join(data_path, 'data', 'title_test_check_pred.json')
+            content_train_check_pred_path = os.path.join(data_path, 'data', 'content_train_check_pred.json')
+            content_test_check_pred_path = os.path.join(data_path, 'data', 'content_test_check_pred.json')
+            title_classifier = fasttext.supervised(title_train_data_path, model_path, label_prefix="__label__", lr=0.1, epoch=20, dim=200)
+            title_train_pred = title_classifier.test(title_train_data_path)
+            title_test_pred = title_classifier.test(title_test_data_path)
+            content_classifier = fasttext.supervised(content_train_data_path, model_path, label_prefix="__label__", lr=0.1, epoch=20, dim=200)
+            content_train_pred = content_classifier.test(content_train_data_path)
+            content_test_pred = content_classifier.test(content_test_data_path)
+            train_precision["model_{}".format(i+1)] = title_train_pred.precision
+            test_precision["model_{}".format(i+1)] = title_test_pred.precision
+            print("在训练集{}上title模型的准确率：\n{}".format(_model, title_train_pred.precision))
+            print("在测试集{}上title模型的准确率：\n{}".format(_model, title_test_pred.precision))
+            print("在训练集{}上content模型的准确率：\n{}".format(_model, content_train_pred.precision))
+            print("在测试集{}上content模型的准确率：\n{}".format(_model, content_test_pred.precision))
             e = time.time()
             print('训练模型耗时{}'.format(e - s))
-            self._predict(classifier, train_check_path, train_check_pred_path)
-            self._predict(classifier, test_check_path, test_check_pred_path)
-            self.evaluate_model(test_check_pred_path, self._level, _model)
+            self._predict(title_classifier, train_check_path, title_train_check_pred_path, model='title')
+            self._predict(title_classifier, test_check_path, title_test_check_pred_path, model='title')
+            print('正在评估title模型>>>>>>>>>>')
+            self.evaluate_model(title_test_check_pred_path, self._level, _model)
+            self._predict(title_classifier, train_check_path, content_train_check_pred_path, model='content')
+            self._predict(title_classifier, test_check_path, content_test_check_pred_path, model='content')
+            print('正在评估model模型>>>>>>>>>>')
+            self.evaluate_model(content_test_check_pred_path, self._level, _model)
         return train_precision, test_precision
 
-    def _predict(self, classifier, json_file, json_out_file):
+
+    def _predict(self, classifier, json_file, json_out_file, model='title'):
         with open(json_file, 'r', encoding='utf-8') as jfile, \
                 open(json_out_file, 'w', encoding='utf-8') as joutfile:
             s = time.time()
             lines = jfile.readlines()
             for line in lines:
                 _line = json.loads(line)
-                _data = self._preline(line)
+                _data = self._preline_type(line, model_type=model)
                 labels = classifier.predict_proba([_data])
                 _line['predict_{}'.format(self._level)] = self.idx_label_map[labels[0][0][0].replace("'", "").replace("__label__", "")]
                 # print(line['predict_top_category'])
@@ -216,6 +242,7 @@ class SubCategoryModel(object):
                 del _line
             e = time.time()
             print('预测及写入文件耗时{}'.format(e - s))
+
     def evaluate_model(self, datapath, model_level, model_num):
         return evaluate_model(datapath, model_level, model_num)
 
