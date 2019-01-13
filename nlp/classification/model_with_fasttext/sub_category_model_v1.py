@@ -134,7 +134,7 @@ class SubCategoryModel(object):
             title_train_file = os.path.join(model_data_path, 'title_train.txt')
             title_test_file = os.path.join(model_data_path, 'title_test.txt')
             content_train_file = os.path.join(model_data_path, 'content_train.txt')
-            content_test_file = os.path.join(model_data_path, 'content_train.txt')
+            content_test_file = os.path.join(model_data_path, 'content_test.txt')
             train_check_file = os.path.join(model_data_path, 'train_check.json')
             test_check_file = os.path.join(model_data_path, 'test_check.json')
             self.write_file(title_train_file, title_train_data, 'txt')
