@@ -34,6 +34,17 @@
           "others": "1508"
         },
         "lifestyle": { },
-        "sports": { }
+        "sports": { },
+        "business": {
+          "company": "801",
+          "economy":"802",
+          "industry":"803",
+          "stock":"804",
+          "market":"805",
+          "money":"806",
+          "banking":"807",
+          "invest":"808",
+          "others":"809"
+        }
     }
 }
