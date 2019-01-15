@@ -166,7 +166,7 @@ class SubCategoryModel(object):
             test_check_pred_path = os.path.join(data_path, 'data', 'test_check_pred.json')
             train_check_path = os.path.join(data_path, 'data', 'train_check.json')
             train_check_pred_path = os.path.join(data_path, 'data', 'train_check_pred.json')
-            classifier = fasttext.supervised(train_data_path, model_path, label_prefix="__label__", lr=0.1, epoch=20, dim=200)
+            classifier = fasttext.supervised(train_data_path, model_path, label_prefix="__label__", lr=0.1, epoch=20, dim=200, word_ngrams=3, loss='hs', bucket=20000)
             train_pred = classifier.test(train_data_path)
             test_pred = classifier.test(test_data_path)
             train_precision["model_{}".format(i+1)] = train_pred.precision
