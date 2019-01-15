@@ -34,7 +34,22 @@
           "others": "1508"
         },
         "lifestyle": { },
-        "sports": { },
+        "sports": {
+          "football":"601",
+          "cricket":"602",
+          "tennis":"603",
+          "auto racing":"604",
+          "rugby":"605",
+          "basketball": "606",
+          "olympic":"607",
+          "golf":"608",
+          "hockey":"609",
+          "wrestling":"610",
+          "others":"611",
+          "badminton":"612",
+          "boxing":"613",
+          "baseball":"614"
+        },
       "business": {
           "industry economic": "801",
           "market":"802",
@@ -42,17 +57,17 @@
           "investment":"804",
           "others":"805"
         },
-        "business1": {
-          "company": "801",
-          "economy":"802",
-          "industry":"803",
-          "stock":"804",
-          "market":"805",
-          "money":"806",
-          "banking":"807",
-          "invest":"808",
-          "others":"809"
-        },
+      "business_v1": {
+        "company": "801",
+        "economy":"802",
+        "industry":"803",
+        "stock":"804",
+        "market":"805",
+        "money":"806",
+        "banking":"807",
+        "invest":"808",
+        "others":"809"
+      },
       "tech": {
         "mobile phone":"1001",
         "app":"1002",
