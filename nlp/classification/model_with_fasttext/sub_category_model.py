@@ -17,6 +17,7 @@ sys.path.append(dirname(class_path))
 
 
 import json
+import random
 import fasttext
 from pyquery import PyQuery
 from nlp.classification.preprocess.util import clean_string
@@ -85,6 +86,7 @@ class SubCategoryModel(object):
         :return:
         """
         s = time.time()
+        # random.shuffle(data_all)
         datax = [self._preline(i).split('\t__label__')[0] for i in data_all]
         datay = [self._preline(i).split('\t__label__')[1] for i in data_all]
         e1 = time.time()
