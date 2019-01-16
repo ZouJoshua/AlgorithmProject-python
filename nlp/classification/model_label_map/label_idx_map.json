@@ -55,7 +55,8 @@
           "market":"802",
           "finance":"803",
           "investment":"804",
-          "others":"805"
+          "others":"805",
+          "company":"806"
         },
       "business_v1": {
         "company": "801",
