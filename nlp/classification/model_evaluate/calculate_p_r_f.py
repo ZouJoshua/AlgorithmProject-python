@@ -19,8 +19,8 @@ def evaluate_model(dataPath, model_level='two_level', model_num='national_model_
     text_predict_labels = list(set(labels_predict))
 
     A = dict.fromkeys(text_labels, 0)  # 预测正确的各个类的数目
-    B = dict.fromkeys(text_labels, 0)   # 测试数据集中各个类的数目
-    C = dict.fromkeys(text_predict_labels, 0)  # 预测结果中各个类的数目
+    B = dict.fromkeys(text_labels, 0)   # 测试数据集中实际各个类的数目
+    C = dict.fromkeys(text_predict_labels, 0)  # 测试数据集中预测的各个类的数目
     for i in range(0, len(labels_right)):
         B[labels_right[i]] += 1
         C[labels_predict[i]] += 1

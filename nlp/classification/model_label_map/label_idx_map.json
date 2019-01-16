@@ -74,6 +74,10 @@
         "gadget":"1003",
         "computer":"1004",
         "others":"1005"
+      },
+      "auto":{
+        "car": "701",
+        "others": "702"
       }
     }
 }
