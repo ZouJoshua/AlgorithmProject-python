@@ -1,84 +1,83 @@
 {
-    "one_level": {
-        "all": {
-            "entertainment": "15",
-            "sports": "6",
-            "national": "4",
-            "international": "3",
-            "world": "3",
-            "business": "8",
-            "lifestyle": "12",
-            "technology": "10",
-            "tech": "10",
-            "auto": "7",
-            "science": "7"
-        }
+    "one_level":{
+        "international":"3",
+        "world":"3",
+        "national":"4",
+        "sports":"6",
+        "tech":"7",
+        "business":"8",
+        "science":"9",
+        "auto":"11",
+        "lifestyle":"12",
+        "entertainment":"15"
     },
-    "two_level": {
-        "national": {
-            "crime": "401",
-            "education": "402",
-            "law": "403",
-            "politics": "404",
-            "others": "405",
-            "society": "406"
+    "two_level":{
+        "national":{
+            "crime":"401",
+            "education":"402",
+            "law":"403",
+            "politics":"404",
+            "others":"405",
+            "society":"406"
         },
-        "entertainment": {
-          "bollywood": "1501",
-          "celebrity&gossip": "1502",
-          "tv": "1503",
-          "movie": "1504",
-          "cartoon&comics": "1505",
-          "music": "1506",
-          "hollywood": "1507",
-          "others": "1508"
+        "entertainment":{
+            "bollywood":"1501",
+            "celebrity&gossip":"1502",
+            "tv":"1503",
+            "movie":"1504",
+            "cartoon&comics":"1505",
+            "music":"1506",
+            "hollywood":"1507",
+            "others":"1508"
         },
-        "lifestyle": { },
-        "sports": {
-          "football":"601",
-          "cricket":"602",
-          "tennis":"603",
-          "auto racing":"604",
-          "rugby":"605",
-          "basketball": "606",
-          "olympic":"607",
-          "golf":"608",
-          "hockey":"609",
-          "wrestling":"610",
-          "others":"611",
-          "badminton":"612",
-          "boxing":"613",
-          "baseball":"614"
+        "lifestyle":{
+
         },
-      "business": {
-          "industry economic": "801",
-          "market":"802",
-          "finance":"803",
-          "investment":"804",
-          "others":"805",
-          "company":"806"
+        "sports":{
+            "football":"601",
+            "cricket":"602",
+            "tennis":"603",
+            "auto racing":"604",
+            "rugby":"605",
+            "basketball":"606",
+            "olympic":"607",
+            "golf":"608",
+            "hockey":"609",
+            "wrestling":"610",
+            "badminton":"611",
+            "boxing":"612",
+            "baseball":"613",
+            "others":"614"
         },
-      "business_v1": {
-        "company": "801",
-        "economy":"802",
-        "industry":"803",
-        "stock":"804",
-        "market":"805",
-        "money":"806",
-        "banking":"807",
-        "invest":"808",
-        "others":"809"
-      },
-      "tech": {
-        "mobile phone":"1001",
-        "app":"1002",
-        "gadget":"1003",
-        "computer":"1004",
-        "others":"1005"
-      },
-      "auto":{
-        "car": "701",
-        "others": "702"
-      }
+        "business":{
+            "industry economic":"801",
+            "market":"802",
+            "finance":"803",
+            "investment":"804",
+            "company":"805",
+            "others":"806"
+        },
+        "business_v1":{
+            "company":"801",
+            "economy":"802",
+            "industry":"803",
+            "stock":"804",
+            "market":"805",
+            "money":"806",
+            "banking":"807",
+            "invest":"808",
+            "others":"809"
+        },
+        "tech":{
+            "mobile phone":"701",
+            "app":"702",
+            "gadget":"703",
+            "computer":"704",
+            "others":"705"
+        },
+        "auto":{
+            "car":"1101",
+            "others":"1102"
+        }
     }
 }
