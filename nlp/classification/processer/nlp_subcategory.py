@@ -8,13 +8,14 @@
 """
 
 import fasttext
+from fasttext.model import SupervisedModel
 from pyquery import PyQuery
 from sklearn.externals import joblib
 import numpy as np
 import json
 import re
 import os
-import base.logger as logging
+
 
 class SubCategoryProccesser:
 
@@ -51,8 +52,7 @@ class SubCategoryProccesser:
         idx2labelmap_path = path + "idx2label_map.json"
         with open(idx2labelmap_path, "r") as f:
             idx2label_map = json.loads(f.readlines()[0])
-        if not idx2label_map:
-            logging.logger.warning('id2label_map is null')
+
         return classifier_dict, idx2label_map
 
     # 用于线上预测，输入：文章正文 输出json如：
@@ -71,12 +71,16 @@ class SubCategoryProccesser:
             predict_res['sub_category_proba'] = label[0][0][1]
             return predict_res
         except Exception as e:
-            logging.logger.error('predict error msg:{}'.format(e))
+            print(e)
 
     def predict(self, content, title, classifier_dict, idx2label, predict_top_category):
         content_list = []
         content_list.append(self.clean_string(title + content))
-        classifier = classifier_dict[predict_top_category]
-        predict_res = self._predict(content_list, classifier, idx2label)
+        if predict_top_category in classifier_dict:
+            classifier = classifier_dict[predict_top_category]
+            # if isinstance(classifier, SupervisedModel):
+            predict_res = self._predict(content_list, classifier, idx2label)
+        else:
+            predict_res = dict()
         return predict_res
 
