@@ -57,17 +57,6 @@
             "company":"805",
             "others":"806"
         },
-        "business_v1":{
-            "company":"801",
-            "economy":"802",
-            "industry":"803",
-            "stock":"804",
-            "market":"805",
-            "money":"806",
-            "banking":"807",
-            "invest":"808",
-            "others":"809"
-        },
         "tech":{
             "mobile phone":"701",
             "app":"702",

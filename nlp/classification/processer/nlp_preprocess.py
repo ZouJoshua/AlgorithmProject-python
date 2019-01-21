@@ -33,7 +33,7 @@ class TopCategoryProccesser:
     # 用于加载模型和ID的映射关系，path为本地模型所在文件夹路径,文件名是固定的直接拼接
     def load(self, path):
         model_path = path + "top_content_model.bin"
-        idx2labelmap_path = path + "idx2label_map.json"
+        idx2labelmap_path = path + "subcategory_idx2label_map.json"
         classifier = fasttext.load_model(model_path)
         idx2label_map = json.loads(open(idx2labelmap_path, "r").readlines()[0])
         return classifier, idx2label_map

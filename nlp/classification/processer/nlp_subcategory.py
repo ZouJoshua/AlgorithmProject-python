@@ -49,7 +49,7 @@ class SubCategoryProccesser:
                 classifier = fasttext.load_model(model_path)
                 classifier_dict[topcategory] = classifier
             continue
-        idx2labelmap_path = path + "idx2label_map.json"
+        idx2labelmap_path = path + "subcategory_idx2label_map.json"
         with open(idx2labelmap_path, "r") as f:
             idx2label_map = json.loads(f.readlines()[0])
 
@@ -67,18 +67,20 @@ class SubCategoryProccesser:
             predict_res = {}
             label = classifier.predict_proba(content_list)
             predict_res['sub_category_id'] = int(label[0][0][0].replace("__label__", ""))
-            predict_res['sub_category'] = idx2label[label[0][0][0].replace("__label__", "")]
+            category = idx2label[label[0][0][0].replace("__label__", "")]
+            predict_res['sub_category'] = category
             predict_res['sub_category_proba'] = label[0][0][1]
             return predict_res
         except Exception as e:
             print(e)
 
+    # 目前已有6个模型，world、lifestyle的样本还在标注，没有的模型二级分类会返回空dict
     def predict(self, content, title, classifier_dict, idx2label, predict_top_category):
         content_list = []
-        content_list.append(self.clean_string(title + content))
+        content_list.append(self.clean_string(title + '.' + content))
         if predict_top_category in classifier_dict:
             classifier = classifier_dict[predict_top_category]
-            # if isinstance(classifier, SupervisedModel):
+            # assert isinstance(classifier, SupervisedModel):
             predict_res = self._predict(content_list, classifier, idx2label)
         else:
             predict_res = dict()
