@@ -58,11 +58,11 @@
             "others":"806"
         },
         "tech":{
-            "mobile phone":"701",
-            "app":"702",
-            "gadget":"703",
-            "computer":"704",
-            "others":"705"
+            "mobile phone":"1011",
+            "app":"1012",
+            "gadget":"1013",
+            "computer":"1014",
+            "others":"1015"
         },
         "auto":{
             "car":"1101",
