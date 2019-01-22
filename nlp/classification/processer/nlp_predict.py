@@ -143,8 +143,8 @@ if __name__ == '__main__':
             line_json = json.loads(line)
             title = line_json['title']
             content = line_json['content']
-            pred_top_category = line_json['one_level']
-            predict_sub_res = category.predict(content, title, classifier_dict, idx2label_map)
+            predict_top_category = line_json['one_level']
+            predict_sub_res = category.predict(content, title, predict_top_category, classifier_dict, idx2label_map)
             line_json['sub_category_id'] = ''
             line_json['sub_category'] = ''
             line_json['sub_category_proba'] = ''
