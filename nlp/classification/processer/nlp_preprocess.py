@@ -103,7 +103,7 @@ class ClassificationProccesser:
     def _predict_subcategory(self, content_list, classifier, idx2label, predict_res):
         try:
             label = classifier.predict_proba(content_list)
-            if predict_res:
+            if predict_res and isinstance(predict_res, dict):
                 predict_sub_res = predict_res
             else:
                 predict_sub_res = dict()
