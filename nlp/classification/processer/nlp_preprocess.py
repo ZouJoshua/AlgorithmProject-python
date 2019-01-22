@@ -44,12 +44,12 @@ class ClassificationProccesser:
         classifier_dict['auto_science'] = auto_science_classifier
         # 加载二级模型
         for topcategory in topcategory_list:
-            model_path = path + "{}_sub_classification_model.bin".format(topcategory)
+            model_path = os.path.join(path, "{}_sub_classification_model.bin".format(topcategory))
             if os.path.exists(model_path):
                 classifier = fasttext.load_model(model_path)
                 classifier_dict[topcategory] = classifier
             continue
-        idx2labelmap_path = path + "idx2label_map.json"
+        idx2labelmap_path = os.path.join(path, "idx2label_map.json")
         with open(idx2labelmap_path, "r") as load_f:
             idx2label_map = json.load(load_f)
 
