@@ -1,3 +1,14 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+@Author  : Joshua
+@Time    : 2019/1/22 19:50
+@File    : nlp_predict.py
+@Desc    : 
+"""
+
+
+
 # 大数据需要提供一个version文件用于存放最新模型文件的文件夹路径，一旦有模型更新，则更新version文件
 # 线上会定时轮训version文件，如果version文件有变动，加载新的模型
 # 另外提供一个文件用于ID和存储文本的映射关系，Json格式如：{"11":"sports","22":"basketball"}
@@ -37,11 +48,13 @@ class ClassificationProccesser:
         classifier_dict = dict()
         # 加载一级模型
         topcategory_model_path = os.path.join(path, 'top_content_model.bin')
-        topcategory_classifier = fasttext.load_model(topcategory_model_path)
-        classifier_dict['topcategory_model'] = topcategory_classifier
+        if os.path.exists(topcategory_model_path):
+            topcategory_classifier = fasttext.load_model(topcategory_model_path)
+            classifier_dict['topcategory_model'] = topcategory_classifier
         topcategory_auto_science_model_path = os.path.join(path, 'top_auto_science_model.bin')
-        auto_science_classifier = fasttext.load_model(topcategory_auto_science_model_path)
-        classifier_dict['auto_science'] = auto_science_classifier
+        if os.path.exists(topcategory_auto_science_model_path):
+            auto_science_classifier = fasttext.load_model(topcategory_auto_science_model_path)
+            classifier_dict['auto_science'] = auto_science_classifier
         # 加载二级模型
         for topcategory in topcategory_list:
             model_path = os.path.join(path, "{}_sub_classification_model.bin".format(topcategory))
@@ -68,11 +81,10 @@ class ClassificationProccesser:
     # 一级分类模型2个模型，auto_science独立一个模型
     # 二级分类模型目前已有6个模型，world、lifestyle的样本还在标注，没有的模型二级分类会返回一级预测结果
     # 先进行一级预测，预测结果后对二级分类进行预测
-    def predict(self, content, title, classifier_dict, idx2label):
+    def predict(self, content, title, predict_top_category, classifier_dict, idx2label):
         content_list = []
+        predict_top_res = dict()
         content_list.append(self.clean_string(title + '.' + content))
-        predict_top_res = self._predict_topcategory(content_list, classifier_dict, idx2label)
-        predict_top_category = predict_top_res['top_category']
         if predict_top_category in classifier_dict:
             classifier = classifier_dict[predict_top_category]
             # assert isinstance(classifier, SupervisedModel):
@@ -107,10 +119,44 @@ class ClassificationProccesser:
                 predict_sub_res = predict_res
             else:
                 predict_sub_res = dict()
-            predict_sub_res['sub_category_id'] = int(label[0][0][0].replace("__label__", ""))
+            predict_sub_res['sub_category_id'] = label[0][0][0].replace("__label__", "")
             category = idx2label['subcategory'][label[0][0][0].replace("__label__", "")]
             predict_sub_res['sub_category'] = category
             predict_sub_res['sub_category_proba'] = label[0][0][1]
             return predict_sub_res
         except Exception as e:
             print(e)
+
+
+if __name__ == '__main__':
+    path = '/data/zoushuai/news_content/sub_classification_model/model'
+    data = '/data/zoushuai/news_content/sub_classification_model/predict/predict_all'
+    outfile = '/data/zoushuai/news_content/sub_classification_model/predict/predict_res'
+    category = ClassificationProccesser()
+    classifier_dict, idx2label_map = category.load_models_and_idmap(path)
+    f = open(data, 'r')
+    outf = open(outfile, 'w')
+    try:
+        while True:
+            line = f.readline().strip()
+            line_json = json.loads(line)
+            title = line_json['title']
+            content = line_json['content']
+            pred_top_category = line_json['one_level']
+            predict_sub_res = category.predict(content, title, classifier_dict, idx2label_map)
+            line_json['sub_category_id'] = ''
+            line_json['sub_category'] = ''
+            line_json['sub_category_proba'] = ''
+            if predict_sub_res:
+                line_json['sub_category_id'] = predict_sub_res['sub_category_id']
+                line_json['sub_category'] = predict_sub_res['sub_category']
+                line_json['sub_category_proba'] = predict_sub_res['sub_category_proba']
+            line_str = json.dumps(line_json)
+            outf.write(line_str)
+            outf.write('\n')
+            outf.flush()
+    except Exception as e:
+        print(e)
+    finally:
+        f.close()
+        outf.close()
