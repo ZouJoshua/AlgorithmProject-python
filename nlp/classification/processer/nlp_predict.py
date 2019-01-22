@@ -6,12 +6,13 @@
 @File    : nlp_predict.py
 @Desc    : 
 """
-
-
-
-# 大数据需要提供一个version文件用于存放最新模型文件的文件夹路径，一旦有模型更新，则更新version文件
-# 线上会定时轮训version文件，如果version文件有变动，加载新的模型
-# 另外提供一个文件用于ID和存储文本的映射关系，Json格式如：{"11":"sports","22":"basketball"}
+import os
+from os.path import dirname
+import sys
+root_path = dirname(dirname(dirname(dirname(os.path.realpath(__file__)))))
+class_path = dirname(dirname(os.path.realpath(__file__)))
+sys.path.append(root_path)
+sys.path.append(dirname(class_path))
 
 import fasttext
 from pyquery import PyQuery
