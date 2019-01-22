@@ -76,9 +76,9 @@ class ClassificationProccesser:
         if predict_top_category in classifier_dict:
             classifier = classifier_dict[predict_top_category]
             # assert isinstance(classifier, SupervisedModel):
-            predict_sub_res = self._predict_subcategory(content_list, classifier, idx2label, predict_top_category)
+            predict_sub_res = self._predict_subcategory(content_list, classifier, idx2label, predict_top_res)
         else:
-            predict_sub_res = predict_top_category
+            predict_sub_res = predict_top_res
         return predict_sub_res
 
     def _predict_topcategory(self, content_list, classifier_dict, idx2label):
