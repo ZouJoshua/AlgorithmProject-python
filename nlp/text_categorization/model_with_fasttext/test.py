@@ -9,8 +9,6 @@
 
 import os
 from os.path import dirname
-import sys
-
 
 root_path = dirname(dirname(dirname(os.path.realpath(__file__))))
 class_path = dirname(dirname(os.path.realpath(__file__)))
@@ -20,7 +18,6 @@ print(class_path)
 # sys.path.append(root_path)
 # sys.path.append(class_path)
 
-from nlp.classification.model_evaluate import calculate_p_r_f
 import json
 
 

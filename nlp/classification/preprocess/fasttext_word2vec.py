@@ -6,8 +6,8 @@ import json
 import logging
 from util import clean_string
 
-train_dataDir = "/data/caifuli/news_classification/data"
-train_dataPath = "/data/caifuli/news_classification/fasttext_title+content_word2vec"
+train_dataDir = "/data"
+train_dataPath = "/traindata"
 
 # 制作label映射map
 label_idx_map = {"entertainment": "15", "sports": "6", "sport": "6", "national": "4", "international": "3", "world": "3",
@@ -15,7 +15,6 @@ label_idx_map = {"entertainment": "15", "sports": "6", "sport": "6", "national":
 
 
 fnames = os.listdir(train_dataDir)
-fnames.remove('.DS_Store')
 for fname in fnames:
     with open(os.path.join(train_dataDir, fname),  "r") as input_f, open(train_dataPath, "a") as train_f:
         lines = input_f.readlines()
