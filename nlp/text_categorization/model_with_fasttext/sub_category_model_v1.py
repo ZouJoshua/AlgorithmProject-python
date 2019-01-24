@@ -20,7 +20,7 @@ sys.path.append(dirname(class_path))
 
 import json
 import fasttext
-from nlp.classification.preprocess.util import clean_string
+from nlp.preprocess.util import clean_string
 from nlp.text_categorization.model_evaluate import evaluate_model
 from sklearn.model_selection import StratifiedKFold
 import time
