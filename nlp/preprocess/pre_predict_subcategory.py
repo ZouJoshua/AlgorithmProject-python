@@ -71,7 +71,6 @@ lifestyle_word = {"lifestyle": {"health": ["anxiety", "heroine", "cancer", "diab
 
 def pre_predict_subcategory(dataFile, classedFile, unclassedFile, words_list, topcategory):
     cnt_map = dict()
-    fnames = os.listdir(dataDir)
     f = open(dataFile, 'r', encoding='utf-8')
     outf1 = open(classedFile, 'a', encoding='utf-8')
     outf2 = open(unclassedFile, 'a', encoding='utf-8')
