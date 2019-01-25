@@ -121,22 +121,22 @@ class WordSegmenPreprocess(object):
 
         return set(stopwords.words('english')).union(my_stopword)
 
-    def _clean_words(self, wordsInStr):
+    def _clean_words(self, sents_words_list):
         """去掉标点符号，长度小于3的词以及non-alpha词，小写化"""
         cleanWords=[]
         # stopwords = {}.fromkeys([line.rstrip() for line in open(stopword_file)])
         stopwords = self._get_stopwords()
-        for words in wordsInStr:
+        for words in sents_words_list:
            cleanWords += [[w.lower() for w in words if w.lower() not in stopwords and 3 <= len(w)]]
         return cleanWords
 
-    def _stem_words(self, cleanWordsList):
+    def _stem_words(self, sents_words_list):
         """词干化"""
         stemWords=[]
         # porter =nltk.PorterStemmer()  # 有博士说这个词干化工具效果不好，不是很专业
         # result=[porter.stem(t) for t in cleanTokens]
-        for words in cleanWordsList:
-            stemWords += [[wn.morphy(w) for w in words]]
+        for word_list in sents_words_list:
+            stemWords += [[wn.morphy(w) for w in word_list]]
         return stemWords
 
     def _words2list(self, sents_words_list):
