@@ -157,7 +157,7 @@ def load_feature_words(featureFile):
     f = open(featureFile)
     # 各个类的文章个数
     # docCounts = eval(f.readline())
-    # features = dict()
+    # science_auto_features = dict()
     # 读取特征词
     features = json.loads(f.readlines()[0])
     f.close()
@@ -246,7 +246,7 @@ if __name__ == "__main__":
     # modelFile = sys.argv[3]
     # inFile = "/Volumes/Katherine_Cai/NLP/apus/real_data/news_classification/top_training_tech_auto_science_data"
     inFile = "/Volumes/Katherine_Cai/NLP/apus/real_data/news_classification/top_tech_auto_science"
-    featureFile = "/Volumes/Katherine_Cai/NLP/apus/real_data/news_classification/nb/features"
+    featureFile = "/Volumes/Katherine_Cai/NLP/apus/real_data/news_classification/nb/science_auto_features"
     modelFile = "/Volumes/Katherine_Cai/NLP/apus/real_data/news_classification/nb/model"
 
     trainText, testText = shuffle(inFile)

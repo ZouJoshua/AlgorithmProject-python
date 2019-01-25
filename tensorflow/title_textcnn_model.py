@@ -79,7 +79,7 @@ class TextCNN:
                 # pooled存储的是当前filter_size下每个sentence最重要的num_filters个features
                 pooled = tf.nn.max_pool(h, ksize=[1, self.title_length-filter_size+1, 1, 1], strides=[1, 1, 1, 1], padding='VALID', name="pool")
                 pooled_outputs.append(pooled)
-        # combine all pooled features, and flatten the feature.output' shape is a [batch, 300]
+        # combine all pooled science_auto_features, and flatten the feature.output' shape is a [batch, 300]
         self.h_pool = tf.concat(pooled_outputs, 3)  # shape:[batch_size, 1, 1, num_filters_total]. tf.concat=>concatenates tensors along one dimension.where num_filters_total=num_filters_1+num_filters_2+num_filters_3
         self.h_pool_flat = tf.reshape(self.h_pool, [-1, self.num_filters_total])  # [batch,num_filters_total]
 

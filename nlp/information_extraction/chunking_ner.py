@@ -1,6 +1,12 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+@Author  : Joshua
+@Time    : 2019/1/25 12:32
+@File    : chunking_ner.py
+@Desc    :  英文chunking and NER
+"""
 
-"""对英文语料进行chunking和NER"""
 
 import spacy
 #import pattern
@@ -18,7 +24,7 @@ s = "In 2006, a trial court had convicted Salman Khan and gave him jail sentence
     "discovery on October 12 gave rise to suspicion. 7) The court said it is impossible to kill a deer with an air gun. 8) The recovered " \
     "pellets are used for hunting small animals like rabbit or birds and not big animals. "
 
-'''nlp = spacy.load("en")
+nlp = spacy.load("en")
 doc = nlp(s)
 sentence = list()
 noun_chunks = list()
@@ -32,6 +38,8 @@ print(list(set(sentence)))
 for nc in doc.noun_chunks:
     if len(nc.text.split(" ")) >= 2:
         sentence.append(nc.text.lower())
-print(list(set(sentence)))'''
-res = nltk.parse(s)
-print(res)
+print(list(set(sentence)))
+
+
+# res = nltk.parse(s)
+# print(res)
