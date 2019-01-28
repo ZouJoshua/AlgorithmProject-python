@@ -30,9 +30,6 @@
             "hollywood":"1507",
             "others":"1508"
         },
-        "lifestyle":{
-
-        },
         "sports":{
             "football":"601",
             "cricket":"602",
@@ -67,6 +64,38 @@
         "auto":{
             "car":"1101",
             "others":"1102"
+        },
+        "lifestyle":{
+            "health":"1201",
+            "fashion&trends":"1202",
+            "travel":"1203",
+            "food&wine":"1204",
+            "relationships":"1205",
+            "parenting":"1206",
+            "astrology":"1207",
+            "arts&culture":"1208",
+            "beauty":"1209",
+            "events":"1210",
+            "others":"1211"
+        },
+        "lifestyle_v1":{
+            "health":"1201",
+            "disease":"1202",
+            "wellness":"1203",
+            "fitness & yoga":"1204",
+            "weight loss & diet":"1205",
+            "fashion & trends":"1206",
+            "garment or jewelry":"1207",
+            "travel":"1208",
+            "food&wine":"1209",
+            "relationships":"1210",
+            "parenting":"1211",
+            "astrology":"1212",
+            "arts&culture":"1213",
+            "beauty":"1214",
+            "events":"1215",
+            "shopping guide(clothes&3c)":"1216",
+            "others":"1217"
         }
     }
 }
