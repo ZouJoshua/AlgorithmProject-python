@@ -65,7 +65,7 @@
             "car":"1101",
             "others":"1102"
         },
-        "lifestyle":{
+        "lifestyle_v1":{
             "health":"1201",
             "fashion&trends":"1202",
             "travel":"1203",
@@ -78,24 +78,19 @@
             "events":"1210",
             "others":"1211"
         },
-        "lifestyle_v1":{
+        "lifestyle":{
             "health":"1201",
             "disease":"1202",
-            "wellness":"1203",
-            "fitness & yoga":"1204",
-            "weight loss & diet":"1205",
-            "fashion & trends":"1206",
-            "garment or jewelry":"1207",
-            "travel":"1208",
-            "food&wine":"1209",
-            "relationships":"1210",
-            "parenting":"1211",
-            "astrology":"1212",
-            "arts&culture":"1213",
-            "beauty":"1214",
-            "events":"1215",
-            "shopping guide(clothes&3c)":"1216",
-            "others":"1217"
+            "fitness&yoga":"1203",
+            "weight loss&diet":"1204",
+            "fashion&trends":"1205",
+            "garment&jewelry":"1206",
+            "travel":"1207",
+            "food&wine":"1208",
+            "relationships":"1209",
+            "parenting":"1210",
+            "astrology":"1211",
+            "others":"1212"
         }
     }
 }

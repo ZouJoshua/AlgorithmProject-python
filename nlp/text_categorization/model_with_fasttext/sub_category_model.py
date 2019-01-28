@@ -11,15 +11,15 @@ import os
 from os.path import dirname
 import sys
 root_path = dirname(dirname(dirname(dirname(os.path.realpath(__file__)))))
-class_path = dirname(dirname(os.path.realpath(__file__)))
+root_nlp_path = dirname(dirname(dirname(os.path.realpath(__file__))))
 sys.path.append(root_path)
-sys.path.append(dirname(class_path))
+sys.path.append(root_nlp_path)
 
 
 import json
 import fasttext
 from nlp.preprocess.util import clean_string
-from nlp.text_categorization.model_evaluate import evaluate_model
+from nlp.text_categorization.model_evaluate.calculate_p_r_f import evaluate_model
 from sklearn.model_selection import StratifiedKFold
 import time
 
@@ -35,7 +35,7 @@ class SubCategoryModel(object):
             self._datadir = dataDir
         else:
             raise Exception('数据路径不存在，请检查路径')
-        self.label_idx_map, self.idx_label_map = self._get_label(os.path.join(class_path, 'model_label_map', 'label_idx_map.json'))
+        self.label_idx_map, self.idx_label_map = self._get_label(os.path.join(root_nlp_path, 'data', 'model_label_map', 'label_idx_map.json'))
 
     def preprocess_data(self):
         fnames = os.listdir(self._datadir)
