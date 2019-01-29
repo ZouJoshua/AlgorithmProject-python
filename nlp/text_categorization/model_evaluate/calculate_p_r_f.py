@@ -1,9 +1,14 @@
 import json
 
-dataPath = "/data/caifuli/news_classification/top_test_data_content+title_json"
-model_num = 'national_model_1'
 
 def evaluate_model(dataPath, model_level='two_level', model_num='national_model_1'):
+    """
+
+    :param dataPath:
+    :param model_level:
+    :param model_num:
+    :return:
+    """
     labels_right = []
     labels_predict = []
     with open(dataPath, "r") as fr:

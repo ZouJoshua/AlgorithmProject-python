@@ -65,7 +65,7 @@
             "car":"1101",
             "others":"1102"
         },
-        "lifestyle_v1":{
+        "lifestyle":{
             "health":"1201",
             "fashion&trends":"1202",
             "travel":"1203",
@@ -78,7 +78,7 @@
             "events":"1210",
             "others":"1211"
         },
-        "lifestyle":{
+        "lifestyle_v1":{
             "health":"1201",
             "disease":"1202",
             "fitness&yoga":"1203",
