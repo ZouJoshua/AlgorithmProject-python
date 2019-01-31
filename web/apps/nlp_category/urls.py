@@ -16,6 +16,6 @@ app_name = '[nlp_category]'
 
 urlpatterns = [
     path('', index_view, name='index_url'),
-    path('nlp_category/top/$', TopCategory),
-    path('nlp_category/sub/$', SubCategory)
+    path('nlp_category/top', TopCategory),
+    path('nlp_category/sub', SubCategory)
 ]
