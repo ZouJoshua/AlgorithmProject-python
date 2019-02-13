@@ -21,14 +21,7 @@ import os
 import sys
 
 
-from apps.nlp_category.views import TopCategory
-from apps.nlp_category.views import SubCategory
-from apps.nlp_category.views import hours_ahead
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('nlp_category.urls', namespace='nlp_category')),
-    path('nlp_category/top', TopCategory),
-    path('nlp_category/sub', SubCategory),
-    path('nlp_category/time', current_datetime)
+    path('nlp_category', include('nlp_category.urls', namespace='nlp_category'))
 ]
