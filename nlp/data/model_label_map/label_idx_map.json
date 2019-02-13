@@ -91,6 +91,14 @@
             "parenting":"1210",
             "astrology":"1211",
             "others":"1212"
+        },
+        "international":{
+            "politics":"301",
+            "society":"302",
+            "military":"303",
+            "terrorism":"304",
+            "environment":"305",
+            "others":"306"
         }
     }
 }
