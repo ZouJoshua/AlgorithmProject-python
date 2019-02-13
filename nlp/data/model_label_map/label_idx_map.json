@@ -92,7 +92,19 @@
             "astrology":"1211",
             "others":"1212"
         },
-        "international":{
+      "international":{
+            "politics":"301",
+            "society":"302",
+            "military":"303",
+            "diplomacy":"304",
+            "terrorism":"305",
+            "government":"306",
+            "crime":"307",
+            "law":"308",
+            "environment":"309",
+            "others":"310"
+        },
+      "international_v1":{
             "politics":"301",
             "society":"302",
             "military":"303",
