@@ -51,6 +51,27 @@
         "1505":"cartoon&comics",
         "1506":"music",
         "1507":"hollywood",
-        "1508":"entertainment others"
+        "1508":"entertainment others",
+        "1201":"health",
+        "1202":"fashion&trends",
+        "1203":"travel",
+        "1204":"food&wine",
+        "1205":"relationships",
+        "1206":"parenting",
+        "1207":"astrology",
+        "1208":"arts&culture",
+        "1209":"beauty",
+        "1210":"events",
+        "1211":"others",
+        "301":"politics",
+        "302":"society",
+        "303":"military",
+        "304":"diplomacy",
+        "305":"terrorism",
+        "306":"government",
+        "307":"crime",
+        "308":"law",
+        "309":"environment",
+        "310":"others"
     }
 }
