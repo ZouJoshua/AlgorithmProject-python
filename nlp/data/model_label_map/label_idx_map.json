@@ -106,7 +106,7 @@
             "astrology":"1211",
             "others":"1212"
         },
-      "international":{
+      "international_v1":{
             "politics":"301",
             "society":"302",
             "military":"303",
@@ -118,7 +118,7 @@
             "environment":"309",
             "others":"310"
         },
-      "international_v1":{
+      "international":{
             "politics":"301",
             "society":"302",
             "military":"303",
