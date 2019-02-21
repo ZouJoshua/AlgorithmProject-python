@@ -90,7 +90,7 @@
             "relationships":"1205",
             "parenting":"1206",
             "astrology":"1207",
-            "others":"1218"
+            "others":"1208"
         },
         "lifestyle_v1":{
             "health":"1201",
@@ -106,7 +106,7 @@
             "astrology":"1211",
             "others":"1212"
         },
-      "international_v1":{
+      "international":{
             "politics":"301",
             "society":"302",
             "military":"303",
@@ -115,10 +115,11 @@
             "government":"306",
             "crime":"307",
             "law":"308",
-            "environment":"309",
-            "others":"310"
+            "accidents&mishappening":"309",
+            "environment":"310",
+            "others":"311"
         },
-      "international":{
+      "international_v1":{
             "politics":"301",
             "society":"302",
             "military":"303",
