@@ -71,16 +71,13 @@
             "food&wine":"1203",
             "fashion&trends":"1204",
             "relationships":"1205",
-            "garment&jewelry":"1206",
-            "skin care&makeup":"1207",
-            "fitness&yoga":"1208",
-            "weight loss&diet":"1209",
-            "parenting":"1210",
-            "arts&culture":"1211",
-            "astrology":"1212",
-            "nature&pets":"1213",
-            "shopping guide":"1214",
-            "others":"1215"
+            "skin care&makeup":"1206",
+            "fitness&yoga":"1207",
+            "weight loss&diet":"1208",
+            "parenting":"1209",
+            "arts&culture":"1210",
+            "astrology":"1211",
+            "others":"1212"
         },
         "lifestyle_v":{
             "health":"1201",
