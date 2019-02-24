@@ -102,20 +102,21 @@
             "astrology":"1211",
             "others":"1212"
         },
-      "international_v":{
-            "politics":"301",
-            "society":"302",
-            "military":"303",
-            "diplomacy":"304",
-            "terrorism":"305",
-            "government":"306",
-            "crime":"307",
-            "law":"308",
-            "accidents&mishappening":"309",
-            "environment":"310",
-            "others":"311"
-        },
       "international":{
+            "people&groups":"301",
+            "politics":"302",
+            "society":"303",
+            "military":"304",
+            "diplomacy":"305",
+            "terrorism":"306",
+            "government":"307",
+            "crime":"308",
+            "law":"309",
+            "accidents&mishappening":"310",
+            "environment":"311",
+            "others":"312"
+        },
+      "international_v":{
             "people&groups":"301",
             "politics":"302",
             "society":"303",
