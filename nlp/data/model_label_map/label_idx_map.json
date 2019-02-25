@@ -117,13 +117,15 @@
             "others":"312"
         },
       "international_v":{
-            "people&groups":"301",
-            "politics":"302",
-            "society":"303",
-            "military":"304",
-            "terrorism":"305",
-            "environment":"306",
-            "others":"307"
+            "politics":"301",
+            "society":"302",
+            "government&diplomacy":"303",
+            "crime":"304",
+            "policies&regulations":"305",
+            "military":"306",
+            "terrorism":"307",
+            "environment":"308",
+            "others":"309"
         }
     }
 }
