@@ -67,10 +67,8 @@
             "internet":"1013",
             "gadget":"1014",
             "computer":"1015",
-            "innovation&reviews":"1016",
-            "company":"1017",
-            "sci-tech":"1018",
-            "others":"1019"
+            "sci-tech&innovation":"1016",
+            "others":"1017"
         },
         "auto":{
             "car":"1101",
