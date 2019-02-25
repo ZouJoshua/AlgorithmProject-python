@@ -54,12 +54,23 @@
             "company":"805",
             "others":"806"
         },
-        "tech":{
+        "tech_v1":{
             "mobile phone":"1011",
             "app":"1012",
             "gadget":"1013",
             "computer":"1014",
             "others":"1015"
+        },
+        "tech":{
+            "mobile phone":"1011",
+            "app":"1012",
+            "internet":"1013",
+            "gadget":"1014",
+            "computer":"1015",
+            "innovation&reviews":"1016",
+            "company":"1017",
+            "sci-tech":"1018",
+            "others":"1019"
         },
         "auto":{
             "car":"1101",
