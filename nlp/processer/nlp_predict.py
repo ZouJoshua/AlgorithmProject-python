@@ -63,7 +63,7 @@ class ClassificationProccesser:
                 classifier = fasttext.load_model(model_path)
                 classifier_dict[topcategory] = classifier
             continue
-        idx2labelmap_path = os.path.join(path, "idx2label_map.json")
+        idx2labelmap_path = os.path.join(path, "idx2label_map_bak.json")
         with open(idx2labelmap_path, "r") as load_f:
             idx2label_map = json.load(load_f)
 
@@ -82,6 +82,23 @@ class ClassificationProccesser:
     # 一级分类模型2个模型，auto_science独立一个模型
     # 二级分类模型目前已有6个模型，world、lifestyle的样本还在标注，没有的模型二级分类会返回一级预测结果
     # 先进行一级预测，预测结果后对二级分类进行预测
+
+
+    # 预测一级分类二级分类
+    def predict_all(self, content, title, classifier_dict, idx2label):
+        content_list = []
+        content_list.append(self.clean_string(title + '.' + content))
+        predict_top_res = self._predict_topcategory(content_list, classifier_dict, idx2label)
+        predict_top_category = predict_top_res['top_category']
+        if predict_top_category in classifier_dict:
+            classifier = classifier_dict[predict_top_category]
+            # assert isinstance(classifier, SupervisedModel):
+            predict_sub_res = self._predict_subcategory(content_list, classifier, idx2label, predict_top_res)
+        else:
+            predict_sub_res = predict_top_res
+        return predict_sub_res
+
+    # 仅预测二级分类
     def predict(self, content, title, predict_top_category, classifier_dict, idx2label):
         content_list = []
         predict_top_res = dict()
@@ -144,11 +161,18 @@ if __name__ == '__main__':
             title = line_json['title']
             content = line_json['content']
             predict_top_category = line_json['one_level']
-            predict_sub_res = category.predict(content, title, predict_top_category, classifier_dict, idx2label_map)
+            # predict_sub_res = category.predict(content, title, predict_top_category, classifier_dict, idx2label_map)
+            predict_sub_res = category.predict_all(content, title, classifier_dict, idx2label_map)
+            line_json['top_category_id'] = ''
+            line_json['top_category'] = ''
+            line_json['top_category_proba'] = ''
             line_json['sub_category_id'] = ''
             line_json['sub_category'] = ''
             line_json['sub_category_proba'] = ''
             if predict_sub_res:
+                line_json['top_category_id'] = predict_sub_res['top_category_id']
+                line_json['top_category'] = predict_sub_res['top_category']
+                line_json['top_category_proba'] = predict_sub_res['top_category_proba']
                 line_json['sub_category_id'] = predict_sub_res['sub_category_id']
                 line_json['sub_category'] = predict_sub_res['sub_category']
                 line_json['sub_category_proba'] = predict_sub_res['sub_category_proba']

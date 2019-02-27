@@ -49,7 +49,7 @@ class ClassificationProccesser:
                 classifier = fasttext.load_model(model_path)
                 classifier_dict[topcategory] = classifier
             continue
-        idx2labelmap_path = os.path.join(path, "idx2label_map.json")
+        idx2labelmap_path = os.path.join(path, "idx2label_map_bak.json")
         with open(idx2labelmap_path, "r") as load_f:
             idx2label_map = json.load(load_f)
 
