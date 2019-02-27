@@ -63,7 +63,7 @@ class ClassificationProccesser:
                 classifier = fasttext.load_model(model_path)
                 classifier_dict[topcategory] = classifier
             continue
-        idx2labelmap_path = os.path.join(path, "idx2label_map_bak.json")
+        idx2labelmap_path = os.path.join(path, "idx2label_map.json")
         with open(idx2labelmap_path, "r") as load_f:
             idx2label_map = json.load(load_f)
 
@@ -160,7 +160,7 @@ if __name__ == '__main__':
             line_json = json.loads(line)
             title = line_json['title']
             content = line_json['content']
-            predict_top_category = line_json['one_level']
+            # predict_top_category = line_json['one_level']
             # predict_sub_res = category.predict(content, title, predict_top_category, classifier_dict, idx2label_map)
             predict_sub_res = category.predict_all(content, title, classifier_dict, idx2label_map)
             line_json['top_category_id'] = ''
@@ -173,9 +173,9 @@ if __name__ == '__main__':
                 line_json['top_category_id'] = predict_sub_res['top_category_id']
                 line_json['top_category'] = predict_sub_res['top_category']
                 line_json['top_category_proba'] = predict_sub_res['top_category_proba']
-                line_json['sub_category_id'] = predict_sub_res['sub_category_id']
-                line_json['sub_category'] = predict_sub_res['sub_category']
-                line_json['sub_category_proba'] = predict_sub_res['sub_category_proba']
+                line_json['sub_category_id'] = predict_sub_res['sub_category_id'] if predict_sub_res['sub_category_id'] else ""
+                line_json['sub_category'] = predict_sub_res['sub_category'] if predict_sub_res['sub_category'] else ""
+                line_json['sub_category_proba'] = predict_sub_res['sub_category_proba'] if predict_sub_res['sub_category_proba'] else ""
             line_str = json.dumps(line_json)
             outf.write(line_str)
             outf.write('\n')
