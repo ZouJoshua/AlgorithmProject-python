@@ -173,9 +173,9 @@ if __name__ == '__main__':
                 line_json['top_category_id'] = predict_sub_res['top_category_id']
                 line_json['top_category'] = predict_sub_res['top_category']
                 line_json['top_category_proba'] = predict_sub_res['top_category_proba']
-                line_json['sub_category_id'] = predict_sub_res['sub_category_id'] if predict_sub_res['sub_category_id'] else ""
-                line_json['sub_category'] = predict_sub_res['sub_category'] if predict_sub_res['sub_category'] else ""
-                line_json['sub_category_proba'] = predict_sub_res['sub_category_proba'] if predict_sub_res['sub_category_proba'] else ""
+                line_json['sub_category_id'] = predict_sub_res['sub_category_id'] if 'sub_category_id' in predict_sub_res.keys() else ""
+                line_json['sub_category'] = predict_sub_res['sub_category'] if 'sub_category' in predict_sub_res.keys() else ""
+                line_json['sub_category_proba'] = predict_sub_res['sub_category_proba'] if 'sub_category_proba' in predict_sub_res.keys() else ""
             line_str = json.dumps(line_json)
             outf.write(line_str)
             outf.write('\n')
