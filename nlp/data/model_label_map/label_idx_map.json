@@ -46,6 +46,27 @@
             "baseball":"613",
             "others":"614"
         },
+        "business":{
+            "company":"801",
+            "stock":"802",
+            "market":"803",
+            "banking":"804",
+            "industry":"805",
+            "tax":"806",
+            "economy":"807",
+            "money":"808",
+            "invest":"809",
+            "oil-price":"810",
+            "real-estate":"811",
+            "commodities&trading":"812",
+            "personal-finance":"813",
+            "crime&law":"814",
+            "gold":"815",
+            "career":"816",
+            "e-commerce":"817",
+            "insurance":"818",
+            "others":"819"
+        },
         "business_v":{
             "industry economic":"801",
             "market":"802",
@@ -54,7 +75,7 @@
             "company":"805",
             "others":"806"
         },
-        "business":{
+        "business_":{
             "company":"801",
             "stock":"802",
             "market":"803",
