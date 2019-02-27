@@ -129,6 +129,7 @@ class ClassificationProccesser:
             return predict_res
         except Exception as e:
             print(e)
+            pass
 
     def _predict_subcategory(self, content_list, classifier, idx2label, predict_res):
         try:
@@ -144,6 +145,7 @@ class ClassificationProccesser:
             return predict_sub_res
         except Exception as e:
             print(e)
+            pass
 
 
 if __name__ == '__main__':
@@ -182,6 +184,7 @@ if __name__ == '__main__':
             outf.flush()
     except Exception as e:
         print(e)
+        pass
     finally:
         f.close()
         outf.close()
