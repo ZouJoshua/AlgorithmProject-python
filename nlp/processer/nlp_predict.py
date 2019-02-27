@@ -164,24 +164,30 @@ if __name__ == '__main__':
             content = line_json['content']
             # predict_top_category = line_json['one_level']
             # predict_sub_res = category.predict(content, title, predict_top_category, classifier_dict, idx2label_map)
-            predict_sub_res = category.predict_all(content, title, classifier_dict, idx2label_map)
-            line_json['top_category_id'] = ''
-            line_json['top_category'] = ''
-            line_json['top_category_proba'] = ''
-            line_json['sub_category_id'] = ''
-            line_json['sub_category'] = ''
-            line_json['sub_category_proba'] = ''
-            if predict_sub_res:
-                line_json['top_category_id'] = predict_sub_res['top_category_id']
-                line_json['top_category'] = predict_sub_res['top_category']
-                line_json['top_category_proba'] = predict_sub_res['top_category_proba']
-                line_json['sub_category_id'] = predict_sub_res['sub_category_id'] if 'sub_category_id' in predict_sub_res.keys() else ""
-                line_json['sub_category'] = predict_sub_res['sub_category'] if 'sub_category' in predict_sub_res.keys() else ""
-                line_json['sub_category_proba'] = predict_sub_res['sub_category_proba'] if 'sub_category_proba' in predict_sub_res.keys() else ""
-            line_str = json.dumps(line_json)
-            outf.write(line_str)
-            outf.write('\n')
-            outf.flush()
+            try:
+                predict_sub_res = category.predict_all(content, title, classifier_dict, idx2label_map)
+            except Exception as e:
+                print(e)
+                pass
+            else:
+                line_json['top_category_id'] = ''
+                line_json['top_category'] = ''
+                line_json['top_category_proba'] = ''
+                line_json['sub_category_id'] = ''
+                line_json['sub_category'] = ''
+                line_json['sub_category_proba'] = ''
+                if predict_sub_res:
+                    line_json['top_category_id'] = predict_sub_res['top_category_id']
+                    line_json['top_category'] = predict_sub_res['top_category']
+                    line_json['top_category_proba'] = predict_sub_res['top_category_proba']
+                    line_json['sub_category_id'] = predict_sub_res['sub_category_id'] if 'sub_category_id' in predict_sub_res.keys() else ""
+                    line_json['sub_category'] = predict_sub_res['sub_category'] if 'sub_category' in predict_sub_res.keys() else ""
+                    line_json['sub_category_proba'] = predict_sub_res['sub_category_proba'] if 'sub_category_proba' in predict_sub_res.keys() else ""
+                line_str = json.dumps(line_json)
+                outf.write(line_str)
+                outf.write('\n')
+                outf.flush()
+                continue
     except Exception as e:
         print(e)
         pass
