@@ -148,8 +148,8 @@ class ClassificationProccesser:
 
 if __name__ == '__main__':
     path = '/data/zoushuai/news_content/sub_classification_model/model'
-    data = '/data/zoushuai/news_content/sub_classification_model/predict/predict_all'
-    outfile = '/data/zoushuai/news_content/sub_classification_model/predict/predict_res'
+    data = '/data/zoushuai/news_content/sub_classification_model/predict/predict_march/part-00000'
+    outfile = '/data/zoushuai/news_content/sub_classification_model/predict/predict_march/part-00000-res'
     category = ClassificationProccesser()
     classifier_dict, idx2label_map = category.load_models_and_idmap(path)
     f = open(data, 'r')
