@@ -58,13 +58,14 @@
             "invest":"809",
             "oil-price":"810",
             "real-estate":"811",
-            "commodities&trading":"812",
-            "personal-finance":"813",
+            "trading":"812",
+            "finance":"813",
             "gold":"814",
             "career":"815",
             "insurance":"816",
-            "regulation":"817",
-            "others":"818"
+            "commodities":"817",
+            "bond":"818",
+            "others":"819"
         },
         "business_v":{
             "industry economic":"801",
