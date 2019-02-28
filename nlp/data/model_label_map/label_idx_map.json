@@ -32,8 +32,7 @@
             "art&culture":"1509",
             "variety show":"1510",
             "dance":"1511",
-            "performance":"1512",
-            "others":"1513"
+            "others":"1512"
         },
         "entertainment_v":{
             "bollywood":"1501",
@@ -63,7 +62,7 @@
         },
         "business":{
             "company":"801",
-            "stock":"802",
+            "stock&bond":"802",
             "market":"803",
             "banking":"804",
             "industry":"805",
@@ -74,13 +73,11 @@
             "oil-price":"810",
             "real-estate":"811",
             "trading":"812",
-            "finance":"813",
-            "gold":"814",
-            "career":"815",
-            "insurance":"816",
-            "commodities":"817",
-            "bond":"818",
-            "others":"819"
+            "gold":"813",
+            "career":"814",
+            "insurance":"815",
+            "commodities":"816",
+            "others":"817"
         },
         "business_v":{
             "industry economic":"801",

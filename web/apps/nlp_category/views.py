@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from django.http import HttpResponse, Http404
 
 import os
@@ -31,10 +32,37 @@ def hours_ahead(request, offset):
     return HttpResponse(html)
 
 
-class TopCategory(object):
-    pass
+def category(request):
+    """
+    返回新闻分类
+    :param request:
+    :return:
+    """
+    data = {"title": "", "content": ""}
+    if request.method == "POST":
+        # print(request.POST)  # 查看客户端发来的请求内容
+        return JsonResponse(data)  # 通过 django内置的Json格式 丢给客户端数据
 
+def topcategory(request):
+    """
+    只返回新闻一级分类
+    :param request:
+    :return:
+    """
+    data = {}  # 返回给客户端的数据
+    if request.method == "POST":
+        # print(request.POST)  # 查看客户端发来的请求内容
+        return JsonResponse(data)  # 通过 django内置的Json格式 丢给客户端数据
 
-class SubCategory(object):
-    pass
+def subcategory(request):
+    """
+    只返回新闻二级分类
+    :param request:
+    :return:
+    """
+    data = {"topcategory": "xxx", "title": "", "content": ""}
+    if request.method == "POST":
+        # print(request.POST)  # 查看客户端发来的请求内容
+        return JsonResponse(data)  # 通过 django内置的Json格式 丢给客户端数据
+
 
