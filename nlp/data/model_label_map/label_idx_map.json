@@ -21,6 +21,21 @@
             "society":"406"
         },
         "entertainment":{
+            "cartoon&comics":"1501",
+            "tv":"1502",
+            "music":"1503",
+            "gossip":"1504",
+            "bollywood":"1505",
+            "movie":"1506",
+            "celebrity":"1507",
+            "hollywood":"1508",
+            "art&culture":"1509",
+            "variety show":"1510",
+            "dance":"1511",
+            "performance":"1512",
+            "others":"1513"
+        },
+        "entertainment_v":{
             "bollywood":"1501",
             "celebrity&gossip":"1502",
             "tv":"1503",
