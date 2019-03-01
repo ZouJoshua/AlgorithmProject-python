@@ -136,6 +136,15 @@
         },
         "auto":{
             "car":"1101",
+            "motor":"1102",
+            "cycling":"1103",
+            "bike":"1104",
+            "autoindustry":"1105",
+            "autoshow":"1106",
+            "others":"1107"
+        },
+        "auto_":{
+            "car":"1101",
             "others":"1102"
         },
         "lifestyle":{
