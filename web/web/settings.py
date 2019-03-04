@@ -127,7 +127,9 @@ STATIC_URL = '/static/'
 
 # 添加 apps 目录
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
-print(os.path.join(BASE_DIR, 'apps'))
+print(sys.path)
+sys.path.insert(0, os.path.join(BASE_DIR, 'utils'))
+print(sys.path)
 
 # 日志
 LOG_PATH = os.path.join(BASE_DIR, 'logs')
