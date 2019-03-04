@@ -7,15 +7,15 @@ from .classification.predict import Predict
 from web.utils.logger import Logger
 from web.web.settings import PROJECT_LOG_FILE, NLP_MODEL_PATH
 
-# import os
-# from os.path import dirname
-# import sys
-#
-# root_path = dirname(dirname(dirname(dirname(os.path.realpath(__file__)))))
-# apps_path = dirname(dirname(os.path.realpath(__file__)))
-# sys.path.append(root_path)
-# sys.path.append(dirname(apps_path))
-# sys.path.append(apps_path)
+import os
+from os.path import dirname
+import sys
+
+root_path = dirname(dirname(dirname(dirname(os.path.realpath(__file__)))))
+apps_path = dirname(dirname(os.path.realpath(__file__)))
+sys.path.append(root_path)
+sys.path.append(dirname(apps_path))
+sys.path.append(apps_path)
 
 logger = Logger('nlp_category_predict', log2console=False, log2file=True, logfile=PROJECT_LOG_FILE).get_logger()
 
