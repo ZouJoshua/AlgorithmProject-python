@@ -9,14 +9,14 @@
 
 from django.urls import path
 from .views import index_view
-from .views import topcategory, subcategory, category
+from .views import TopCategory, SubCategory, Category
 
 
 app_name = '[nlp_category]'
 
 urlpatterns = [
     path('', index_view, name='index_url'),
-    path('nlp_category/category', category),
-    path('nlp_category/top', topcategory),
-    path('nlp_category/sub', subcategory),
+    path('nlp_category/category', Category.as_view),
+    path('nlp_category/top', TopCategory.as_view),
+    path('nlp_category/sub', SubCategory.as_view),
 ]

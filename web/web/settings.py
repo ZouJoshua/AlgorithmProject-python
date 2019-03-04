@@ -16,9 +16,6 @@ import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# 添加 apps 目录
-sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
-print(os.path.join(BASE_DIR, 'apps'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -125,3 +122,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+# 添加 apps 目录
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+print(os.path.join(BASE_DIR, 'apps'))
+
+# 日志
+LOG_PATH = os.path.join(BASE_DIR, 'logs')
+if not os.path.exists(LOG_PATH):
+    os.mkdir(LOG_PATH)
+
+PROJECT_LOG_FILE = os.path.join(LOG_PATH + 'default.log')
+
+# nlp模型
+NLP_MODEL_PATH = '/data/zoushuai/news_content/sub_classification/model'

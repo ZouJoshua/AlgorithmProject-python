@@ -1,15 +1,26 @@
-# 大数据需要提供一个version文件用于存放最新模型文件的文件夹路径，一旦有模型更新，则更新version文件
-# 线上会定时轮训version文件，如果version文件有变动，加载新的模型
-# 另外提供一个文件用于ID和存储文本的映射关系，Json格式如：{"11":"sports","22":"basketball"}
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+@Author  : Joshua
+@Time    : 2019/3/4 12:26
+@File    : predict.py
+@Desc    : 
+"""
 
 import fasttext
 from pyquery import PyQuery
-import json
 import re
-import os
+import logging
 
 
-class ClassificationProccesser:
+class Predict(object):
+
+    def __init__(self, logger=None):
+        if logger:
+            self.log = logger
+        else:
+            self.log = logging.getLogger("load_classification_model")
+            self.log.setLevel(logging.INFO)
 
     # 全模型用于清洗正文数据
     def clean_string(self, text):
@@ -31,44 +42,15 @@ class ClassificationProccesser:
                 cleaned_text += c
         return cleaned_text
 
-    # 用于加载模型和ID的映射关系，path为本地模型所在文件夹路径,文件名是固定的直接拼接
-    def load_models_and_idmap(self, path):
-        topcategory_list = ["international", "national", "sports", "technology", "business", "science", "auto", "lifestyle", "entertainment"]
-        classifier_dict = dict()
-        # 加载一级模型
-        topcategory_model_path = os.path.join(path, 'top_content_model.bin')
-        topcategory_classifier = fasttext.load_model(topcategory_model_path)
-        classifier_dict['topcategory_model'] = topcategory_classifier
-        topcategory_auto_science_model_path = os.path.join(path, 'top_auto_science_model.bin')
-        auto_science_classifier = fasttext.load_model(topcategory_auto_science_model_path)
-        classifier_dict['auto_science'] = auto_science_classifier
-        # 加载二级模型
-        for topcategory in topcategory_list:
-            model_path = os.path.join(path, "{}_sub_classification_model.bin".format(topcategory))
-            if os.path.exists(model_path):
-                classifier = fasttext.load_model(model_path)
-                classifier_dict[topcategory] = classifier
-            continue
-        idx2labelmap_path = os.path.join(path, "idx2label_map.json")
-        with open(idx2labelmap_path, "r") as load_f:
-            idx2label_map = json.load(load_f)
-
-        return classifier_dict, idx2label_map
-
-    # 用于线上预测，输入：文章正文 输出json如：
-    # {
-    #   "top_category":  "sports",
-    #   "top_category_id": 6,
-    #   "top_category_proba": 0.6,
-    #   "sub_category": "basketball",
-    #   "sub_category_id": 613,
-    #   "sub_category_proba": 0.83
-    #  }
-
-    # 一级分类模型2个模型，auto_science独立一个模型
-    # 二级分类模型目前已有6个模型，world、lifestyle的样本还在标注，没有的模型二级分类会返回一级预测结果
-    # 先进行一级预测，预测结果后对二级分类进行预测
-    def predict(self, content, title, classifier_dict, idx2label):
+    def get_category(self, content, title, classifier_dict, idx2label):
+        """
+        分类结果
+        :param content: 内容（str）
+        :param title: 标题（str）
+        :param classifier_dict: 模型字典（dict）
+        :param idx2label: 分类id映射（json）
+        :return: 分类结果（一级类、二级类）
+        """
         content_list = []
         content_list.append(self.clean_string(title + '.' + content))
         predict_top_res = self._predict_topcategory(content_list, classifier_dict, idx2label)
@@ -80,6 +62,27 @@ class ClassificationProccesser:
         else:
             predict_sub_res = predict_top_res
         return predict_sub_res
+
+    def get_topcategory(self, content_list, classifier_dict, idx2label):
+        """
+        一级分类结果
+        :param content_list: 内容（list）
+        :param classifier_dict: 模型字典（dict）
+        :param idx2label: 分类id映射（json）
+        :return: 一级分类结果（dict）
+        """
+        return self._predict_topcategory(content_list, classifier_dict, idx2label)
+
+    def get_subcategory(self,content_list, classifier, idx2label, predict_res):
+        """
+        二级分类结果
+        :param content_list: 内容（list）
+        :param classifier: 二级分类模型（fasttext.model）
+        :param idx2label: 分类id映射（json）
+        :param predict_res: 一级分类结果
+        :return: 二级分类结果
+        """
+        return self._predict_subcategory(content_list, classifier, idx2label, predict_res)
 
     def _predict_topcategory(self, content_list, classifier_dict, idx2label):
         try:
