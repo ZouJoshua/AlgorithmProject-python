@@ -28,12 +28,11 @@
             "government-jobs":"405",
             "society":"406",
             "environment":"407",
-            "public benefit":"408",
+            "policies&regulations":"408",
             "military":"409",
             "medical":"410",
             "traffic":"411",
-            "national economy":"412",
-            "others":"413"
+            "others":"412"
         },
 
         "entertainment":{
