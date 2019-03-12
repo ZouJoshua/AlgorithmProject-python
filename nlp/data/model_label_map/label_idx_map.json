@@ -12,7 +12,7 @@
         "entertainment":"15"
     },
     "two_level":{
-        "national":{
+        "national_v1":{
             "crime":"401",
             "education":"402",
             "law":"403",
@@ -20,6 +20,22 @@
             "society others":"405",
             "society":"406"
         },
+        "national":{
+            "crime":"401",
+            "education":"402",
+            "law":"403",
+            "politics":"404",
+            "government-jobs":"405",
+            "society":"406",
+            "environment":"407",
+            "public benefit":"408",
+            "military":"409",
+            "medical":"410",
+            "traffic":"411",
+            "national economy":"412",
+            "others":"413"
+        },
+
         "entertainment":{
             "cartoon&comics":"1501",
             "tv":"1502",
