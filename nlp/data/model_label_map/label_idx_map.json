@@ -56,7 +56,7 @@
             "hollywood":"1507",
             "others":"1508"
         },
-        "sports":{
+        "sports_v1":{
             "football":"601",
             "cricket":"602",
             "tennis":"603",
@@ -71,6 +71,27 @@
             "boxing":"612",
             "baseball":"613",
             "others":"614"
+        },
+        "sports":{
+            "football":"601",
+            "cricket":"602",
+            "tennis":"603",
+            "auto racing":"604",
+            "rugby":"605",
+            "basketball":"606",
+            "olympic":"607",
+            "golf":"608",
+            "hockey":"609",
+            "wrestling":"610",
+            "badminton":"611",
+            "boxing":"612",
+            "baseball":"613",
+            "athletics":"614",
+            "horse racing":"615",
+            "kabaddi":"616",
+            "chess":"617",
+            "volleybal":"618",
+            "others":"619"
         },
         "business":{
             "company":"801",
