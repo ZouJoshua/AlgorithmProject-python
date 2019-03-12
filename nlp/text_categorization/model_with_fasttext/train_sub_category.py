@@ -3,7 +3,7 @@
 """
 @Author  : Joshua
 @Time    : 2019/1/3 15:55
-@File    : sub_category_model.py
+@File    : train_sub_category.py
 @Desc    : 二级分类模型 - fasttext
 """
 
@@ -22,6 +22,7 @@ from nlp.preprocess.util import clean_string
 from nlp.text_categorization.model_evaluate.calculate_p_r_f import evaluate_model
 from sklearn.model_selection import StratifiedKFold
 import time
+import random
 
 
 
@@ -46,7 +47,7 @@ class SubCategoryModel(object):
         for datafile in datafiles:
             dataf = open(datafile, 'r', encoding='utf-8')
             data = dataf.readlines()
-            # random.shuffle(data)
+            random.shuffle(data)
             # data_count = len(data)
             for li in data:
                 line = li.strip('\n')
@@ -113,6 +114,8 @@ class SubCategoryModel(object):
             self.write_file(test_check_file, test_check, 'json')
             print('文件:{}\n训练数据类别统计：{}'.format(train_file, train_label_count))
             print('文件:{}\n测试数据类别统计：{}'.format(test_file, test_label_count))
+            if i == 1:
+                break
 
     def _label_count(self, label_list):
         label_count = dict()
@@ -157,25 +160,28 @@ class SubCategoryModel(object):
             s = time.time()
             _model = "{}_model_{}".format(self.cg, i+1)
             data_path = os.path.join(self._datadir, _model)
-            model_path = os.path.join(data_path, '{}_sub_classification_model'.format(self.cg))
-            train_data_path = os.path.join(data_path, 'data', 'train.txt')
-            test_data_path = os.path.join(data_path, 'data', 'test.txt')
-            test_check_path = os.path.join(data_path, 'data', 'test_check.json')
-            test_check_pred_path = os.path.join(data_path, 'data', 'test_check_pred.json')
-            train_check_path = os.path.join(data_path, 'data', 'train_check.json')
-            train_check_pred_path = os.path.join(data_path, 'data', 'train_check_pred.json')
-            classifier = fasttext.supervised(train_data_path, model_path, label_prefix="__label__", lr=0.1, epoch=20, dim=200, word_ngrams=3, loss='hs', bucket=20000)
-            train_pred = classifier.test(train_data_path)
-            test_pred = classifier.test(test_data_path)
-            train_precision["model_{}".format(i+1)] = train_pred.precision
-            test_precision["model_{}".format(i+1)] = test_pred.precision
-            print("在训练集{}上的准确率：\n{}".format(_model, train_pred.precision))
-            print("在测试集{}上的准确率：\n{}".format(_model, test_pred.precision))
-            e = time.time()
-            print('训练模型耗时{}'.format(e - s))
-            self._predict(classifier, train_check_path, train_check_pred_path)
-            self._predict(classifier, test_check_path, test_check_pred_path)
-            self.evaluate_model(test_check_pred_path, self._level, _model)
+            if os.path.exists(data_path):
+                model_path = os.path.join(data_path, '{}_sub_classification_model'.format(self.cg))
+                train_data_path = os.path.join(data_path, 'data', 'train.txt')
+                test_data_path = os.path.join(data_path, 'data', 'test.txt')
+                test_check_path = os.path.join(data_path, 'data', 'test_check.json')
+                test_check_pred_path = os.path.join(data_path, 'data', 'test_check_pred.json')
+                train_check_path = os.path.join(data_path, 'data', 'train_check.json')
+                train_check_pred_path = os.path.join(data_path, 'data', 'train_check_pred.json')
+                classifier = fasttext.supervised(train_data_path, model_path, label_prefix="__label__", lr=0.1, epoch=20, dim=200, word_ngrams=3, loss='hs', bucket=20000)
+                train_pred = classifier.test(train_data_path)
+                test_pred = classifier.test(test_data_path)
+                train_precision["model_{}".format(i+1)] = train_pred.precision
+                test_precision["model_{}".format(i+1)] = test_pred.precision
+                print("在训练集{}上的准确率：\n{}".format(_model, train_pred.precision))
+                print("在测试集{}上的准确率：\n{}".format(_model, test_pred.precision))
+                e = time.time()
+                print('训练模型耗时{}'.format(e - s))
+                self._predict(classifier, train_check_path, train_check_pred_path)
+                self._predict(classifier, test_check_path, test_check_pred_path)
+                self.evaluate_model(test_check_pred_path, self._level, _model)
+            else:
+                pass
         return train_precision, test_precision
 
     def _predict(self, classifier, json_file, json_out_file):
