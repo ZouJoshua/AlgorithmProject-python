@@ -152,11 +152,10 @@
         "auto":{
             "car":"1101",
             "motor":"1102",
-            "cycling":"1103",
-            "bike":"1104",
-            "autoindustry":"1105",
-            "autoshow":"1106",
-            "others":"1107"
+            "bike":"1103",
+            "auto industry":"1104",
+            "auto show":"1105",
+            "others":"1106"
         },
         "auto_":{
             "car":"1101",

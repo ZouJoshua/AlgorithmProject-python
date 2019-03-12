@@ -47,7 +47,7 @@ class SubCategoryModel(object):
         for datafile in datafiles:
             dataf = open(datafile, 'r', encoding='utf-8')
             data = dataf.readlines()
-            random.shuffle(data)
+            # random.shuffle(data)
             # data_count = len(data)
             for li in data:
                 line = li.strip('\n')
