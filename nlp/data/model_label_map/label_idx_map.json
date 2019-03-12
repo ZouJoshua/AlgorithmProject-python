@@ -28,13 +28,11 @@
             "government-jobs":"405",
             "society":"406",
             "environment":"407",
-            "policies&regulations":"408",
-            "military":"409",
-            "medical":"410",
-            "traffic":"411",
-            "others":"412"
+            "military":"408",
+            "medical":"409",
+            "traffic":"410",
+            "others":"411"
         },
-
         "entertainment":{
             "cartoon&comics":"1501",
             "tv":"1502",
