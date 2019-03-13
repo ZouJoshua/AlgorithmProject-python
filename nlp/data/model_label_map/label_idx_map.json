@@ -37,14 +37,13 @@
             "cartoon&comics":"1501",
             "tv":"1502",
             "music":"1503",
-            "gossip":"1504",
+            "celebrity&gossip":"1504",
             "bollywood":"1505",
             "movie":"1506",
-            "celebrity":"1507",
-            "hollywood":"1508",
-            "art&culture":"1509",
-            "dance":"1510",
-            "others":"1511"
+            "hollywood":"1507",
+            "art&culture":"1508",
+            "dance":"1509",
+            "others":"1510"
         },
         "entertainment_old":{
             "bollywood":"1501",
