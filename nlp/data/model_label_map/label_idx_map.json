@@ -12,7 +12,7 @@
         "entertainment":"15"
     },
     "two_level":{
-        "national_v1":{
+        "national_old":{
             "crime":"401",
             "education":"402",
             "law":"403",
@@ -46,7 +46,7 @@
             "dance":"1510",
             "others":"1511"
         },
-        "entertainment_v":{
+        "entertainment_old":{
             "bollywood":"1501",
             "celebrity&gossip":"1502",
             "tv":"1503",
@@ -56,7 +56,7 @@
             "hollywood":"1507",
             "others":"1508"
         },
-        "sports_v1":{
+        "sports_old":{
             "football":"601",
             "cricket":"602",
             "tennis":"603",
@@ -111,7 +111,7 @@
             "commodities":"816",
             "others":"817"
         },
-        "business_v":{
+        "business_old":{
             "industry economic":"801",
             "market":"802",
             "finance":"803",
@@ -152,7 +152,7 @@
             "property":"830",
             "index":"831"
         },
-        "tech_v1":{
+        "tech_old":{
             "mobile phone":"1011",
             "app":"1012",
             "gadget":"1013",
@@ -173,7 +173,7 @@
             "bike":"1103",
             "others":"1104"
         },
-        "auto_":{
+        "auto_old":{
             "car":"1101",
             "others":"1102"
         },
@@ -190,7 +190,7 @@
             "astrology":"1210",
             "others":"1211"
         },
-        "lifestyle_v":{
+        "lifestyle_old":{
             "health":"1201",
             "fashion&trends":"1202",
             "travel":"1203",
