@@ -235,13 +235,11 @@
       "international":{
             "politics":"301",
             "society":"302",
-            "government&diplomacy":"303",
-            "crime":"304",
-            "policies&regulations":"305",
-            "military":"306",
-            "terrorism":"307",
-            "environment":"308",
-            "others":"309"
+            "crime":"303",
+            "military":"304",
+            "terrorism":"305",
+            "environment":"306",
+            "others":"307"
         }
     }
 }
