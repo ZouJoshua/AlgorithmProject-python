@@ -189,10 +189,9 @@
             "astrology":"1210",
             "arts&culture":"1211",
             "nature&pets":"1212",
-            "events":"1213",
-            "books":"1214",
-            "home&garden":"1215",
-            "others":"1216"
+            "books":"1213",
+            "home&garden":"1214",
+            "others":"1215"
         },
         "lifestyle_old":{
             "health":"1201",
