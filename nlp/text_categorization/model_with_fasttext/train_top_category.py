@@ -91,7 +91,7 @@ class TopCategoryModel(object):
         :return:
         """
         s = time.time()
-        # random.shuffle(data_all)
+        random.shuffle(data_all)
         datax = [self._preline(i).split('\t__label__')[0] for i in data_all]
         datay = [self._preline(i).split('\t__label__')[1] for i in data_all]
         e1 = time.time()
