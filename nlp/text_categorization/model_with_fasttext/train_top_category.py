@@ -235,7 +235,7 @@ class TopCategoryModel(object):
 if __name__ == '__main__':
     s = time.time()
     dataDir = "/data/zoushuai/news_content/top_classification_model/traincorpus"
-    top_model = TopCategoryModel(dataDir, category='top', k=5, model_level='one_level')
+    top_model = TopCategoryModel(dataDir, category='top', k=2, model_level='one_level')
     top_model.preprocess_data()
     train_precision, test_precision = top_model.train_model()
     e = time.time()
