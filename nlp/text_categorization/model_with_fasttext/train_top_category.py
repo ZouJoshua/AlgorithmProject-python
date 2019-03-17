@@ -60,7 +60,7 @@ class TopCategoryModel(object):
                     class_cnt[label] += 1
                 elif dataX != "":
                     class_cnt[label] = 1
-                if class_cnt[label] < 50000 and dataX != "":
+                if class_cnt[label] < 30001 and dataX != "":
                     data_all.append(line)
                 else:
                     continue
