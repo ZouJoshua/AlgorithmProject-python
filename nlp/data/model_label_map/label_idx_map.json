@@ -3,9 +3,9 @@
         "international":"3",
         "national":"4",
         "sports":"6",
-        "tech":"7",
         "business":"8",
         "science":"9",
+        "tech":"10",
         "auto":"11",
         "lifestyle":"12",
         "entertainment":"15"
