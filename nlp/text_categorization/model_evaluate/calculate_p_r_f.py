@@ -16,7 +16,7 @@ def evaluate_model(dataPath, model_level='two_level', model_num='national_model_
         for line in lines:
             line = json.loads(line)
             true_category = line[model_level].lower().strip()
-            if true_category in ['shopping', 'aoto', 'world', 'sport', 'tech']:
+            if true_category in ['shopping', 'aoto', 'world', 'sport']:
                 continue
             labels_right.append(true_category)
             labels_predict.append(line['predict_{}'.format(model_level)])
