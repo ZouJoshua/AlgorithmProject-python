@@ -225,9 +225,9 @@ class SubCategoryModel(object):
 
 if __name__ == '__main__':
     s = time.time()
-    dataDir = "/data/zoushuai/news_content/sub_classification_model/national"
+    dataDir = "/data/zoushuai/news_content/sub_classification_model/final_label_train/national"
     sub_model = SubCategoryModel(dataDir, category='national', k=5, model_level='two_level')
-    # sub_model.preprocess_data()
+    sub_model.preprocess_data()
     train_precision, test_precision = sub_model.train_model()
     e = time.time()
     print('训练二级分类模型耗时{}'.format(e - s))

@@ -24,25 +24,25 @@
             "education":"402",
             "law":"403",
             "politics":"404",
-            "government-jobs":"405",
+            "government-jobs":"411",
             "society":"406",
             "environment":"407",
             "military":"408",
             "medical":"409",
             "traffic":"410",
-            "others":"411"
+            "others":"405"
         },
         "entertainment":{
-            "cartoon&comics":"1501",
-            "tv":"1502",
-            "music":"1503",
-            "celebrity&gossip":"1504",
-            "bollywood":"1505",
-            "movie":"1506",
+            "cartoon&comics":"1505",
+            "tv":"1503",
+            "music":"1506",
+            "celebrity&gossip":"1502",
+            "bollywood":"1501",
+            "movie":"1504",
             "hollywood":"1507",
-            "arts&culture":"1508",
+            "arts&culture":"1510",
             "dance":"1509",
-            "others":"1510"
+            "others":"1508"
         },
         "entertainment_old":{
             "bollywood":"1501",
@@ -84,22 +84,22 @@
             "badminton":"611",
             "boxing":"612",
             "baseball":"613",
-            "athletics":"614",
+            "athletics":"618",
             "horse racing":"615",
             "kabaddi":"616",
             "chess":"617",
-            "others":"618"
+            "others":"614"
         },
         "business":{
-            "company":"801",
-            "stock&bond":"802",
-            "market":"803",
-            "banking":"804",
-            "industry":"805",
-            "tax":"806",
+            "company":"805",
+            "stock&bond":"817",
+            "market":"802",
+            "banking":"818",
+            "industry":"801",
+            "tax":"809",
             "economy":"807",
             "money":"808",
-            "invest":"809",
+            "invest":"804",
             "oil-price":"810",
             "real-estate":"811",
             "trading":"812",
@@ -107,7 +107,7 @@
             "career":"814",
             "insurance":"815",
             "commodities":"816",
-            "others":"817"
+            "others":"806"
         },
         "business_old":{
             "industry economic":"801",
@@ -160,16 +160,16 @@
         "tech":{
             "mobile phone":"1011",
             "app":"1012",
-            "internet":"1013",
-            "gadget":"1014",
-            "computer":"1015",
-            "others":"1016"
+            "internet":"1016",
+            "gadget":"1013",
+            "computer":"1014",
+            "others":"1015"
         },
         "auto":{
             "car":"1101",
-            "motor":"1102",
+            "motor":"1104",
             "bike":"1103",
-            "others":"1104"
+            "others":"1102"
         },
         "auto_old":{
             "car":"1101",
@@ -231,7 +231,7 @@
             "others":"312"
         },
       "international":{
-            "politics":"301",
+            "politics":"308",
             "society":"302",
             "crime":"303",
             "military":"304",
