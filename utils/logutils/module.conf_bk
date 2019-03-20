@@ -1,0 +1,46 @@
+[Machine]
+###sys_web
+
+
+local = wordseg wordpos
+
+
+[authority]
+name = authority
+log = /home/wifi/authority/process/log/auth.log /home/wifi/authority/process/log/auth.log.wf
+log_keep = 7
+log_rotate = 1
+log_clean = 1
+rd = sunjian
+
+
+[vtag_cpp]
+name = vtag_cpp
+#log = /home/wifi/news_tag/logs/newsprofile.log
+log = /data/app/vtag_cpp/log/vtag.log 
+log_keep = 7
+log_rotate = 1
+log_clean = 1
+rd = sunjian
+
+[wordseg]
+name = wordseg
+#log = /home/wifi/news_tag/logs/newsprofile.log
+log = /data/app/seg_server_11238_cpp/wordseg_server/log/wordseg.log 
+log_keep = 7
+log_rotate = 1
+log_clean = 1
+rd = sunjian
+
+[wordpos]
+name = wordpos
+#log = /home/wifi/news_tag/logs/newsprofile.log
+log = /data/app/pos_server_11239_cpp/wordpos_server/log/wordseg.log 
+log_keep = 7
+log_rotate = 1
+log_clean = 1
+rd = sunjian
+[rd_mobile]
+sunjian=18600524179
+
+
