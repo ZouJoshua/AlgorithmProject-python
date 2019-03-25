@@ -17,6 +17,53 @@ sys.path.append(root_nlp_path)
 
 import json
 import re
+import xlrd
+from openpyxl import load_workbook
+
+
+def regional_preprocess_from_xlsx(sheetname='town'):
+    town_xlsx_file = os.path.join(root_nlp_path, 'data', 'india_town.xlsx')
+    wb = load_workbook(town_xlsx_file)
+    # sheets = wb.sheetnames
+    # print(sheets)
+    sheet = wb[sheetname]
+    rows = sheet.rows
+    cols = sheet.columns
+    result = dict()
+
+    _c = 0
+    for row in rows:
+        _c += 1
+        if _c > 1:
+            line = [col.value for col in row]
+            if len(line) == 8:
+                states = line[1].title().replace('&', 'and')
+                district = line[3].title()
+                sub_district = re.sub(' \d+', '', line[5].title())
+                town = re.sub(' \(.*?\)', '', line[7].title())
+                if states in result.keys():
+                    if district not in result[states]['districts']:
+                        result[states]['districts'].append(district)
+                    if sub_district not in result[states]['sub_districts']:
+                        result[states]['sub_districts'].append(sub_district)
+                    if town not in result[states]['town']:
+                        result[states]['town'].append(town)
+                else:
+                    result[states] = dict()
+                    result[states]['districts'] = list()
+                    result[states]['sub_districts'] = list()
+                    result[states]['town'] = list()
+                    result[states]['districts'].append(district)
+                    result[states]['sub_districts'].append(sub_district)
+                    result[states]['town'].append(town)
+    outfile = os.path.join(root_nlp_path, 'data', 'india_division_new.json')
+    with open(outfile, 'w', encoding='utf-8') as wf:
+        for k, v in result.items():
+            out = dict()
+            out[k] = v
+            wf.write(json.dumps(out) + '\n')
+    return
+
 
 def regional_preprocess(filename='india_division.json'):
     regi_file = os.path.join(root_nlp_path, 'data', filename)
@@ -96,6 +143,7 @@ def get_article(file, limit=100):
 
 if __name__ == '__main__':
     # regional_preprocess()
+    # regional_preprocess_from_xlsx()
 
     datafile = os.path.join(root_path, 'data', 'national')
     line = get_article(datafile)
