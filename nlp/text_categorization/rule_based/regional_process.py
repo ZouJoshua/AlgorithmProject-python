@@ -18,6 +18,7 @@ sys.path.append(root_nlp_path)
 import json
 import re
 import xlrd
+import random
 from openpyxl import load_workbook
 
 
@@ -78,19 +79,38 @@ def regional_preprocess(filename='india_division.json'):
                 out_result = {"regional": '',
                               'is_capital': False, 'is_regions': False,
                               'is_divisions': False, 'is_districts': False,
-                              'is_headquarters': False, 'is_largest_city': False}
-                for i, j in _v.items():
+                              'is_headquarters': False, 'is_largest_city': False,
+                              'is_sub_districts': False, 'is_town': False}
+                if _k not in out.keys():
                     out_result['regional'] = _k
+                    out[_k] = out_result
+                for i, j in _v.items():
                     if j:
-                        out_result['is_{}'.format(i)] = True
+                        if i == 'districts_new':
+                            i = 'districts'
                         for _j in j:
-                            out[_j.title()] = out_result
+                            if _j not in out.keys():
+                                out_result = {"regional": '',
+                                              'is_capital': False, 'is_regions': False,
+                                              'is_divisions': False, 'is_districts': False,
+                                              'is_headquarters': False, 'is_largest_city': False,
+                                              'is_sub_districts': False, 'is_town': False}
+                                out_result['regional'] = _k
+                                out_result['is_{}'.format(i)] = True
+                                _j_clean = re.sub('\s+', ' ', _j.title().replace("*", " ").strip())
+                                out[_j_clean] = out_result
+                            else:
+                                out_result = out[_j]
+                                out_result['regional'] = _k
+                                out_result['is_{}'.format(i)] = True
+                                _j_clean = re.sub('\s+', ' ', _j.title().replace("*", " ").strip())
+                                out[_j_clean] = out_result
                     else:
                         continue
     reader.close()
     regi2map_file = os.path.join(root_nlp_path, 'data', 'india_names2regions.json')
     with open(regi2map_file, 'w') as f:
-        json.dump(out, f)
+        json.dump(out, f, indent=4)
     return
 
 
@@ -107,15 +127,21 @@ def read_map_file(mapfile='india_names2regions.json'):
 
 def get_regional(text):
     names_map = read_map_file()
-    out = dict()
-    for key, value in names_map.items():
-        all = re.findall(key, text)
-        if len(all):
-            out[key] = len(all)
-    result = _count_regional(out, names_map)
+    out_count = get_detail_regional(text, names_map)
+    result = _count_regional(out_count, names_map)
     return result
 
-def _count_regional(result,names_map):
+def get_detail_regional(text, names_map):
+    out = dict()
+    for key, value in names_map.items():
+        if len(key) < 6:
+            key += ' '
+        all = re.findall(key, text)
+        if len(all):
+            out[key.strip()] = len(all)
+    return out
+
+def _count_regional(result, names_map):
     out = dict()
     if result:
         for k, v in result.items():
@@ -129,7 +155,6 @@ def _count_regional(result,names_map):
                 out[region] += v
     return out
 
-
 def get_article(file, limit=100):
     reader = open(file, 'r', encoding='utf-8')
     i = 0
@@ -138,15 +163,36 @@ def get_article(file, limit=100):
         yield line
         i += 1
         if i > limit:
+            reader.close()
             break
 
+def get_article_random_check(file, outfile, limit=100):
+    names_map = read_map_file()
+    reader = open(file, 'r', encoding='utf-8')
+    lines = reader.readlines()
+    random.shuffle(lines)
+    with open(outfile, 'w', encoding='utf-8') as wf:
+        for i in lines[:limit]:
+            data = json.loads(i)
+            text = data['title'] + '.' + data['content']
+            out_count = get_detail_regional(text, names_map)
+            data['regional_keywords'] = out_count
+            data['regional'] = _count_regional(out_count, names_map)
+            wf.write(json.dumps(data)+'\n')
+    reader.close()
+    return
 
 if __name__ == '__main__':
     # regional_preprocess()
     # regional_preprocess_from_xlsx()
-
     datafile = os.path.join(root_path, 'data', 'national')
-    line = get_article(datafile)
-    for i in line:
-        out = get_regional(i['content'])
-        print(out)
+    # # line = get_article(datafile)
+    # # regional_names_map = read_map_file()
+    # # s = 0
+    # # for i in line:
+    # #     s += 1
+    # #     if s == 2:
+    # #         out = get_detail_regional(i['content'], regional_names_map)
+    # #         print(out)
+    outfile = os.path.join(root_path, 'data', 'test')
+    get_article_random_check(datafile, outfile)
