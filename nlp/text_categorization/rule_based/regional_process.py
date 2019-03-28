@@ -65,7 +65,10 @@ def regional_preprocess_from_xlsx(sheetname='town'):
             wf.write(json.dumps(out) + '\n')
     return
 
-
+## 修复地名问题
+"""
+1.去除掉部分与常用词相同的单词，如：Bank、Kim
+"""
 def regional_preprocess(filename='india_division.json'):
     regi_file = os.path.join(root_nlp_path, 'data', filename)
     reader = open(regi_file, 'r', encoding='utf-8')
@@ -91,6 +94,11 @@ def regional_preprocess(filename='india_division.json'):
                             j_upper = list()
                             for d in j:
                                 j_upper.append(d.title().replace("District", "").strip().upper())
+                            j += j_upper
+                        elif i == 'capital' or i == 'headquarters':
+                            j_upper = list()
+                            for d in j:
+                                j_upper.append(d.title().strip().upper())
                             j += j_upper
                         for _j in j:
                             if _j not in out.keys():
@@ -138,33 +146,79 @@ def get_regional(text):
 def get_detail_regional(text, names_map):
     out = dict()
     for key, value in names_map.items():
-        if len(key) < 5:
-            key += ' '
-        all = re.findall(key, text)
+        # if len(key) < 5:
+        #     key += ' '
+        all = re.findall(key + '[\W]', text)
         if len(all):
             out[key.strip()] = len(all)
+    return _re_count_regional(out)
+
+def _re_count_regional(regional_ct):
+    out = dict()
+    if regional_ct:
+        for k, v in regional_ct.items():
+            if k.isupper():
+                k = k.title()
+            if k not in out:
+                out[k] = v
+            else:
+                out[k] += v
     return out
+
 
 def _count_regional(result, names_map):
     out = dict()
-    if result:
-        for k, v in result.items():
-            if k in ['Mumbai', 'Delhi', 'Bengaluru', 'Kolkata', 'Hyderabad', 'MUMBAI', 'DELHI', 'BENGALURU', 'KOLKATA', 'HYDERABAD']:
-                region = k
-            else:
-                region = names_map[k]['regional']
-            if region.title() not in out:
-                out[region.title()] = v
-            else:
-                out[region.title()] += v
+    for k, v in result.items():
+        if k in ['Mumbai', 'Bengaluru', 'Kolkata', 'Hyderabad']:
+            region = k
+        else:
+            region = names_map[k]['regional']
+        if region not in out:
+            out[region] = v
+        else:
+            out[region] += v
     return out
 
 
-def predict_regional(regional_ct, topk=1):
-
-    for k, v in regional_ct.items():
-        if k in []:
-            pass
+def predict_regional(regional_ct, text, topk=3):
+    regional = dict()
+    regional['regional'] = list()
+    if regional_ct:
+        ks = regional_ct.keys()
+        deh = ['National Capital Territory Of Delhi', 'Delhi']
+        dehil_names = set(deh) & set(ks)
+        city = ['Mumbai', 'Bengaluru', 'Kolkata', 'Hyderabad']
+        city_names = set(city) & set(ks)
+        if dehil_names:
+            if re.findall('New Delhi:', text) or re.findall('Delhi:', text) or re.findall('DELHI:', text):
+                regional['regional'].append('Delhi')
+            else:
+                if len(dehil_names) == 2:
+                    if regional_ct['Delhi'] >= regional_ct['National Capital Territory Of Delhi']:
+                        del regional_ct['National Capital Territory Of Delhi']
+                    else:
+                        del regional_ct['Delhi']
+        elif city_names:
+            for city in city_names:
+                _city = city + ':'
+                if re.findall(_city, text) or re.findall(_city.upper(), text):
+                    regional['regional'].append(city)
+        if not regional['regional']:
+            sort_regional_ct = sorted(regional_ct.items(), key=lambda x: x[1], reverse=True)
+            topk_regional_ct = sort_regional_ct[:topk]
+            if len(topk_regional_ct) == 1:
+                regional['regional'].append(topk_regional_ct[0][0])
+            elif len(topk_regional_ct) > 1:
+                if topk_regional_ct[0][1] > topk_regional_ct[1][1]:
+                    regional['regional'].append(topk_regional_ct[0][0])
+                elif topk_regional_ct[0][1] == topk_regional_ct[1][1]:
+                    regional['regional'].append(topk_regional_ct[0][0])
+                    regional['regional'].append(topk_regional_ct[1][0])
+                    if len(topk_regional_ct) > 2 and topk_regional_ct[1][1] == topk_regional_ct[2][1]:
+                        regional['regional'].append(topk_regional_ct[2][0])
+                    else:
+                        pass
+    return regional
 
 
 def get_article(file, limit=100):
@@ -191,7 +245,8 @@ def get_article_random_check(file, outfile, limit=100):
             data['regional_keywords'] = out_count
             data['regional'] = _count_regional(out_count, names_map)
             print(out_count)
-            print(data['regional'])
+            # print(data['regional'])
+            print("结果{}".format(predict_regional(data['regional'], text)))
             # wf.write(json.dumps(data)+'\n')
     reader.close()
     return

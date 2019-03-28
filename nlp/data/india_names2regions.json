@@ -21,6 +21,17 @@
         "is_sub_districts": false,
         "is_town": true
     },
+    "HYDERABAD": {
+        "regional": "Telangana",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Coastal Andhra": {
         "regional": "Andhra Pradesh",
         "is_capital": false,
@@ -297,56 +308,45 @@
         "is_town": false
     },
     "ADILABAD": {
-        "regional": "Andhra Pradesh",
+        "regional": "Telangana",
         "is_capital": false,
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
     },
     "NIZAMABAD": {
-        "regional": "Andhra Pradesh",
+        "regional": "Telangana",
         "is_capital": false,
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
     },
     "KARIMNAGAR": {
-        "regional": "Andhra Pradesh",
+        "regional": "Telangana",
         "is_capital": false,
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
     },
     "MEDAK": {
-        "regional": "Andhra Pradesh",
+        "regional": "Telangana",
         "is_capital": false,
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "HYDERABAD": {
-        "regional": "Andhra Pradesh",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -374,34 +374,34 @@
         "is_town": false
     },
     "NALGONDA": {
-        "regional": "Andhra Pradesh",
+        "regional": "Telangana",
         "is_capital": false,
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
     },
     "WARANGAL": {
-        "regional": "Andhra Pradesh",
+        "regional": "Telangana",
         "is_capital": false,
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
     },
     "KHAMMAM": {
-        "regional": "Andhra Pradesh",
+        "regional": "Telangana",
         "is_capital": false,
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -6874,6 +6874,17 @@
         "is_sub_districts": false,
         "is_town": true
     },
+    "ITANAGAR": {
+        "regional": "Arunachal Pradesh",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": false,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Lohit": {
         "regional": "Arunachal Pradesh",
         "is_capital": false,
@@ -7254,7 +7265,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -7853,6 +7864,17 @@
         "is_sub_districts": false,
         "is_town": true
     },
+    "NAMSAI": {
+        "regional": "Arunachal Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Assam": {
         "regional": "Assam",
         "is_capital": false,
@@ -7865,6 +7887,17 @@
         "is_town": false
     },
     "Dispur": {
+        "regional": "Assam",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": false,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "DISPUR": {
         "regional": "Assam",
         "is_capital": true,
         "is_regions": false,
@@ -8376,7 +8409,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -8453,7 +8486,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -11384,6 +11417,39 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "GUWAHATI": {
+        "regional": "Assam",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "TEZPUR": {
+        "regional": "Assam",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SICHAR": {
+        "regional": "Assam",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Bihar": {
         "regional": "Bihar",
         "is_capital": false,
@@ -11405,6 +11471,17 @@
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": true
+    },
+    "PATNA": {
+        "regional": "Bihar",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "Tirhut": {
         "regional": "Bihar",
@@ -11907,7 +11984,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -11929,7 +12006,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -11940,7 +12017,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -11951,7 +12028,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -11962,7 +12039,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -11973,7 +12050,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -11984,7 +12061,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -11995,7 +12072,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12006,7 +12083,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12017,7 +12094,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12028,7 +12105,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12039,7 +12116,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12050,7 +12127,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12083,7 +12160,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12094,7 +12171,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12105,7 +12182,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12116,7 +12193,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12127,7 +12204,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12138,7 +12215,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12149,7 +12226,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12160,23 +12237,12 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
     },
     "NALANDA": {
-        "regional": "Bihar",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "PATNA": {
         "regional": "Bihar",
         "is_capital": false,
         "is_regions": false,
@@ -12204,7 +12270,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12237,7 +12303,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12248,7 +12314,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12259,7 +12325,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12270,7 +12336,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12281,7 +12347,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -12292,7 +12358,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -14519,6 +14585,105 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "ARRAH": {
+        "regional": "Bihar",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MOTIHARI": {
+        "regional": "Bihar",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BHABUA": {
+        "regional": "Bihar",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BIHAR SHARIF": {
+        "regional": "Bihar",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SASARAM": {
+        "regional": "Bihar",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "CHHAPRA": {
+        "regional": "Bihar",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "DUMRA, SITAMARHI": {
+        "regional": "Bihar",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "HAJIPUR": {
+        "regional": "Bihar",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BETTIAH": {
+        "regional": "Bihar",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Chhattisgarh": {
         "regional": "Chhattisgarh",
         "is_capital": false,
@@ -14531,6 +14696,17 @@
         "is_town": false
     },
     "Naya Raipur": {
+        "regional": "Chhattisgarh",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": false,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "NAYA RAIPUR": {
         "regional": "Chhattisgarh",
         "is_capital": true,
         "is_regions": false,
@@ -14888,7 +15064,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -14899,7 +15075,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -14921,7 +15097,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -14943,7 +15119,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -14954,7 +15130,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -14965,7 +15141,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -14976,7 +15152,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -14987,7 +15163,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -15020,7 +15196,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -15042,7 +15218,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -17071,6 +17247,171 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "BAIKUNTHPUR": {
+        "regional": "Chhattisgarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "AMBIKAPUR": {
+        "regional": "Chhattisgarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BALRAMPUR": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "JASHPUR-NAGAR": {
+        "regional": "Chhattisgarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SURAJPUR": {
+        "regional": "Chhattisgarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MUNGELI": {
+        "regional": "Chhattisgarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KAWARDHA": {
+        "regional": "Chhattisgarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BEMETARA": {
+        "regional": "Chhattisgarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BALOD": {
+        "regional": "Chhattisgarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BALODA BAZAR": {
+        "regional": "Chhattisgarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "GARIABAND": {
+        "regional": "Chhattisgarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KANKER": {
+        "regional": "Chhattisgarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "JAGDALPUR": {
+        "regional": "Chhattisgarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "DANTEWADA": {
+        "regional": "Chhattisgarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KONDAGAON": {
+        "regional": "Chhattisgarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Bhilai": {
         "regional": "Chhattisgarh",
         "is_capital": false,
@@ -17103,6 +17444,17 @@
         "is_largest_city": true,
         "is_sub_districts": false,
         "is_town": true
+    },
+    "PANAJI": {
+        "regional": "Goa",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "North Goa": {
         "regional": "Goa",
@@ -17951,6 +18303,17 @@
         "is_sub_districts": false,
         "is_town": true
     },
+    "MARGAO": {
+        "regional": "Goa",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Vasco da Gama": {
         "regional": "Goa",
         "is_capital": false,
@@ -17983,6 +18346,17 @@
         "is_largest_city": false,
         "is_sub_districts": true,
         "is_town": true
+    },
+    "GANDHINAGAR": {
+        "regional": "Gujarat",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "South Gujarat": {
         "regional": "Gujarat",
@@ -18485,7 +18859,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -18502,17 +18876,6 @@
         "is_town": false
     },
     "SABAR KANTHA": {
-        "regional": "Gujarat",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "GANDHINAGAR": {
         "regional": "Gujarat",
         "is_capital": false,
         "is_regions": false,
@@ -18540,7 +18903,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -18551,7 +18914,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -18562,7 +18925,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -18573,7 +18936,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -18584,7 +18947,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -18595,7 +18958,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -18606,7 +18969,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -18617,7 +18980,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -18661,7 +19024,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -18683,7 +19046,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -18705,7 +19068,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -18716,7 +19079,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -18727,7 +19090,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22164,17 +22527,6 @@
         "is_sub_districts": false,
         "is_town": true
     },
-    "Kim": {
-        "regional": "Gujarat",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": false,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": true
-    },
     "Sayan": {
         "regional": "Gujarat",
         "is_capital": false,
@@ -22406,6 +22758,204 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "AHMEDABAD": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MODASA": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "PALANPUR": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BOTAD": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "CHHOTA UDAIPUR": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "DAHOD": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "AHWA": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KHAMBHALIA": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "VERAVAL": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BHUJ": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "NADIAD": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "LUNAVADA": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MEHSANA": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MORBI": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "RAJPIPLA": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "GODHRA": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "HIMMATNAGAR": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "VYARA": {
+        "regional": "Gujarat",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Haryana": {
         "regional": "Chandigarh",
         "is_capital": false,
@@ -22427,6 +22977,17 @@
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": true
+    },
+    "CHANDIGARH": {
+        "regional": "Chandigarh",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "Ambala": {
         "regional": "Haryana",
@@ -22698,7 +23259,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22709,7 +23270,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22720,7 +23281,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22731,7 +23292,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22742,7 +23303,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22753,7 +23314,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22764,7 +23325,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22775,7 +23336,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22786,7 +23347,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22797,7 +23358,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22808,7 +23369,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22819,7 +23380,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22830,7 +23391,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22841,7 +23402,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22852,7 +23413,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22874,7 +23435,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22907,7 +23468,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -22918,7 +23479,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -23483,6 +24044,50 @@
         "is_largest_city": false,
         "is_sub_districts": true,
         "is_town": true
+    },
+    "CHARKHI DADRI": {
+        "regional": "Haryana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "GURUGRAM": {
+        "regional": "Haryana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "NARNAUL": {
+        "regional": "Haryana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "NUH": {
+        "regional": "Haryana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "Pinjore": {
         "regional": "Haryana",
@@ -24452,6 +25057,28 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "SHIMLA": {
+        "regional": "Himachal Pradesh",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "DHARMSHALA": {
+        "regional": "Himachal Pradesh",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": false,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Kangra": {
         "regional": "Himachal Pradesh",
         "is_capital": false,
@@ -24557,7 +25184,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -24579,7 +25206,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -24590,7 +25217,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -24601,7 +25228,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -24612,7 +25239,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -24623,23 +25250,12 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
     },
     "SIRMAUR": {
-        "regional": "Himachal Pradesh",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "SHIMLA": {
         "regional": "Himachal Pradesh",
         "is_capital": false,
         "is_regions": false,
@@ -25299,6 +25915,50 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "DHARAMSALA": {
+        "regional": "Himachal Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "RECKONG PEO": {
+        "regional": "Himachal Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KEYLONG": {
+        "regional": "Himachal Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "NAHAN": {
+        "regional": "Himachal Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Jammu and Kashmir": {
         "regional": "Jammu and Kashmir",
         "is_capital": false,
@@ -25331,6 +25991,28 @@
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": true
+    },
+    "SRINAGAR": {
+        "regional": "Jammu and Kashmir",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "JAMMU": {
+        "regional": "Jammu and Kashmir",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "Kashmir": {
         "regional": "Jammu and Kashmir",
@@ -25580,7 +26262,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -25613,7 +26295,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -25646,7 +26328,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -25673,24 +26355,13 @@
         "is_sub_districts": false,
         "is_town": false
     },
-    "SRINAGAR": {
-        "regional": "Jammu and Kashmir",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
     "GANDERBAL": {
         "regional": "Jammu and Kashmir",
         "is_capital": false,
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -25701,7 +26372,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -25723,7 +26394,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -25734,7 +26405,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -25745,7 +26416,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -25756,7 +26427,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -25767,7 +26438,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -25778,7 +26449,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -25789,18 +26460,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "JAMMU": {
-        "regional": "Jammu and Kashmir",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -25811,7 +26471,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -26312,6 +26972,83 @@
         "is_town": false
     },
     "Budgam": {
+        "regional": "Jammu and Kashmir",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "POONCH": {
+        "regional": "Jammu and Kashmir",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "RAJOURI": {
+        "regional": "Jammu and Kashmir",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BANDIPORA": {
+        "regional": "Jammu and Kashmir",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BARAMULLA": {
+        "regional": "Jammu and Kashmir",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BUDGAM": {
+        "regional": "Jammu and Kashmir",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SHOPIAN": {
+        "regional": "Jammu and Kashmir",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "LEH": {
         "regional": "Jammu and Kashmir",
         "is_capital": false,
         "is_regions": false,
@@ -27125,6 +27862,17 @@
         "is_sub_districts": false,
         "is_town": true
     },
+    "RANCHI": {
+        "regional": "Jharkhand",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Palamu": {
         "regional": "Jharkhand",
         "is_capital": false,
@@ -27626,7 +28374,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -27648,23 +28396,12 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
     },
     "JAMTARA": {
-        "regional": "Jharkhand",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "RANCHI": {
         "regional": "Jharkhand",
         "is_capital": false,
         "is_regions": false,
@@ -30370,6 +31107,28 @@
         "is_sub_districts": false,
         "is_town": true
     },
+    "MEDININAGAR": {
+        "regional": "Jharkhand",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "CHAIBASA": {
+        "regional": "Jharkhand",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Karnataka": {
         "regional": "Karnataka",
         "is_capital": false,
@@ -30382,6 +31141,17 @@
         "is_town": false
     },
     "Bengaluru": {
+        "regional": "Karnataka",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BENGALURU": {
         "regional": "Karnataka",
         "is_capital": true,
         "is_regions": false,
@@ -30849,7 +31619,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -30860,7 +31630,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -30871,7 +31641,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -30882,7 +31652,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -30893,7 +31663,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -30904,7 +31674,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -30926,7 +31696,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -30948,7 +31718,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -30959,7 +31729,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -30981,7 +31751,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -31025,7 +31795,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -31036,7 +31806,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -31080,7 +31850,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -31102,7 +31872,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -31113,7 +31883,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -31146,7 +31916,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -34737,6 +35507,138 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "BELAGAVI": {
+        "regional": "Karnataka",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BALLARI": {
+        "regional": "Karnataka",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "VIJAYAPUR": {
+        "regional": "Karnataka",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "CHIKBALLAPUR": {
+        "regional": "Karnataka",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "CHIKKAMAGALURU": {
+        "regional": "Karnataka",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MANGALURU": {
+        "regional": "Karnataka",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KALABURAGI": {
+        "regional": "Karnataka",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MADIKERI": {
+        "regional": "Karnataka",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MYSURU": {
+        "regional": "Karnataka",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SHIVAMOGGA": {
+        "regional": "Karnataka",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "TUMAKURU": {
+        "regional": "Karnataka",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KARWAR": {
+        "regional": "Karnataka",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Kerala": {
         "regional": "Kerala",
         "is_capital": false,
@@ -34758,6 +35660,17 @@
         "is_largest_city": false,
         "is_sub_districts": true,
         "is_town": true
+    },
+    "THIRUVANANTHAPURAM": {
+        "regional": "Kerala",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "North Malabar": {
         "regional": "Kerala",
@@ -34974,7 +35887,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -34985,7 +35898,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -35007,7 +35920,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -35018,7 +35931,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -35029,7 +35942,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -35040,7 +35953,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -35073,7 +35986,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -35084,7 +35997,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -35095,7 +36008,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -35106,18 +36019,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "THIRUVANANTHAPURAM": {
-        "regional": "Kerala",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -40710,6 +41612,39 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "KAKKANAD": {
+        "regional": "Kerala",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "PAINAVU": {
+        "regional": "Kerala",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KALPETTA": {
+        "regional": "Kerala",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Madhya Pradesh": {
         "regional": "Madhya Pradesh",
         "is_capital": false,
@@ -40731,6 +41666,17 @@
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": true
+    },
+    "BHOPAL": {
+        "regional": "Madhya Pradesh",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "Kaimur Plateau and Satpura Hills": {
         "regional": "Madhya Pradesh",
@@ -41442,7 +42388,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -41464,7 +42410,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -41530,7 +42476,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -41563,7 +42509,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -41618,7 +42564,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -41662,7 +42608,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -41711,17 +42657,6 @@
         "is_sub_districts": false,
         "is_town": false
     },
-    "BHOPAL": {
-        "regional": "Madhya Pradesh",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
     "SEHORE": {
         "regional": "Madhya Pradesh",
         "is_capital": false,
@@ -41750,7 +42685,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -41794,7 +42729,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -41893,7 +42828,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -45418,17 +46353,6 @@
         "is_sub_districts": false,
         "is_town": true
     },
-    "Bank": {
-        "regional": "Madhya Pradesh",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": false,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": true
-    },
     "Hukmakhedi": {
         "regional": "Madhya Pradesh",
         "is_capital": false,
@@ -46694,6 +47618,17 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "MUMBAI": {
+        "regional": "Maharashtra",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": false,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Vidarbha": {
         "regional": "Maharashtra",
         "is_capital": false,
@@ -47228,7 +48163,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -47250,7 +48185,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -47360,7 +48295,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -47371,23 +48306,12 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
     },
     "MUMBAI SUBURBAN": {
-        "regional": "Maharashtra",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "MUMBAI": {
         "regional": "Maharashtra",
         "is_capital": false,
         "is_regions": false,
@@ -47404,7 +48328,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -53250,6 +54174,17 @@
         "is_sub_districts": false,
         "is_town": true
     },
+    "IMPHAL": {
+        "regional": "Manipur",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": false,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Senapati": {
         "regional": "Manipur",
         "is_capital": false,
@@ -54064,6 +54999,17 @@
         "is_sub_districts": false,
         "is_town": true
     },
+    "SHILLONG": {
+        "regional": "Meghalaya",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Jaintia Hills": {
         "regional": "Meghalaya",
         "is_capital": false,
@@ -54680,6 +55626,105 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "JOWAI": {
+        "regional": "Meghalaya",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KHLIEHRIAT": {
+        "regional": "Meghalaya",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "NONGSTOIN": {
+        "regional": "Meghalaya",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MAWKYRWAT": {
+        "regional": "Meghalaya",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "RESUBELPARA": {
+        "regional": "Meghalaya",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "WILLIAMNAGAR": {
+        "regional": "Meghalaya",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BAGHMARA": {
+        "regional": "Meghalaya",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "TURA": {
+        "regional": "Meghalaya",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "AMPATI": {
+        "regional": "Meghalaya",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Mizoram": {
         "regional": "Mizoram",
         "is_capital": false,
@@ -54701,6 +55746,17 @@
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": true
+    },
+    "AIZAWL": {
+        "regional": "Mizoram",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "Kolasib": {
         "regional": "Mizoram",
@@ -54785,7 +55841,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -54796,18 +55852,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "AIZAWL": {
-        "regional": "Mizoram",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -54818,7 +55863,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -54829,7 +55874,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -54840,7 +55885,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -54851,7 +55896,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -54862,7 +55907,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -55153,6 +56198,17 @@
         "is_sub_districts": false,
         "is_town": true
     },
+    "KOHIMA": {
+        "regional": "Nagaland",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Dimapur": {
         "regional": "Nagaland",
         "is_capital": false,
@@ -55280,7 +56336,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -55291,7 +56347,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -55302,7 +56358,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -55313,7 +56369,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -55324,7 +56380,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -55335,7 +56391,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -55346,7 +56402,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -55357,7 +56413,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -55368,18 +56424,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "KOHIMA": {
-        "regional": "Nagaland",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -55390,7 +56435,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -55670,6 +56715,17 @@
         "is_sub_districts": false,
         "is_town": true
     },
+    "NOKLAK": {
+        "regional": "Nagaland",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Odisha": {
         "regional": "Odisha",
         "is_capital": false,
@@ -55692,22 +56748,11 @@
         "is_sub_districts": false,
         "is_town": true
     },
-    "Central": {
+    "BHUBANESWAR": {
         "regional": "Odisha",
-        "is_capital": false,
+        "is_capital": true,
         "is_regions": false,
-        "is_divisions": true,
-        "is_districts": false,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "Southern": {
-        "regional": "Odisha",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": true,
+        "is_divisions": false,
         "is_districts": false,
         "is_headquarters": false,
         "is_largest_city": false,
@@ -56127,7 +57172,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56138,7 +57183,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56149,7 +57194,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56171,7 +57216,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56215,7 +57260,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56226,7 +57271,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56237,7 +57282,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56248,7 +57293,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56270,7 +57315,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56292,7 +57337,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56303,7 +57348,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56314,7 +57359,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56380,7 +57425,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56391,7 +57436,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56413,7 +57458,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56424,7 +57469,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56435,7 +57480,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -56446,7 +57491,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59388,6 +60433,138 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "ANGUL": {
+        "regional": "Odisha",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BOUDH": {
+        "regional": "Odisha",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BALASORE": {
+        "regional": "Odisha",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "DEOGARH": {
+        "regional": "Odisha",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "CHHATRAPUR": {
+        "regional": "Odisha",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "PARALAKHEMUNDI": {
+        "regional": "Odisha",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "JAJPUR": {
+        "regional": "Odisha",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KEONJHAR": {
+        "regional": "Odisha",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BHAWANIPATNA": {
+        "regional": "Odisha",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "PHULBANI": {
+        "regional": "Odisha",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BARIPADA": {
+        "regional": "Odisha",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SONEPUR": {
+        "regional": "Odisha",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Punjab": {
         "regional": "Chandigarh",
         "is_capital": false,
@@ -59713,7 +60890,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59724,7 +60901,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59735,7 +60912,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59746,7 +60923,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59768,7 +60945,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59779,7 +60956,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59790,7 +60967,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59801,7 +60978,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59823,7 +61000,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59834,7 +61011,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59845,7 +61022,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59856,7 +61033,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59867,7 +61044,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59889,7 +61066,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59911,7 +61088,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -59922,7 +61099,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62204,6 +63381,72 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "FAZILKA": {
+        "regional": "Punjab",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SRI MUKTSAR SAHIB": {
+        "regional": "Punjab",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "PATHANKOT": {
+        "regional": "Punjab",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MOHALI": {
+        "regional": "Punjab",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "NAWANSHAHR": {
+        "regional": "Punjab",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "TARAN TARAN SAHIB": {
+        "regional": "Punjab",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Rajasthan": {
         "regional": "Rajasthan",
         "is_capital": false,
@@ -62225,6 +63468,17 @@
         "is_largest_city": false,
         "is_sub_districts": true,
         "is_town": true
+    },
+    "JAIPUR": {
+        "regional": "Rajasthan",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "Jodhpur": {
         "regional": "Rajasthan",
@@ -62606,7 +63860,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62617,7 +63871,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62628,7 +63882,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62650,7 +63904,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62661,7 +63915,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62683,7 +63937,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62694,7 +63948,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62705,18 +63959,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "JAIPUR": {
-        "regional": "Rajasthan",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62727,7 +63970,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62738,7 +63981,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62749,7 +63992,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62760,7 +64003,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62771,7 +64014,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62793,7 +64036,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62804,7 +64047,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62815,7 +64058,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62826,7 +64069,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62837,7 +64080,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62848,7 +64091,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62859,7 +64102,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62870,7 +64113,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62881,7 +64124,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62903,7 +64146,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62914,7 +64157,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62925,18 +64168,18 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
     },
     "UDAIPUR": {
-        "regional": "Rajasthan",
+        "regional": "Tripura",
         "is_capital": false,
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -62947,7 +64190,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -65944,6 +67187,61 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "CHITTORGARH": {
+        "regional": "Rajasthan",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "DHOLPUR": {
+        "regional": "Rajasthan",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "JALORE": {
+        "regional": "Rajasthan",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "JHUNJHUNU": {
+        "regional": "Rajasthan",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SRI GANGANAGAR": {
+        "regional": "Rajasthan",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Sikkim": {
         "regional": "Sikkim",
         "is_capital": false,
@@ -65965,6 +67263,17 @@
         "is_largest_city": false,
         "is_sub_districts": true,
         "is_town": true
+    },
+    "GANGTOK": {
+        "regional": "Sikkim",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "East Sikkim": {
         "regional": "Sikkim",
@@ -66120,6 +67429,39 @@
         "is_sub_districts": false,
         "is_town": true
     },
+    "MANGAN": {
+        "regional": "Sikkim",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "NAMCHI": {
+        "regional": "Sikkim",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "GYALSHING": {
+        "regional": "Sikkim",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Tamil Nadu": {
         "regional": "Tamil Nadu",
         "is_capital": false,
@@ -66132,6 +67474,17 @@
         "is_town": false
     },
     "Chennai": {
+        "regional": "Tamil Nadu",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "CHENNAI": {
         "regional": "Tamil Nadu",
         "is_capital": true,
         "is_regions": false,
@@ -66604,17 +67957,6 @@
         "is_sub_districts": false,
         "is_town": false
     },
-    "CHENNAI": {
-        "regional": "Tamil Nadu",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
     "KANCHEEPURAM": {
         "regional": "Tamil Nadu",
         "is_capital": false,
@@ -66632,7 +67974,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66643,7 +67985,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66654,7 +67996,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66665,7 +68007,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66676,7 +68018,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66687,7 +68029,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66709,7 +68051,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66720,7 +68062,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66731,7 +68073,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66742,7 +68084,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66753,7 +68095,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66764,7 +68106,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66775,7 +68117,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66786,7 +68128,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66797,7 +68139,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66819,7 +68161,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66830,7 +68172,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66841,7 +68183,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66852,7 +68194,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66863,7 +68205,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66874,7 +68216,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66885,7 +68227,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66907,7 +68249,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66929,7 +68271,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66940,7 +68282,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -66951,7 +68293,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -78506,6 +79848,94 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "KALLAKURICHI": {
+        "regional": "Tamil Nadu",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KANCHIPURAM": {
+        "regional": "Tamil Nadu",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KANYAKUMARI": {
+        "regional": "Tamil Nadu",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "UDAGAMANDALAM": {
+        "regional": "Tamil Nadu",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "THOOTHUKUDI": {
+        "regional": "Tamil Nadu",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "TIRUPUR": {
+        "regional": "Tamil Nadu",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "TIRUVALLUR": {
+        "regional": "Tamil Nadu",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "TIRUVARUR": {
+        "regional": "Tamil Nadu",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Telangana": {
         "regional": "Telangana",
         "is_capital": false,
@@ -78693,6 +80123,270 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "KOTHAGUDEM": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "JAGTIAL": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "JANGAON": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BHUPALPALLE": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "GADWAL": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KAMAREDDY": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "ASIFABAD": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MAHABUBABAD": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MAHABUBNAGAR": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MANCHERIAL": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SHAMIRPET": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "NAGARKURNOOL": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "NARAYANAPET": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MULUGU": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "NIRMAL": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "PEDDAPALLI": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SIRCILLA": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SHAMSHABAD": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SANGAREDDY": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SIDDIPET": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SURYAPET": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "VIKARABAD": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "WANAPARTHY": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BHONGIR": {
+        "regional": "Telangana",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Tripura": {
         "regional": "Tripura",
         "is_capital": false,
@@ -78705,6 +80399,17 @@
         "is_town": false
     },
     "Agartala": {
+        "regional": "Tripura",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "AGARTALA": {
         "regional": "Tripura",
         "is_capital": true,
         "is_regions": false,
@@ -79397,6 +81102,72 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "AMBASSA": {
+        "regional": "Tripura",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BISHRAMGANJ": {
+        "regional": "Tripura",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KHOWAI": {
+        "regional": "Tripura",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KAILASHAHAR": {
+        "regional": "Tripura",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "DHARMANAGAR": {
+        "regional": "Tripura",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BELONIA": {
+        "regional": "Tripura",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Uttar Pradesh": {
         "regional": "Uttar Pradesh",
         "is_capital": false,
@@ -79418,6 +81189,17 @@
         "is_largest_city": false,
         "is_sub_districts": true,
         "is_town": true
+    },
+    "LUCKNOW": {
+        "regional": "Uttar Pradesh",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "Agra": {
         "regional": "Uttar Pradesh",
@@ -80228,7 +82010,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80239,7 +82021,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80250,7 +82032,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80261,7 +82043,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80272,7 +82054,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80294,7 +82076,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80316,7 +82098,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80349,7 +82131,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80371,7 +82153,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80382,7 +82164,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80393,7 +82175,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80404,7 +82186,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80426,7 +82208,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80437,7 +82219,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80448,7 +82230,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80459,7 +82241,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80470,7 +82252,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80481,7 +82263,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80492,18 +82274,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "LUCKNOW": {
-        "regional": "Uttar Pradesh",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80514,7 +82285,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80536,7 +82307,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80547,7 +82318,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80558,7 +82329,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80602,7 +82373,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80613,7 +82384,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80624,7 +82395,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80635,7 +82406,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80646,7 +82417,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80657,7 +82428,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80690,7 +82461,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80701,7 +82472,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80723,7 +82494,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80734,23 +82505,12 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
     },
     "SHRAWASTI": {
-        "regional": "Uttar Pradesh",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "BALRAMPUR": {
         "regional": "Uttar Pradesh",
         "is_capital": false,
         "is_regions": false,
@@ -80767,7 +82527,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80789,7 +82549,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80822,7 +82582,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80844,7 +82604,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80855,7 +82615,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80866,7 +82626,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80877,7 +82637,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80888,7 +82648,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80899,7 +82659,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80910,7 +82670,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80921,7 +82681,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80943,7 +82703,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -80965,7 +82725,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -89880,6 +91640,237 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "PRAYAGRAJ": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "AKBARPUR": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "AMROHA": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BADAUN": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BULANDSHAHR": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "FATEHGARH": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "NOIDA": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "HAPUR": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "HATHRAS": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KANPUR": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KASGANJ": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MANJHANPUR": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "PADARAUNA": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MAHARAJGANJ": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KHALILABAD": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "GYANPUR": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SAMBHAL": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SHAMLI": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SHRAVASTI": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "NAVGARH": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "ROBERTSGANJ": {
+        "regional": "Uttar Pradesh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Uttarakhand": {
         "regional": "Uttarakhand",
         "is_capital": false,
@@ -89901,6 +91892,17 @@
         "is_largest_city": false,
         "is_sub_districts": true,
         "is_town": true
+    },
+    "DEHRADUN": {
+        "regional": "Uttarakhand",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "Kumaon": {
         "regional": "Uttarakhand",
@@ -90073,7 +92075,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -90095,23 +92097,12 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
     },
     "TEHRI GARHWAL": {
-        "regional": "Uttarakhand",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "DEHRADUN": {
         "regional": "Uttarakhand",
         "is_capital": false,
         "is_regions": false,
@@ -90139,7 +92130,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -90150,7 +92141,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -90161,7 +92152,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -90172,7 +92163,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -90183,7 +92174,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -91332,6 +93323,61 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "GOPESHWAR": {
+        "regional": "Uttarakhand",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "HARIDWAR": {
+        "regional": "Uttarakhand",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "PAURI": {
+        "regional": "Uttarakhand",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "TEHRI": {
+        "regional": "Uttarakhand",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "RUDRAPUR": {
+        "regional": "Uttarakhand",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "West Bengal": {
         "regional": "West Bengal",
         "is_capital": false,
@@ -91353,6 +93399,17 @@
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": true
+    },
+    "KOLKATA": {
+        "regional": "West Bengal",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "Malda division": {
         "regional": "West Bengal",
@@ -91767,7 +93824,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -91888,7 +93945,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -91905,17 +93962,6 @@
         "is_town": false
     },
     "HAORA": {
-        "regional": "West Bengal",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "KOLKATA": {
         "regional": "West Bengal",
         "is_capital": false,
         "is_regions": false,
@@ -102398,6 +104444,226 @@
         "is_sub_districts": false,
         "is_town": false
     },
+    "ALIPURDUAR": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "ASANSOL": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BARDHAMAN": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SURI": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "COOCH BEHAR": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "DARJEELING": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "RAIGANJ": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BALURGHAT": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "CHINSURA": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "HOWRAH": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "JHARGRAM": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KALIMPONG": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MALDA CITY": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "MEDINIPUR": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "TAMLUK": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BAHARAMPUR": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KRISHNANAGAR": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "BARASAT": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "ALIPORE": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "PURULIA": {
+        "regional": "West Bengal",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Andaman and Nicobar Islands": {
         "regional": "Andaman and Nicobar Islands",
         "is_capital": false,
@@ -102419,6 +104685,17 @@
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": true
+    },
+    "PORT BLAIR": {
+        "regional": "Andaman and Nicobar Islands",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "North and Middle Andaman": {
         "regional": "Andaman and Nicobar Islands",
@@ -102585,13 +104862,24 @@
         "is_sub_districts": false,
         "is_town": false
     },
-    "CHANDIGARH": {
-        "regional": "Chandigarh",
+    "MAYABUNDER": {
+        "regional": "Andaman and Nicobar Islands",
         "is_capital": false,
         "is_regions": false,
         "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "CAR NICOBAR": {
+        "regional": "Andaman and Nicobar Islands",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -102651,6 +104939,28 @@
         "is_sub_districts": false,
         "is_town": true
     },
+    "HARYANA": {
+        "regional": "Chandigarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "PUNJAB": {
+        "regional": "Chandigarh",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Dadra and Nagar Haveli": {
         "regional": "Dadra and Nagar Haveli",
         "is_capital": false,
@@ -102672,6 +104982,17 @@
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": true
+    },
+    "SILVASSA": {
+        "regional": "Dadra and Nagar Haveli",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
     },
     "Nagar Haveli": {
         "regional": "Dadra and Nagar Haveli",
@@ -102772,6 +105093,17 @@
         "is_sub_districts": true,
         "is_town": true
     },
+    "DAMAN": {
+        "regional": "Daman and Diu",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": true,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "Diu": {
         "regional": "Daman and Diu",
         "is_capital": false,
@@ -102789,18 +105121,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
-        "is_largest_city": false,
-        "is_sub_districts": false,
-        "is_town": false
-    },
-    "DAMAN": {
-        "regional": "Daman and Diu",
-        "is_capital": false,
-        "is_regions": false,
-        "is_divisions": false,
-        "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -102893,6 +105214,17 @@
         "is_sub_districts": true,
         "is_town": true
     },
+    "KAVARATTI": {
+        "regional": "Lakshadweep",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
     "LAKSHADWEEP": {
         "regional": "Lakshadweep",
         "is_capital": false,
@@ -102971,6 +105303,17 @@
         "is_town": true
     },
     "Pondicherry": {
+        "regional": "Puducherry",
+        "is_capital": true,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "PONDICHERRY": {
         "regional": "Puducherry",
         "is_capital": true,
         "is_regions": false,
@@ -103064,7 +105407,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -103086,7 +105429,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -103097,7 +105440,7 @@
         "is_regions": false,
         "is_divisions": false,
         "is_districts": true,
-        "is_headquarters": false,
+        "is_headquarters": true,
         "is_largest_city": false,
         "is_sub_districts": false,
         "is_town": false
@@ -103245,8 +105588,8 @@
         "is_sub_districts": false,
         "is_town": false
     },
-    "New Delhi": {
-        "regional": "National Capital Territory of Delhi",
+    "Delhi": {
+        "regional": "Delhi",
         "is_capital": true,
         "is_regions": false,
         "is_divisions": false,
@@ -103256,12 +105599,12 @@
         "is_sub_districts": false,
         "is_town": false
     },
-    "Delhi": {
-        "regional": "National Capital Territory of Delhi",
+    "DELHI": {
+        "regional": "Delhi",
         "is_capital": true,
         "is_regions": false,
         "is_divisions": false,
-        "is_districts": false,
+        "is_districts": true,
         "is_headquarters": false,
         "is_largest_city": false,
         "is_sub_districts": false,
@@ -104907,6 +107250,127 @@
         "is_town": false
     },
     "Nand Nagri": {
+        "regional": "National Capital Territory of Delhi",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "CONNAUGHT PLACE": {
+        "regional": "National Capital Territory of Delhi",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "ALIPUR": {
+        "regional": "National Capital Territory of Delhi",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "KANJHAWALA": {
+        "regional": "National Capital Territory of Delhi",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "RAJOURI GARDEN": {
+        "regional": "National Capital Territory of Delhi",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "DWARKA": {
+        "regional": "National Capital Territory of Delhi",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SAKET": {
+        "regional": "National Capital Territory of Delhi",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "DEFENCE COLONY": {
+        "regional": "National Capital Territory of Delhi",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "DARYAGANJ": {
+        "regional": "National Capital Territory of Delhi",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "NAND NAGRI": {
+        "regional": "National Capital Territory of Delhi",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "SHAHDARA": {
+        "regional": "National Capital Territory of Delhi",
+        "is_capital": false,
+        "is_regions": false,
+        "is_divisions": false,
+        "is_districts": false,
+        "is_headquarters": true,
+        "is_largest_city": false,
+        "is_sub_districts": false,
+        "is_town": false
+    },
+    "PREET VIHAR": {
         "regional": "National Capital Territory of Delhi",
         "is_capital": false,
         "is_regions": false,
