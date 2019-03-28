@@ -136,7 +136,6 @@ def read_map_file(mapfile='india_names2regions.json'):
         names_map = json.load(reader)
     return names_map
 
-
 def get_regional(text):
     names_map = read_map_file()
     out_count = get_detail_regional(text, names_map)
