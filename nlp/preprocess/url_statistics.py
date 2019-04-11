@@ -71,9 +71,44 @@ def get_url_xpath_file(file):
         _of.writelines(json.dumps(result, indent=4))
 
 
+def get_url_demo(domain_file,html_file):
+    _count = dict()
+    result = dict()
+    domain_list = list()
+    with open(domain_file, 'r') as _if:
+        for i in json.load(_if).keys():
+            domain_list.append(i)
 
+
+    with open(html_file, 'r') as f:
+        try:
+            while True:
+                line = json.loads(f.readline())
+                if line:
+                    url = line['url']
+                    _domain = urlparse(url).netloc
+                    if _domain in domain_list:
+                        if _domain in _count.keys():
+                            if _count[_domain] > 50:
+                                pass
+                            else:
+                                _count[_domain] += 1
+                                result[_domain].append(line)
+                        else:
+                            _count[_domain] = 1
+                            result[_domain] = list()
+                else:
+                    pass
+        except Exception as e:
+            print(e)
+
+    with open("in_hi_url.json", 'w') as _of:
+        _of.writelines(json.dumps(result, indent=4))
 
 
 if __name__ == '__main__':
     file = '/home/zoushuai/algoproject/algo-python/nlp/preprocess/count_result'
-    get_url_xpath_file(file)
+    # get_url_xpath_file(file)
+    domain_file = '/home/zoushuai/algoproject/algo-python/nlp/preprocess/hi_rules.json'
+    url_file = '/data/in_hi_html.json'
+    get_url_demo(domain_file,url_file)
