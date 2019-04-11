@@ -1,0 +1,695 @@
+{
+    "www.jagran.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "news.raftaar.in": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindi.eenaduindia.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.amarujala.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.patrika.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.jansatta.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.univarta.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "aajtak.intoday.in": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "navbharattimes.indiatimes.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.nayaindia.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.india.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "livetoday.online": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.khabarindiatv.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "khabar.ndtv.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.sumanasa.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindi.oneindia.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.prabhatkhabar.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.newstracklive.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "jantaserishta.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.punjabkesari.in": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "abpnews.abplive.in": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.uttamhindu.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "samacharjagat.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "dainiktribuneonline.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.dainiksaveratimes.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.sanjeevnitoday.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "punjabkesari.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.rochakkhabare.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.divyahimachal.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.samacharnama.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.naukrinama.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "nayaindia.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.haribhoomi.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.newsstate.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindi.siasat.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.bhaskar.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.inkhabar.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindi.news18.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindi.news24online.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindi.nyoooz.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "puridunia.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "liveindia.live": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.navodayatimes.in": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "dabangdunia.co": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "zeenews.india.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.sabguru.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.indianletter.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.prabhasakshi.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.livehindustan.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.pradeshtoday.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "ianshindi.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "punjab.punjabkesari.in": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "himachal.punjabkesari.in": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "livebihar.live": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "rajasthanpatrika.patrika.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "rajasthankhabre.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.deshbandhu.co.in": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "m.bollywoodtadka.in": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "haryana.punjabkesari.in": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "heraldspot.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "poorvanchalmedia.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "dailynews360.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindi.indiatvnews.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.firpost.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.bbc.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindi.filmibeat.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindi.newsroompost.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindi.sportzwiki.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindustankhabar.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindi.webdunia.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.instantkhabar.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.hindi.indiasamvad.co.in": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "bharatkhabar.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.tarunmitra.in": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "news.ajitsamachar.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.bollywoodnews.org": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "thehook.news": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.fashionnewsera.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "himachaldastak.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "janman.tv": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.samacharjagat.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.samaylive.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.khaskhabar.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindnews24x7.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "crimenazar.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.nedricknews.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.dailybiharnews.in": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "cnewsbharat.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.upuklive.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "polkholindia.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.hindikhabar.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "khabar.ibnlive.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.bhilwarahalchal.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.khabrein24.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "ujjawalprabhat.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "todaysamachar.in": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindi.catchnews.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "hindutva.info": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    },
+    "www.outlookhindi.com": {
+        "category": "none",
+        "title": "none",
+        "tag": "none",
+        "hyperlink_text": "none",
+        "hyperlink_url": "none"
+    }
+}
