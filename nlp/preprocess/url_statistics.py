@@ -111,4 +111,4 @@ if __name__ == '__main__':
     # get_url_xpath_file(file)
     domain_file = '/home/zoushuai/algoproject/algo-python/nlp/preprocess/hi_rules.json'
     url_file = '/data/in_hi_html.json'
-    get_url_demo(domain_file,url_file)
+    get_url_demo(domain_file, url_file)

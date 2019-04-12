@@ -1,15 +1,15 @@
 {
     "www.jagran.com": {
-        "category": "none",
-        "title": "none",
-        "tag": "none",
-        "hyperlink_text": "none",
-        "hyperlink_url": "none"
+        "category": "//div[@class='iw_component']/section/ul/li/a/text()",
+        "title": "//div[@class='iw_component']/article/div[@class='articleHd']//h1/text()",
+        "tag": "//meta[@name='keywords']/@content",
+        "hyperlink_text": "//div[@class='iw_component']/article/div[@class='articleBody']//a/text()",
+        "hyperlink_url": "//div[@class='iw_component']/article/div[@class='articleBody']//a/@href"
     },
     "news.raftaar.in": {
         "category": "none",
-        "title": "none",
-        "tag": "none",
+        "title": "//div[@class='col-md-12 col-sm-12']//div[@class='news_text']/h3/text()",
+        "tag": "//div[@class='col-md-12 col-sm-12']//div[@class='news_text']/div[@class='red_more_details']/ul//a/text()",
         "hyperlink_text": "none",
         "hyperlink_url": "none"
     },
@@ -21,23 +21,23 @@
         "hyperlink_url": "none"
     },
     "www.amarujala.com": {
-        "category": "none",
-        "title": "none",
-        "tag": "none",
-        "hyperlink_text": "none",
-        "hyperlink_url": "none"
+        "category": "//div[@class='col-xs-12 col-md-12']//div[@class='bredcrums']/a/text()",
+        "title": "//div[contains(@class, 'col-xs-12 col-md-8 full-column white-wrapper shadow mrgb8') or contains(@class,'col-xs-12 col-md-8 innerwrap detail')]//h1/text()",
+        "tag": "//div[contains(@class, 'col-xs-12 col-md-8 full-column white-wrapper shadow mrgb8') or contains(@class,'col-xs-12 col-md-8 innerwrap detail')]//div[@class='tagsDv']/a/span/text()",
+        "hyperlink_text": "//div[@class='col-xs-12 col-md-8 full-column white-wrapper shadow mrgb8']/section[@class='article-detail']/div[@class='article-desc']//a/text()",
+        "hyperlink_url": "//div[@class='col-xs-12 col-md-8 full-column white-wrapper shadow mrgb8']/section[@class='article-detail']/div[@class='article-desc']//a/@href"
     },
     "www.patrika.com": {
-        "category": "none",
-        "title": "none",
-        "tag": "none",
-        "hyperlink_text": "none",
-        "hyperlink_url": "none"
+        "category": "//div[@class='breadcrumb-list']/ul/li/a/text()",
+        "title": "//div[@class='col-md-9 col-sm-9 w865']//h1/text()",
+        "tag": "//div[@class='ins_keyword pd10 mt-top']/a/text()",
+        "hyperlink_text": "//div[@class='col-md-9 col-sm-9 w865']/div[@class='standard-story-details sdl-left-col']//div[@class='complete-story']/p//a/text()",
+        "hyperlink_url": "//div[@class='col-md-9 col-sm-9 w865']/div[@class='standard-story-details sdl-left-col']//div[@class='complete-story']/p//a/@href"
     },
     "www.jansatta.com": {
-        "category": "none",
-        "title": "none",
-        "tag": "none",
+        "category": "//div[@class='mainbox']/section/article/ol[@class='breadcrumb']//a/span/text()",
+        "title": "//div[@class='mainbox']/section/article/h1/text()",
+        "tag": "//div[@class='tags']/ul/li/a/text()",
         "hyperlink_text": "none",
         "hyperlink_url": "none"
     },
