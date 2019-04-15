@@ -8,6 +8,7 @@
 """
 
 import requests
+from requests.exceptions import Timeout, HTTPError
 from lxml.html import etree
 import json
 import sys
@@ -28,7 +29,7 @@ with open(test_url_file, 'r') as f:
 test_xpath_result_file = open("test_xpath_result.json", 'w')
 out = dict()
 for k, url_list in test_url.items():
-    domain = 'www.jansatta.com'
+    domain = 'www.punjabkesari.in'
     if k == domain:
         for _url in url_list:
             result = {"category": [], "title": [], "tag": [], "hyperlink_text": [], "hyperlink_url": []}
@@ -36,14 +37,23 @@ for k, url_list in test_url.items():
             url = _url['url']
             result['url'] = url
             print("正在处理>>>{}".format(url))
-            response = requests.get(url, headers=header)
-            pt = etree.HTML(response.text, parser=etree.HTMLParser(encoding='utf-8'))
-            for i in xpath_keys:
-                xpath_str = xpath_rules[domain][i]
-                if xpath_str != 'none':
-                    _out = pt.xpath(xpath_str)
-                    result[i] = [i.strip().strip("\n\t") for i in _out if i.strip().strip("\n\t")]
-            out[_url['id']] = result
+            try:
+                response = requests.get(url=url, headers=header, timeout=5)
+                html = response.text
+            except Timeout as e1:
+                print("正在处理>>>{}\n>>>{}".format(url, e1))
+            except HTTPError as e2:
+                print("正在处理>>>{}\n>>>{}".format(url, e2))
+            except Exception as e:
+                print("正在处理>>>{}\n>>>{}".format(url, e))
+            else:
+                pt = etree.HTML(response.text, parser=etree.HTMLParser(encoding='utf-8'))
+                for i in xpath_keys:
+                    xpath_str = xpath_rules[domain][i]
+                    if xpath_str != 'none':
+                        _out = pt.xpath(xpath_str)
+                        result[i] = [i.strip().strip("\n\t") for i in _out if i.strip().strip("\n\t")]
+                out[_url['id']] = result
         test_xpath_result_file.write(json.dumps(out, indent=4))
         # sys.stdout.flush()
         # test_xpath_result_file.flush()
