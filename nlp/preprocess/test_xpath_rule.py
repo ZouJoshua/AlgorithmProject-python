@@ -29,7 +29,7 @@ with open(test_url_file, 'r') as f:
 test_xpath_result_file = open("test_xpath_result.json", 'w')
 out = dict()
 for k, url_list in test_url.items():
-    domain = 'www.punjabkesari.in'
+    domain = 'hindi.filmibeat.com'
     if k == domain:
         for _url in url_list:
             result = {"category": [], "title": [], "tag": [], "hyperlink_text": [], "hyperlink_url": []}
