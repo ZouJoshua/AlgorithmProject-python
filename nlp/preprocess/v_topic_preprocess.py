@@ -333,7 +333,7 @@ class LdaProcess(object):
             # vocab_list = [vocab.strip() for vocab in f.readlines()]
             vocab_dict = dict()
             for i, vocab in enumerate(f.readlines()):
-                vocab_dict[vocab] = i
+                vocab_dict[vocab.strip()] = i
 
         df = open(docword_file, 'w')
         corpus = self.read_corpus_from_localfile(tf_file)
