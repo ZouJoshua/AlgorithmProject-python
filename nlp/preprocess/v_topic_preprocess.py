@@ -343,8 +343,9 @@ class LdaProcess(object):
             _did = _doc['id']
             for k, v in _doc['tf'].items():
                 # wid = vocab_list.index(k)
-                wid = vocab_dict[k]
-                df.write("{}|{}|{}\n".format(did_count, wid, v))
+                if k in vocab_dict.keys():
+                    wid = vocab_dict[k]
+                    df.write("{}|{}|{}\n".format(did_count, wid, v))
         df.close()
         print(">>> 文档词汇文件已生成:{}".format(docword_file))
 
