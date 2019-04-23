@@ -235,3 +235,16 @@ def clean_string(text):
         else:
             cleaned_text += " "
     return cleaned_text
+
+
+
+def get_stopwords():
+    with open("../data/stopwords_en.txt", 'r') as _of:
+        lines = _of.readlines()
+    s = set()
+    for line in lines:
+        s.add(line.strip())
+    res = open("../data/video_stopwords.txt", 'w')
+    for i in sorted(s):
+        res.write(i + '\n')
+    res.close()
