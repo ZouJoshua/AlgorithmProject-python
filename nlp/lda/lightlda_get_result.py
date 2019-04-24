@@ -95,7 +95,7 @@ class LDAResult:
                 else:
                     break
         e = time.time()
-        print('>>>>>>>>>>读取文件耗时{}'.format(e - s))
+        print('>>>>>>>>>> 读取文件耗时{}'.format(e - s))
         assert row.__len__() == data.__len__()
         assert col.__len__() == data.__len__()
         doc_topic_mat = sparse.csr_matrix((data, (row, col)), shape=(self.tn, self.dn))
@@ -108,7 +108,7 @@ class LDAResult:
         assert doc_topic_mat.shape[1] == doc_cnts_factor.shape[1]
         doc_topic_prob_mat = (doc_topic_mat.toarray() + self.a) / doc_cnts_factor
         e1 = time.time()
-        print(">>>>>>>>>>计算概率矩阵耗时{}".format(e1 - s1))
+        print(">>>>>>>>>> 计算概率矩阵耗时{}".format(e1 - s1))
         # 释放内存
         del doc_topic_mat
         gc.collect()
@@ -144,7 +144,7 @@ class LDAResult:
                 else:
                     break
         e = time.time()
-        print('>>>>>>>>>>读取文件耗时{}'.format(e - s))
+        print('>>>>>>>>>> 读取文件耗时{}'.format(e - s))
         assert row.__len__() == data.__len__()
         assert col.__len__() == data.__len__()
         topic_vocab_mat = sparse.csr_matrix((data, (row, col)), shape=(self.vn, self.tn))
@@ -160,7 +160,7 @@ class LDAResult:
         topic_cnts_factor = np.array(topic_cnts) + factor
         topic_vocab_prob_mat = (topic_vocab_mat.toarray() + self.b) / topic_cnts_factor
         e1 = time.time()
-        print(">>>>>>>>>>计算概率矩阵耗时{}".format(e1 - s1))
+        print(">>>>>>>>>> 计算概率矩阵耗时{}".format(e1 - s1))
         # 释放内存
         del topic_vocab_mat
         gc.collect()
