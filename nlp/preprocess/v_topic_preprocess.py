@@ -384,22 +384,22 @@ def main():
     # print(base_dir)
     # file = os.path.join(base_dir, 'data', 'test')
     # outfile = os.path.join(base_dir, 'data', 'tf')
-    file = './lightlda_data/test'
-    outfile = './lightlda_data/test_tf'
-    filtered_outfile = './lightlda_data/test_filtered_tf'
-    tf_idf_file = './lightlda_data/test_tf_idf'
-    vocab_file = './lightlda_data/test_vocab.video.txt'
-    docword_file = './lightlda_data/test_docword.video.txt'
-    wordcount_file = "./lightlda_data/test_vocabcount"
+    # file = './lightlda_data/test'
+    # outfile = './lightlda_data/test_tf'
+    # filtered_outfile = './lightlda_data/test_filtered_tf'
+    # tf_idf_file = './lightlda_data/test_tf_idf'
+    # vocab_file = './lightlda_data/test_vocab.video.txt'
+    # docword_file = './lightlda_data/test_docword.video.txt'
+    # wordcount_file = "./lightlda_data/test_vocabcount"
 
     # prod
-    # file = '/data/zoushuai/video/v_topic/v_topic.json'
-    # outfile = '/data/zoushuai/video/v_topic/v_tf'
-    # filtered_outfile = '/data/zoushuai/video/v_topic/v_filtered_tf'
-    # tf_idf_file = '/data/zoushuai/video/v_topic/v_tf_idf'
-    # vocab_file = '/data/zoushuai/video/v_topic/vocab.video.txt'
-    # docword_file = '/data/zoushuai/video/v_topic/docword.video.txt'
-    # wordcount_file = "/data/zoushuai/video/v_topic/v_vocabcount"
+    file = '/data/zoushuai/video/v_topic/v_topic.json'
+    outfile = '/data/zoushuai/video/v_topic/v_tf'
+    filtered_outfile = '/data/zoushuai/video/v_topic/v_filtered_tf'
+    tf_idf_file = '/data/zoushuai/video/v_topic/v_tf_idf'
+    vocab_file = '/data/zoushuai/video/v_topic/vocab.video.txt'
+    docword_file = '/data/zoushuai/video/v_topic/docword.video.txt'
+    wordcount_file = "/data/zoushuai/video/v_topic/v_vocabcount"
     lp = LdaProcess(file, outfile, filtered_outfile,
                     tf_idf_file, vocab_file, docword_file, wordcount_file)
     lp.get_ldaprocess_result_file()
