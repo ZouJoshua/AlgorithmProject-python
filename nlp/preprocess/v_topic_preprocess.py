@@ -53,15 +53,38 @@ def read_data(file, stopline=None):
 
 class CleanText(object):
 
-    def __init__(self, text):
-        self._text = text.lower()
+    def __init__(self, text, lower=False):
+        if lower:
+            self._text = text.lower()
+        else:
+            self._text = text
         self.clean_text = self.clean()
 
 
     def clean(self):
-        no_mail = self._clean_mail(self._text)
-        no_html = self._clean_html(no_mail)
-        return self._remove_emoji(no_html)
+        # print(self._text)
+        no_html = self._clean_html(self._text)
+        # print("_______________________________________________")
+        # print(no_html)
+        no_mail = self._clean_mail(no_html)
+        # print("_______________________________________________")
+        # print(no_mail)
+        no_ads = self._remove_ads(no_mail)
+        # print("_______________________________________________")
+        # print(no_ads)
+        return self._remove_emoji(no_ads)
+
+    @staticmethod
+    def _remove_ads(text):
+        ads_list = ['google plus', 'google', 'facebook', 'twitter', 'instagram', 'youtube', 'thank you',
+                    'subscribe', 'website', 'for more details', "email address",
+                    "for more videos", "free download", "download app", "app link",
+                    "app download link", "android app", "playstore", "download", "follow me", "follow us"
+                    "for business enquiries contact here", "thanks for watching", "thanks", "visit my blog"]
+        for i in ads_list:
+            text = text.replace(i, " ")
+
+        return text
 
     @staticmethod
     def _remove_emoji(text):
@@ -79,17 +102,17 @@ class CleanText(object):
         url_list = re.findall(pattern, text)
         for url in url_list:
             text = text.replace(url, " ")
-        return text.replace("( )", "")
+        return text.replace("( )", " ")
 
     @staticmethod
     def _clean_mail(text):
         # 去除邮箱
-        pattern = re.compile(r"^\w+[-_.]*[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$")
+        pattern = re.compile(r"\w+[-_.]*[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}")
         mail_list = re.findall(pattern, text)
         for mail in mail_list:
-            if type(mail) != str:
-                print(mail)
-                print(text)
+            # if type(mail) != str:
+            #     print(mail)
+            #     print(text)
             text = text.replace(mail, " ")
         return text
 
@@ -195,11 +218,11 @@ class LdaProcess(object):
         self._wcf = word_countfile
 
     def get_ldaprocess_result_file(self):
-        # self.write_corpus_to_localfile(self._f, self._of)
+        self.write_corpus_to_localfile(self._f, self._of)
         # corpus_list = read_corpus_from_localfile(outfile)
-        # self.filter_tf(self._of, self._fo, self._wcf, limitnum=6)
+        self.filter_tf(self._of, self._fo, self._wcf, limitnum=6)
         # get_words_tfidf(filtered_outfile, tf_idf_file)
-        # self.gen_vocab(self._fo, self._vf)
+        self.gen_vocab(self._fo, self._vf)
         self.gen_docword(self._fo, self._vf, self._df)
 
     def get_stopwords(self, stopword_file=None):
@@ -225,7 +248,11 @@ class LdaProcess(object):
                 if i['lang'] != 'hi':
                     # print(i['url'])
                     _id = i['id']
-                    text = CleanText(i['text']).clean_text
+                    title = CleanText(i['article_title']).clean_text
+                    content = CleanText(i['text'], lower=True).clean_text
+                    text = title + "\n" + content
+                    # print(text)
+                    # print("********************")
                     counter_term = PreProcessing(text, sw).count_term()
                     yield {"id": _id, "tf": counter_term}
 
@@ -281,7 +308,7 @@ class LdaProcess(object):
         print(">>> 计算已完成，已写入文件:{}".format(outfile))
 
     def filter_tf(self, corpusfile, new_corpusfile, word_countfile, limitnum=2):
-        print(">>> 正在过滤读词频，重新生成语料文件...")
+        print(">>> 正在过滤词频、长度，重新生成语料文件...")
         _count = dict()
         corpus_list = self.read_corpus_from_localfile(corpusfile)
         for _doc in corpus_list:
@@ -292,7 +319,7 @@ class LdaProcess(object):
                     _count[k] = 1
         count = dict()
         for _k, _v in _count.items():
-            if _v < limitnum:
+            if _v < limitnum or len(_k) > 50:
                 count[_k] = _v
         _nf = open(new_corpusfile, 'w')
         for doc in corpus_list:
@@ -357,22 +384,22 @@ def main():
     # print(base_dir)
     # file = os.path.join(base_dir, 'data', 'test')
     # outfile = os.path.join(base_dir, 'data', 'tf')
-    # file = './lightlda_data/test'
-    # outfile = './lightlda_data/test_tf'
-    # filtered_outfile = './lightlda_data/test_filtered_tf'
-    # tf_idf_file = './lightlda_data/test_tf_idf'
-    # vocab_file = './lightlda_data/test_vocab.video.txt'
-    # docword_file = './lightlda_data/test_docword.video.txt'
-    # wordcount_file = "./lightlda_data/test_vocabcount"
+    file = './lightlda_data/test'
+    outfile = './lightlda_data/test_tf'
+    filtered_outfile = './lightlda_data/test_filtered_tf'
+    tf_idf_file = './lightlda_data/test_tf_idf'
+    vocab_file = './lightlda_data/test_vocab.video.txt'
+    docword_file = './lightlda_data/test_docword.video.txt'
+    wordcount_file = "./lightlda_data/test_vocabcount"
 
     # prod
-    file = '/data/zoushuai/video/v_topic/v_topic.json'
-    outfile = '/data/zoushuai/video/v_topic/v_tf'
-    filtered_outfile = '/data/zoushuai/video/v_topic/v_filtered_tf'
-    tf_idf_file = '/data/zoushuai/video/v_topic/v_tf_idf'
-    vocab_file = '/data/zoushuai/video/v_topic/vocab.video.txt'
-    docword_file = '/data/zoushuai/video/v_topic/docword.video.txt'
-    wordcount_file = "/data/zoushuai/video/v_topic/v_vocabcount"
+    # file = '/data/zoushuai/video/v_topic/v_topic.json'
+    # outfile = '/data/zoushuai/video/v_topic/v_tf'
+    # filtered_outfile = '/data/zoushuai/video/v_topic/v_filtered_tf'
+    # tf_idf_file = '/data/zoushuai/video/v_topic/v_tf_idf'
+    # vocab_file = '/data/zoushuai/video/v_topic/vocab.video.txt'
+    # docword_file = '/data/zoushuai/video/v_topic/docword.video.txt'
+    # wordcount_file = "/data/zoushuai/video/v_topic/v_vocabcount"
     lp = LdaProcess(file, outfile, filtered_outfile,
                     tf_idf_file, vocab_file, docword_file, wordcount_file)
     lp.get_ldaprocess_result_file()
