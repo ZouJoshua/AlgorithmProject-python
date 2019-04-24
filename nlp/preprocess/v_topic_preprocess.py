@@ -25,8 +25,8 @@ from langdetect import detect
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.util import ngrams
-# nltk.download('punkt')
-# nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('stopwords')
 
 
 def read_data(file, stopline=None):
