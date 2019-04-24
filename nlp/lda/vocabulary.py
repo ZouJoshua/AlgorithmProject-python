@@ -7,8 +7,8 @@
 @Desc    : 
 """
 
-
-import nltk, re
+import nltk
+import re
 
 
 def load_corpus(range):

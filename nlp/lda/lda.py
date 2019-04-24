@@ -7,6 +7,8 @@
 @Desc    : 
 """
 
+import optparse
+from .vocabulary import load_file,load_corpus,Vocabulary
 
 import numpy
 
@@ -107,13 +109,12 @@ def output_word_topic_dist(lda, voca):
 
     phi = lda.worddist()
     for k in range(lda.K):
-        print ("\n-- topic: %d (%d words)" % (k, zcount[k]))
+        print("\n-- topic: %d (%d words)" % (k, zcount[k]))
         for w in numpy.argsort(-phi[k])[:20]:
-            print ("%s: %f (%d)" % (voca[w], phi[k, w], wordcount[k].get(w, 0)))
+            print("%s: %f (%d)" % (voca[w], phi[k, w], wordcount[k].get(w, 0)))
 
 def main():
-    import optparse
-    import vocabulary
+
     parser = optparse.OptionParser()
     parser.add_option("-f", dest="filename", help="corpus filename")
     parser.add_option("-c", dest="corpus", help="using range of Brown corpus' files(start:end)")
@@ -129,20 +130,21 @@ def main():
     if not (options.filename or options.corpus): parser.error("need corpus filename(-f) or corpus range(-c)")
 
     if options.filename:
-        corpus = vocabulary.load_file(options.filename)
+        corpus = load_file(options.filename)
     else:
-        corpus = vocabulary.load_corpus(options.corpus)
-        if not corpus: parser.error("corpus range(-c) forms 'start:end'")
+        corpus = load_corpus(options.corpus)
+        if not corpus:
+            parser.error("corpus range(-c) forms 'start:end'")
     if options.seed != None:
         numpy.random.seed(options.seed)
 
-    voca = vocabulary.Vocabulary(options.stopwords)
+    voca = Vocabulary(options.stopwords)
     docs = [voca.doc_to_ids(doc) for doc in corpus]
     if options.df > 0:
         docs = voca.cut_low_freq(docs, options.df)
 
     lda = LDA(options.K, options.alpha, options.beta, docs, voca.size(), options.smartinit)
-    print ("corpus=%d, words=%d, K=%d, a=%f, b=%f" % (len(corpus), len(voca.vocas), options.K, options.alpha, options.beta))
+    print("corpus=%d, words=%d, K=%d, a=%f, b=%f" % (len(corpus), len(voca.vocas), options.K, options.alpha, options.beta))
 
     #import cProfile
     #cProfile.runctx('lda_learning(lda, options.iteration, voca)', globals(), locals(), 'lda.profile')
