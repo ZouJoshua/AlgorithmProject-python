@@ -8,7 +8,7 @@
 """
 
 import optparse
-from .vocabulary import load_file,load_corpus,Vocabulary
+import vocabulary
 
 import numpy
 
@@ -112,6 +112,7 @@ def output_word_topic_dist(lda, voca):
         print("\n-- topic: %d (%d words)" % (k, zcount[k]))
         for w in numpy.argsort(-phi[k])[:20]:
             print("%s: %f (%d)" % (voca[w], phi[k, w], wordcount[k].get(w, 0)))
+            pass
 
 def main():
 
@@ -127,19 +128,22 @@ def main():
     parser.add_option("--seed", dest="seed", type="int", help="random seed")
     parser.add_option("--df", dest="df", type="int", help="threshold of document freaquency to cut words", default=0)
     (options, args) = parser.parse_args()
-    if not (options.filename or options.corpus): parser.error("need corpus filename(-f) or corpus range(-c)")
+    if not (options.filename or options.corpus):
+        parser.error("need corpus filename(-f) or corpus range(-c)")
 
     if options.filename:
-        corpus = load_file(options.filename)
+        # corpus = vocabulary.load_file(options.filename)
+        corpus = vocabulary.load_json_file(options.filename)
     else:
-        corpus = load_corpus(options.corpus)
+        corpus = vocabulary.load_corpus(options.corpus)
         if not corpus:
             parser.error("corpus range(-c) forms 'start:end'")
     if options.seed != None:
         numpy.random.seed(options.seed)
 
-    voca = Vocabulary(options.stopwords)
+    voca = vocabulary.Vocabulary(options.stopwords)
     docs = [voca.doc_to_ids(doc) for doc in corpus]
+    print(docs)
     if options.df > 0:
         docs = voca.cut_low_freq(docs, options.df)
 

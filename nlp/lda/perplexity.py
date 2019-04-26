@@ -27,17 +27,17 @@ import math
 import logging
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s : ', level=logging.INFO)
 
-def perplexity(ldamodel, testset, dictionary, size_dictionary, num_topics):
+def perplexity(ldamodel, testset, dictionary, vocabs_num, topics_num):
     """calculate the perplexity of a lda-model"""
     # dictionary : {7822:'deferment', 1841:'circuitry',19202:'fabianism'...]
     print('the info of this ldamodel: \n')
-    print('num of testset: %s; size_dictionary: %s; num of topics: %s'%(len(testset), size_dictionary, num_topics))
+    print('num of testset: %s; size_dictionary: %s; num of topics: %s' % (len(testset), vocabs_num, topics_num))
     prep = 0.0
     prob_doc_sum = 0.0
-    # store the probablity of topic-word:[(u'business', 0.010020942661849608),(u'family', 0.0088027946271537413)...]
+    # store the probablity of topic-word:[('business', 0.010020942661849608),('family', 0.0088027946271537413)...]
     topic_word_list = []
-    for topic_id in range(num_topics):
-        topic_word = ldamodel.show_topic(topic_id, size_dictionary)
+    for topic_id in range(topics_num):
+        topic_word = ldamodel.show_topic(topic_id, vocabs_num)
         dic = {}
         for word, probability in topic_word:
             dic[word] = probability
@@ -49,7 +49,7 @@ def perplexity(ldamodel, testset, dictionary, size_dictionary, num_topics):
         doc_topics_ist.append(ldamodel.get_document_topics(doc, minimum_probability=0))
     testset_word_num = 0
     for i in range(len(testset)):
-        prob_doc = 0.0 # the probablity of the doc
+        prob_doc = 0.0  # the probablity of the doc
         doc = testset[i]
         doc_word_num = 0 # the num of words in the doc
         for word_id, num in doc:
