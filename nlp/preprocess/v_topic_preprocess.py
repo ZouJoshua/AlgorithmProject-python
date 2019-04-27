@@ -163,7 +163,7 @@ class PreProcessing(object):
 
     def count_term(self):
         """Calculate the word frequency after cleaning"""
-        filtered = [w for i in self.get_ngrams_feature(n=4) for w in i if not w in self.stopwords]
+        filtered = [w for i in self.get_ngrams_feature(n=3) for w in i if not w in self.stopwords]
         count = Counter(filtered)
         return count
 
@@ -248,7 +248,7 @@ class LdaProcess(object):
                 if i['lang'] != 'hi':
                     # print(i['url'])
                     _id = i['id']
-                    title = CleanText(i['article_title']).clean_text
+                    title = CleanText(i['article_title'], lower=True).clean_text
                     content = CleanText(i['text'], lower=True).clean_text
                     text = title + "\n" + content
                     # print(text)
