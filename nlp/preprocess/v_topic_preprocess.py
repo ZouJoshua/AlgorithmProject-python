@@ -398,8 +398,8 @@ def main():
     outfile = '/data/zoushuai/video/v_topic/v_tf'
     filtered_outfile = '/data/zoushuai/video/v_topic/v_filtered_tf'
     tf_idf_file = '/data/zoushuai/video/v_topic/v_tf_idf'
-    vocab_file = '/data/zoushuai/video/v_topic/vocab.video.txt'
-    docword_file = '/data/zoushuai/video/v_topic/docword.video.txt'
+    vocab_file = '/data/zoushuai/video/v_topic/vocab'
+    docword_file = '/data/zoushuai/video/v_topic/docword'
     wordcount_file = "/data/zoushuai/video/v_topic/v_vocabcount"
     lp = LdaProcess(file, outfile, filtered_outfile,
                     tf_idf_file, vocab_file, docword_file, wordcount_file)
