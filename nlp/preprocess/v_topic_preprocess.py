@@ -218,11 +218,11 @@ class LdaProcess(object):
         self._wcf = word_countfile
 
     def get_ldaprocess_result_file(self):
-        self.write_corpus_to_localfile(self._f, self._of)
+        # self.write_corpus_to_localfile(self._f, self._of)
         # corpus_list = read_corpus_from_localfile(outfile)
-        self.filter_tf(self._of, self._fo, self._wcf, limitnum=6)
+        # self.filter_tf(self._of, self._fo, self._wcf, limitnum=6)
         # get_words_tfidf(filtered_outfile, tf_idf_file)
-        self.gen_vocab(self._fo, self._vf)
+        # self.gen_vocab(self._fo, self._vf)
         self.gen_docword(self._fo, self._vf, self._df)
 
     def get_stopwords(self, stopword_file=None):
@@ -366,13 +366,14 @@ class LdaProcess(object):
         corpus = self.read_corpus_from_localfile(tf_file)
         did_count = 0
         for _doc in corpus:
-            did_count += 1
-            _did = _doc['id']
-            for k, v in _doc['tf'].items():
-                # wid = vocab_list.index(k)
-                if k in vocab_dict.keys():
-                    wid = vocab_dict[k]
-                    df.write("{}|{}|{}\n".format(did_count, wid, v))
+            if _doc['tf']:
+                did_count += 1
+                _did = _doc['id']
+                for k, v in _doc['tf'].items():
+                    # wid = vocab_list.index(k)
+                    if k in vocab_dict.keys():
+                        wid = vocab_dict[k]
+                        df.write("{}|{}|{}\n".format(did_count, wid, v))
         df.close()
         print(">>> 文档词汇文件已生成:{}".format(docword_file))
 

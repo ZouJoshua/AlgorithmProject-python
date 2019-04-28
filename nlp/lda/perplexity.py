@@ -20,12 +20,17 @@
 import os
 from gensim.corpora import Dictionary
 from gensim import corpora, models
+from gensim.test.utils import datapath
 from datetime import datetime
 import math
 
 
 import logging
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s : ', level=logging.INFO)
+
+
+
+
 
 def perplexity(ldamodel, testset, dictionary, vocabs_num, topics_num):
     """calculate the perplexity of a lda-model"""
@@ -51,9 +56,9 @@ def perplexity(ldamodel, testset, dictionary, vocabs_num, topics_num):
     for i in range(len(testset)):
         prob_doc = 0.0  # the probablity of the doc
         doc = testset[i]
-        doc_word_num = 0 # the num of words in the doc
+        doc_word_num = 0  # the num of words in the doc
         for word_id, num in doc:
-            prob_word = 0.0 # the probablity of the word
+            prob_word = 0.0  # the probablity of the word
             doc_word_num += num
             word = dictionary[word_id]
             for topic_id in range(num_topics):
@@ -61,12 +66,12 @@ def perplexity(ldamodel, testset, dictionary, vocabs_num, topics_num):
                 prob_topic = doc_topics_ist[i][topic_id][1]
                 prob_topic_word = topic_word_list[topic_id][word]
                 prob_word += prob_topic*prob_topic_word
-            prob_doc += math.log(prob_word) # p(d) = sum(log(p(w)))
+            prob_doc += math.log(prob_word)  # p(d) = sum(log(p(w)))
         prob_doc_sum += prob_doc
         testset_word_num += doc_word_num
     # perplexity = exp(-sum(p(d)/sum(Nd))
     prep = math.exp(-prob_doc_sum/testset_word_num)
-    print ("the perplexity of this ldamodel is : %s"%prep)
+    print("the perplexity of this ldamodel is : %s" % prep)
     return prep
 
 if __name__ == '__main__':

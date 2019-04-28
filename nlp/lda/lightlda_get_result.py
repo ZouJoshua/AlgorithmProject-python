@@ -23,7 +23,7 @@ import os
 
 class LDAResult:
 
-    def __init__(self, alpha, beta, topic_num, vocab_num, doc_num, vocab_path, doc_topic_path, topic_word_path, topic_summary_path):
+    def __init__(self, alpha, beta, topic_num, vocab_num, doc_num, model_result_basedir):
         """
         初始化参数
         :param alpha:
@@ -41,17 +41,16 @@ class LDAResult:
         self.tn = topic_num
         self.vn = vocab_num
         self.dn = doc_num
-        self.vp = vocab_path
-        self.dtp = doc_topic_path
-        self.twp = topic_word_path
-        self.tsp = topic_summary_path
-        self.docs = self.get_text()
+        self.base_dir = model_result_basedir
+        self.dwp = os.path.join(model_result_basedir, 'docword')
+        self.vp = os.path.join(model_result_basedir, 'vocab')
+        self.dtp = os.path.join(model_result_basedir, 'doc_topic.0')
+        self.twp = os.path.join(model_result_basedir, 'server_0_table_0.model')
+        self.tsp = os.path.join(model_result_basedir, 'server_0_table_1.model')
+        self.docs = self.load_docs_from_docword(self.dwp)
 
-    def get_text(self):
-        pass
 
-
-    def loadVocabs(self):
+    def load_vocabs(self):
         """
         得到所有原始词
         :return: list
@@ -64,7 +63,7 @@ class LDAResult:
 
         return out
 
-    def loadDocTopicModel(self, index_with_0=True):
+    def load_doc_topic_mat(self, index_with_0=True):
         """
         得到文档-主题概率分布,得到每篇文章的所属主题
         :param index_with_0: docID索引是否以0开始
@@ -121,7 +120,7 @@ class LDAResult:
         print('------------------文档-主题概率分布矩阵------------------')
         return doc_topic_prob_mat
 
-    def loadTopicWordModel(self):
+    def load_topic_word_mat(self):
         """
         加载主题_词模型，生成主题-词概率矩阵
         :return: topic_vocab_prob_mat[wordID][topic_id] = topic_cnt
@@ -174,22 +173,38 @@ class LDAResult:
         return topic_vocab_prob_mat
 
 
-    def perplexity(self, docs=None):
-        if docs == None:
-            docs = self.docs
-        phi = self.loadTopicWordModel()
-        log_per = 0
-        N = 0
-        Kalpha = self.tn * self.a
-        for m, doc in enumerate(docs):
-            theta = self.n_m_z[m] / (len(self.docs[m]) + Kalpha)
-            for w in doc:
-                log_per -= np.log(np.inner(phi[w, :], theta))
-            N += len(doc)
-        return np.exp(log_per / N)
+    def load_docs_from_docword(self, docword_file):
+        print(">>>>>>>>>> 从文件 [{}] 加载docword".format(self.dwp))
+        f = open(docword_file, 'r')
+        docs = list()
+        doc_word_list = list()
+        for i in range(self.dn):
+            word_list = list()
+            doc_word_list.append(word_list)
+        did = 1
+        while True:
+            _line = f.readline()
+            if _line:
+                line = _line.strip()
+                docID, wordID, wordCnt = line.split("|")
+                for i in range(int(wordCnt)):
+                    doc_word_list[int(docID)-1].append(int(wordID))
+                # if docID == did:
+                #     for i in range(wordCnt):
+                #         doc_word_list.append(wordID)
+                # else:
+                #     docs.append(doc_word_list)
+                #     did += 1
+                #     doc_word_list = list()
+            else:
+                f.close()
+                break
+        print(">>>>>>>>>> 加载完成")
+        return docs
 
 
-    def dump_topic_topn_words(self, output_topic_topn_words, topn=100):
+
+    def dump_topic_topn_words(self, output_topic_topn_words, topn=None):
         """
         每个主题的前20个关键词写入到output_topic_topn_words中
         :param output_topic_topn_words: 主题的 topn 关键词输出文件
@@ -213,8 +228,8 @@ class LDAResult:
         :param topic_vocab_prob_mat: 主题—词概率矩阵
         :return: list[{"topic_id": id, "words":{"word": prob}},...]
         """
-        vocabs = self.loadVocabs()
-        mat_csc = sparse.csc_matrix(self.loadTopicWordModel())
+        vocabs = self.load_vocabs()
+        mat_csc = sparse.csc_matrix(self.load_topic_word_mat())
         m, n = mat_csc.get_shape()
         f = open(output_topic_topn_words, 'w', encoding='utf-8')
         print('------------------处理排序------------------')
@@ -233,7 +248,10 @@ class LDAResult:
             topic_sort_list = sorted(topic_words_dict.items(), key=lambda words: words[1], reverse=True)
             e = time.time()
             print('>>>>>>>>>>Topic{} 排序耗时{}'.format(col_index, (e - s)))
-            topn_list_tmp = topic_sort_list[:topn]
+            if topn:
+                topn_list_tmp = topic_sort_list[:topn]
+            else:
+                topn_list_tmp = topic_sort_list
             topn_topic_words_dict["words"] = dict(topn_list_tmp)
             f.write(json.dumps(topn_topic_words_dict))
             f.write('\n')
@@ -270,106 +288,51 @@ class LDAResult:
         else:
             raise Exception('请检查文件路径')
 
-class LDA(object):
-
-    def __init__(self, topics_num, alpha, beta, docs, docs_num, vocabs_num, smartinit=True):
-        self.K = topics_num
-        self.alpha = alpha          # parameter of topics prior
-        self.beta = beta            # parameter of words prior
-        self.docs = docs
-        self.D = docs_num
-        self.V = vocabs_num
-
-        self.z_m_n = []                                                   # topics of words of documents
-        self.n_m_z = np.zeros((docs_num, topics_num)) + alpha             # word count of each document and topic
-        self.n_z_t = np.zeros((topics_num, vocabs_num)) + beta            # word count of each topic and vocabulary
-        self.n_z = np.zeros(topics_num) + vocabs_num * beta               # word count of each topic
-
-        self.N = 0
-        for m, doc in enumerate(docs):
-            self.N += len(doc)
-            z_n = []
-            for t in doc:
-                if smartinit:
-                    p_z = self.n_z_t[:, t] * self.n_m_z[m] / self.n_z
-                    z = np.random.multinomial(1, p_z / p_z.sum()).argmax()
-                else:
-                    z = np.random.randint(0, topics_num)
-                z_n.append(z)
-                self.n_m_z[m, z] += 1
-                self.n_z_t[z, t] += 1
-                self.n_z[z] += 1
-            self.z_m_n.append(np.array(z_n))
-
-    def inference(self):
-        """learning once iteration"""
-        for m, doc in enumerate(self.docs):
-            z_n = self.z_m_n[m]
-            n_m_z = self.n_m_z[m]
-            for n, t in enumerate(doc):
-                # discount for n-th word t with topic z
-                z = z_n[n]
-                n_m_z[z] -= 1
-                self.n_z_t[z, t] -= 1
-                self.n_z[z] -= 1
-
-                # sampling topic new_z for t
-                p_z = self.n_z_t[:, t] * n_m_z / self.n_z
-                new_z = np.random.multinomial(1, p_z / p_z.sum()).argmax()
-
-                # set z the new topic and increment counters
-                z_n[n] = new_z
-                n_m_z[new_z] += 1
-                self.n_z_t[new_z, t] += 1
-                self.n_z[new_z] += 1
-
-    def worddist(self):
-        """get topic-word distribution"""
-        return self.n_z_t / self.n_z[:, np.newaxis]
-
-    def get_topic_word_dist(self):
-        ldar = LDAResult(alpha=0.78, beta=0.1, topic_num=64, vocab_num=1760052, doc_num=360000,
-                         vocab_path=vocab_path, doc_topic_path=doc_topic_path,
-                         topic_word_path=topic_word_path, topic_summary_path=topic_summary)
-        return ldar.loadTopicWordModel()
-
 
     def perplexity(self, docs=None):
-        """
-        1.将Topic-word分布文档转换成字典，方便查询概率
-        2.统计测试集长度
-        :param docs:
-        :return:
-        """
+        print(">>>>>>>>>> 计算模型 {} 困惑度...".format(self.base_dir))
         if docs == None:
             docs = self.docs
-        phi = self.worddist()
+            print(len(docs))
+        phi = self.load_topic_word_mat()
+        print(phi.shape)
         log_per = 0
         N = 0
-        Kalpha = self.K * self.alpha
+        doc_topic_prob_mat = self.load_doc_topic_mat()
+        print(doc_topic_prob_mat.shape)
+        Kalpha = self.tn * self.a
         for m, doc in enumerate(docs):
-            theta = self.n_m_z[m] / (len(self.docs[m]) + Kalpha)
+            theta = doc_topic_prob_mat[:, m] / (len(self.docs[m]) + Kalpha)
             for w in doc:
-                log_per -= np.log(np.inner(phi[:, w], theta))
+                log_per -= np.log(np.inner(phi[w, :], theta))
             N += len(doc)
         return np.exp(log_per / N)
+
+    def get_topic_topn_words_from_file(self, file):
+        topic_words = []
+        with open(file, 'r') as f:
+            lines = f.readlines()
+            for line in lines:
+                line_json = json.loads(line.strip())
+                if line_json['words']:
+                    topic_words.append(line_json['words'])
+        return topic_words
 
 
 
 
 if __name__ == "__main__":
 
-    doc_topic_path = "/data/v_topic64/doc_topic.0"
-    topic_word_path = "/data/v_topic64/server_0_table_0.model"
-    topic_summary = "/data/v_topic64/server_0_table_1.model"
-    vocab_path = "/data/v_topic64/vocab.video.txt"
-    output_doc_topn_words = "/data/v_topic64/doc.topn"
-    output_topic_topn_words = "/data/v_topic64/topic.topn"
-    re_write_topic_topn_words = "/data/v_topic64/topic.top100"
+    base_dir = r'/data/v_topic64'
+    vocab_path = os.path.join(base_dir, "vocab.video.txt")
+    output_doc_topn_words = os.path.join(base_dir, "doc.topn")
+    output_topic_topn_words = os.path.join(base_dir, "topic.topn")
+    re_write_topic_topn_words = os.path.join(base_dir, "topic.top100")
 
-    ldar = LDAResult(alpha=0.78, beta=0.1, topic_num=64, vocab_num=1760052, doc_num=360000,
-                    vocab_path=vocab_path, doc_topic_path=doc_topic_path,
-                    topic_word_path=topic_word_path, topic_summary_path=topic_summary)
+    ldar = LDAResult(alpha=0.78, beta=0.1, topic_num=64, vocab_num=1760052, doc_num=388293,
+                    model_result_basedir=base_dir)
 
-    ldar.dump_topic_topn_words(output_topic_topn_words)
+    # ldar.dump_topic_topn_words(output_topic_topn_words)
+    perp = ldar.perplexity()
+    print("模型[{}]困惑度：{}".format(base_dir, perp))
     # lda.get_list_of_topic_topn(output_topic_topn_words, re_write_topic_topn_words)

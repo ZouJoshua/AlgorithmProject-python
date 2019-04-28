@@ -134,6 +134,7 @@ def main():
     if options.filename:
         # corpus = vocabulary.load_file(options.filename)
         corpus = vocabulary.load_json_file(options.filename)
+        print(corpus)
     else:
         corpus = vocabulary.load_corpus(options.corpus)
         if not corpus:
@@ -147,12 +148,12 @@ def main():
     if options.df > 0:
         docs = voca.cut_low_freq(docs, options.df)
 
-    lda = LDA(options.K, options.alpha, options.beta, docs, voca.size(), options.smartinit)
-    print("corpus=%d, words=%d, K=%d, a=%f, b=%f" % (len(corpus), len(voca.vocas), options.K, options.alpha, options.beta))
+    # lda = LDA(options.K, options.alpha, options.beta, docs, voca.size(), options.smartinit)
+    # print("corpus=%d, words=%d, K=%d, a=%f, b=%f" % (len(corpus), len(voca.vocas), options.K, options.alpha, options.beta))
 
     #import cProfile
     #cProfile.runctx('lda_learning(lda, options.iteration, voca)', globals(), locals(), 'lda.profile')
-    lda_learning(lda, options.iteration, voca)
+    # lda_learning(lda, options.iteration, voca)
 
 if __name__ == "__main__":
     main()
