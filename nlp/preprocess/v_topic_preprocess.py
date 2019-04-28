@@ -222,7 +222,7 @@ class LdaProcess(object):
         # corpus_list = read_corpus_from_localfile(outfile)
         # self.filter_tf(self._of, self._fo, self._wcf, limitnum=6)
         # get_words_tfidf(filtered_outfile, tf_idf_file)
-        # self.gen_vocab(self._fo, self._vf)
+        self.gen_vocab(self._fo, self._vf)
         self.gen_docword(self._fo, self._vf, self._df)
 
     def get_stopwords(self, stopword_file=None):
