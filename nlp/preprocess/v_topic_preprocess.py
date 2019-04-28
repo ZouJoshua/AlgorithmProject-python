@@ -394,13 +394,13 @@ def main():
     # wordcount_file = "./lightlda_data/test_vocabcount"
 
     # prod
-    file = '/data/zoushuai/video/v_topic/v_topic.json'
-    outfile = '/data/zoushuai/video/v_topic/v_tf'
-    filtered_outfile = '/data/zoushuai/video/v_topic/v_filtered_tf'
-    tf_idf_file = '/data/zoushuai/video/v_topic/v_tf_idf'
-    vocab_file = '/data/zoushuai/video/v_topic/vocab'
-    docword_file = '/data/zoushuai/video/v_topic/docword'
-    wordcount_file = "/data/zoushuai/video/v_topic/v_vocabcount"
+    file = '/data/zoushuai/video/v_topic_v1/v_topic.json'
+    outfile = '/data/zoushuai/video/v_topic_v1/v_tf'
+    filtered_outfile = '/data/zoushuai/video/v_topic_v1/v_filtered_tf'
+    tf_idf_file = '/data/zoushuai/video/v_topic_v1/v_tf_idf'
+    vocab_file = '/data/zoushuai/video/v_topic_v1/vocab'
+    docword_file = '/data/zoushuai/video/v_topic_v1/docword'
+    wordcount_file = "/data/zoushuai/video/v_topic_v1/v_vocabcount"
     lp = LdaProcess(file, outfile, filtered_outfile,
                     tf_idf_file, vocab_file, docword_file, wordcount_file)
     lp.get_ldaprocess_result_file()
