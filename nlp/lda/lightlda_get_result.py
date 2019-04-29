@@ -325,7 +325,7 @@ class LDAResult:
 if __name__ == "__main__":
 
     topic_num = 256
-    base_dir = r'/data/v_topic/topic{}'.format(topic_num)
+    base_dir = r'/data/zoushuai/lightlda/video_topic{}'.format(topic_num)
     vocab_path = os.path.join(base_dir, "vocab")
     output_doc_topn_words = os.path.join(base_dir, "doc.topn")
     output_topic_topn_words = os.path.join(base_dir, "topic{}.top100".format(topic_num))
