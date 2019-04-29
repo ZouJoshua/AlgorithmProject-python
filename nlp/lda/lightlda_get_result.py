@@ -176,7 +176,6 @@ class LDAResult:
     def load_docs_from_docword(self, docword_file):
         print(">>>>>>>>>> 从文件 [{}] 加载docword".format(self.dwp))
         f = open(docword_file, 'r')
-        docs = list()
         doc_word_list = list()
         for i in range(self.dn):
             word_list = list()
@@ -200,7 +199,7 @@ class LDAResult:
                 f.close()
                 break
         print(">>>>>>>>>> 加载完成")
-        return docs
+        return doc_word_list
 
 
 
@@ -293,19 +292,22 @@ class LDAResult:
         print(">>>>>>>>>> 计算模型 {} 困惑度...".format(self.base_dir))
         if docs == None:
             docs = self.docs
-            print(len(docs))
-        phi = self.load_topic_word_mat()
-        print(phi.shape)
+            # print(len(docs))
+        phi = np.array(self.load_topic_word_mat().T)
+        # print(phi.shape)
         log_per = 0
         N = 0
-        doc_topic_prob_mat = self.load_doc_topic_mat()
-        print(doc_topic_prob_mat.shape)
+        doc_topic_prob_mat = np.array(self.load_doc_topic_mat().T)
+        # print(doc_topic_prob_mat.shape)
         Kalpha = self.tn * self.a
         for m, doc in enumerate(docs):
-            theta = doc_topic_prob_mat[:, m] / (len(self.docs[m]) + Kalpha)
+            theta = doc_topic_prob_mat[m] / (len(self.docs[m]) + Kalpha)
+            if m % 10000 == 0:
+                print("已计算{}篇文档".format(m))
             for w in doc:
-                log_per -= np.log(np.inner(phi[w, :], theta))
+                log_per -= np.log(np.inner(phi[:, w], theta))
             N += len(doc)
+        print(N)
         return np.exp(log_per / N)
 
     def get_topic_topn_words_from_file(self, file):
@@ -320,19 +322,19 @@ class LDAResult:
 
 
 
-
 if __name__ == "__main__":
 
-    base_dir = r'/data/v_topic64'
-    vocab_path = os.path.join(base_dir, "vocab.video.txt")
+    topic_num = 256
+    base_dir = r'/data/v_topic/topic{}'.format(topic_num)
+    vocab_path = os.path.join(base_dir, "vocab")
     output_doc_topn_words = os.path.join(base_dir, "doc.topn")
-    output_topic_topn_words = os.path.join(base_dir, "topic.topn")
+    output_topic_topn_words = os.path.join(base_dir, "topic{}.top100".format(topic_num))
     re_write_topic_topn_words = os.path.join(base_dir, "topic.top100")
 
-    ldar = LDAResult(alpha=0.78, beta=0.1, topic_num=64, vocab_num=1760052, doc_num=388293,
+    ldar = LDAResult(alpha=0.19, beta=0.1, topic_num=topic_num, vocab_num=1224992, doc_num=355284,
                     model_result_basedir=base_dir)
 
-    # ldar.dump_topic_topn_words(output_topic_topn_words)
+    ldar.dump_topic_topn_words(output_topic_topn_words, topn=100)
     perp = ldar.perplexity()
     print("模型[{}]困惑度：{}".format(base_dir, perp))
     # lda.get_list_of_topic_topn(output_topic_topn_words, re_write_topic_topn_words)

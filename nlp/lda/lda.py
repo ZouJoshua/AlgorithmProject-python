@@ -71,12 +71,16 @@ class LDA:
         if docs == None:
             docs = self.docs
         phi = self.worddist()
+        print(type(phi))
+        print(phi.shape)
+        print(self.n_m_z.shape)
         log_per = 0
         N = 0
         Kalpha = self.K * self.alpha
         for m, doc in enumerate(docs):
             theta = self.n_m_z[m] / (len(self.docs[m]) + Kalpha)
             for w in doc:
+                # print(phi[:, w])
                 log_per -= numpy.log(numpy.inner(phi[:, w], theta))
             N += len(doc)
         return numpy.exp(log_per / N)
@@ -122,7 +126,7 @@ def main():
     parser.add_option("--alpha", dest="alpha", type="float", help="parameter alpha", default=0.5)
     parser.add_option("--beta", dest="beta", type="float", help="parameter beta", default=0.5)
     parser.add_option("-k", dest="K", type="int", help="number of topics", default=20)
-    parser.add_option("-i", dest="iteration", type="int", help="iteration count", default=100)
+    parser.add_option("-i", dest="iteration", type="int", help="iteration count", default=10)
     parser.add_option("-s", dest="smartinit", action="store_true", help="smart initialize of parameters", default=False)
     parser.add_option("--stopwords", dest="stopwords", help="exclude stop words", action="store_true", default=False)
     parser.add_option("--seed", dest="seed", type="int", help="random seed")
@@ -148,12 +152,12 @@ def main():
     if options.df > 0:
         docs = voca.cut_low_freq(docs, options.df)
 
-    # lda = LDA(options.K, options.alpha, options.beta, docs, voca.size(), options.smartinit)
+    lda = LDA(options.K, options.alpha, options.beta, docs, voca.size(), options.smartinit)
     # print("corpus=%d, words=%d, K=%d, a=%f, b=%f" % (len(corpus), len(voca.vocas), options.K, options.alpha, options.beta))
 
     #import cProfile
     #cProfile.runctx('lda_learning(lda, options.iteration, voca)', globals(), locals(), 'lda.profile')
-    # lda_learning(lda, options.iteration, voca)
+    lda_learning(lda, options.iteration, voca)
 
 if __name__ == "__main__":
     main()
