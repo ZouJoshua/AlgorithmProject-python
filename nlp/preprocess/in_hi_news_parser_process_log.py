@@ -132,7 +132,7 @@ def rewrite_result_v1(file1, new_file):
                 else:
                     out['id'] = k
                     try:
-                        if type(line[k]) ==dict:
+                        if type(line[k]) == dict:
                             out['result'] = line[k]
                         else:
                             out['result'] = json.loads(line[k].strip())
@@ -147,8 +147,8 @@ def rewrite_result_v1(file1, new_file):
 
 
 if __name__ == '__main__':
-    file1 = os.path.join(base_dir, 'hi_news_parser_20190417')
-    file2 = os.path.join(base_dir, 'hi_news_parser_20190417_')
-    file_new = os.path.join(base_dir, 'parsered_hi_news_20190417')
-    # rewrite_result(file1, file2, file_new)
-    rewrite_result_v1(file1, file_new)
+    file1 = os.path.join(base_dir, 'hi_news_parser_20190418')
+    file2 = os.path.join(base_dir, 'hi_news_parser_20190418_')
+    file_new = os.path.join(base_dir, 'parsered_hi_news_20190418')
+    rewrite_result(file1, file2, file_new)
+    # rewrite_result_v1(file1, file_new)
