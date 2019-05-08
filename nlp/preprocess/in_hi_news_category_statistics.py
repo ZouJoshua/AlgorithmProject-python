@@ -18,20 +18,22 @@ from googletrans import Translator
 
 
 
-data_base_dir = r'/data/in_hi_news_parser_result'
+
 
 class CleanResult(object):
 
-    def __init__(self, data_base_dir):
+    def __init__(self, data_base_dir, fname1, fname2):
         self._dir = data_base_dir
+        self.fn1 = fname1
+        self.fn2 = fname2
         self.get_result()
 
     def get_result(self):
         for i in range(17, 23):
             data_file = os.path.join(self._dir, 'parsered_hi_news_201904{}'.format(i))
             print(">>>>> 正在处理文件:{}".format(data_file))
-            nonempty_result_file = os.path.join(self._dir, 'nonempty_category_all')
-            empty_result_file = os.path.join(self._dir, 'empty_category_all')
+            nonempty_result_file = os.path.join(self._dir, self.fn1)
+            empty_result_file = os.path.join(self._dir, self.fn2)
             if os.path.exists(data_file):
                 self.write_file(data_file, nonempty_result_file, empty_result_file)
 
@@ -113,7 +115,170 @@ class CleanResult(object):
         return out
 
 
+class GetCT(object):
+    def __init__(self, nonempty_parsered_file, category_file, tag_file):
+        self.ncf = nonempty_parsered_file
+        self.cf = category_file
+        self.tf = tag_file
+        self.get_category_and_tag()
 
+    def get_category_and_tag(self):
+        result_f = open(self.ncf, 'r')
+        category_f = open(self.cf, 'w')
+        tag_f = open(self.tf, 'w')
+        category_result_f = open("{}_stat".format(self.cf), 'w', encoding='utf-8')
+        tag_result_f = open("{}_stat".format(self.tf), 'w', encoding='utf-8')
+        print(">>>>> 正在获取category、tag文件")
+        category_dict = dict()
+        tag_dict = dict()
+        for _line in result_f:
+            line = json.loads(_line.strip())
+            if 'category' in line['result'].keys():
+                if line['result']['category'] != []:
+                    category_f.write(_line)
+                    for c in line['result']['category']:
+                        if c in category_dict.keys():
+                            category_dict[c] += 1
+                        else:
+                            category_dict[c] = 1
+            else:
+                # print(line)
+                continue
+            if 'tag' in line['result'].keys():
+                if line['result']['tag'] != []:
+                    tag_f.write(_line)
+                    for t in line['result']['category']:
+                        if t in tag_dict.keys():
+                            tag_dict[t] += 1
+                        else:
+                            tag_dict[t] = 1
+            else:
+                # print(line)
+                continue
+        print(">>>>>> 正在获取category、tag统计信息")
+        c_sort_dict = dict_sort(category_dict)
+        t_sort_dict = dict_sort(tag_dict)
+        category_result_f.writelines(json.dumps(c_sort_dict, indent=4))
+        tag_result_f.writelines(json.dumps(t_sort_dict, indent=4))
+        category_f.close()
+        tag_f.close()
+        category_result_f.close()
+        tag_result_f.close()
+        print("<<<<< category文件已生成：{}".format(self.cf))
+        print("<<<<< category统计文件已生成：{}_stat".format(self.cf))
+        print("<<<<< tag文件已生成：{}".format(self.tf))
+        print("<<<<< tag统计文件已生成：{}_stat".format(self.tf))
+
+
+class Hi2EnMap(object):
+
+    def __init__(self, category_stat_file, hi_category_list_file, en_category_list_file, hi2en_map_file):
+        self.csf = category_stat_file
+        self.hclf = hi_category_list_file
+        self.eclf = en_category_list_file
+        self.mf = hi2en_map_file
+        self.get_hi_category_list(limnum=2300)
+        self.get_hi2en_map_file()
+
+    def read_json_file(self, file):
+        hi_f = open(file, 'r')
+        lines_ = hi_f.read()
+        lines = json.loads(lines_)
+        hi_f.close()
+        return lines
+
+    def read_file(self, file):
+        f = open(file, 'r')
+        lines = [line.strip() for line in f.readlines()]
+        f.close()
+        return lines
+
+    def get_hi_category_list(self, limnum=2300):
+        lines = self.read_json_file(self.csf)
+        print(">>>>>> 正在处理印地语category列表文件")
+        hi_category_f = open(self.hclf, 'w')
+        for i, k in enumerate(lines.keys()):
+            # print(k)
+            if i < limnum:
+                k_clean = k.replace(">", "").replace("<", "").strip()
+                # print(k_clean)
+                hi_category_f.write(k_clean + "\n")
+        hi_category_f.close()
+        print("<<<<< 印地语category列表文件已生成：{}".format(self.hclf))
+
+    def get_hi2en_map_file(self):
+        hi = self.read_file(self.hclf)
+        if os.path.exists(self.eclf):
+            en = self.read_file(self.eclf)
+            hi_en = dict(zip(hi, en))
+            print(">>>>> 正在生成印地语-英语映射文件")
+            hi_en_f = open(self.mf, 'w')
+            hi_en_f.writelines(json.dumps(hi_en, indent=4))
+            hi_en_f.close()
+            print("<<<<< 映射文件已生成：{}".format(self.mf))
+        else:
+            raise Exception("请对印地语分类做翻译")
+
+    def translate_hi_to_en(te):
+        # header = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; rv:22.0) Gecko/20130405 Firefox/22.0"}
+        # url = "https://translate.google.cn/#view=home&op=translate&sl=auto&tl=en&text={}".format(text)
+        # r = requests.get(url, headers=header)
+        # print(r.text)
+        proxy = {'http': '119.101.112.106:9999'}
+        translator = Translator(service_urls=['translate.google.com'], proxies=proxy)
+        # lang = translator.detect(text).lang
+        result = translator.translate(te, dest='en').text
+        return result
+
+
+class GetTopcategory(object):
+
+    def __init__(self, nonempty_category_file, hi2en_map_file, out_file):
+        self.ncf = nonempty_category_file
+        self.mf = hi2en_map_file
+        self._of = out_file
+        self.get_stadnard_category()
+
+    def get_stadnard_category(self):
+        with open(self.mf, 'r') as sf:
+            # lines = sf.readline()
+            dict_line = json.load(sf)
+        print(dict_line.keys())
+        out_file = open(self._of, 'w')
+        with open(self.ncf, 'r') as cf:
+            _lines = cf.readlines()
+        _count = 0
+        _top_count = 0
+        for _li in _lines:
+            li = json.loads(_li.strip())
+            if 'category' in li['result'].keys():
+                cates = li['result']['category']
+                true_cate = list()
+                # print(cates[:3])
+                for _c in cates[:4]:
+                    c = _c.replace(">", "").replace("<", "").strip()
+                    if c in dict_line.keys():
+                        c_out = dict_line[c]['top']
+                    else:
+                        c_out = ""
+                    true_cate.append(c_out)
+                s = set(true_cate)
+                if "" in s:
+                    s.remove("")
+                if len(s):
+                    if len(s) == 1:
+                        _s = s.pop()
+                        li['top_category'] = _s
+                        _top_count += 1
+                        out_file.write(json.dumps(li) + "\n")
+                    else:
+                        _count += 1
+                        # print(",".join(s))
+                        continue
+        out_file.close()
+        print(">>>>> {}篇新闻有明确的一级分类".format(_top_count))
+        print(">>>>> {}篇新闻存在映射出多个一级分类".format(_count))
+        print("<<<<< 已生成印地语新闻的一级分类文件：{} ".format(self._of))
 
 def dict_sort(result, limit_num=None):
     _result_sort = sorted(result.items(), key=lambda x: x[1], reverse=True)
@@ -131,148 +296,34 @@ def dict_sort(result, limit_num=None):
 
 
 
-def get_category_and_tag(file, category_file, tag_file):
-    result_f = open(file, 'r')
-    category_f = open(category_file, 'w')
-    tag_f = open(tag_file, 'w')
-    category_result_f = open("{}_stat".format(category_file), 'w', encoding='utf-8')
-    tag_result_f = open("{}_stat".format(tag_file), 'w', encoding='utf-8')
-    category_dict = dict()
-    tag_dict = dict()
-    for _line in result_f:
-        line = json.loads(_line.strip())
-        if 'category' in line['result'].keys():
-            if line['result']['category'] != []:
-                category_f.write(_line)
-                for c in line['result']['category']:
-                    if c in category_dict.keys():
-                        category_dict[c] += 1
-                    else:
-                        category_dict[c] = 1
-        else:
-            print(line)
-        if 'tag' in line['result'].keys():
-            if line['result']['tag'] != []:
-                tag_f.write(_line)
-                for t in line['result']['category']:
-                    if t in tag_dict.keys():
-                        tag_dict[t] += 1
-                    else:
-                        tag_dict[t] = 1
-        else:
-            print(line)
-
-    c_sort_dict = dict_sort(category_dict)
-    t_sort_dict = dict_sort(tag_dict)
-    category_result_f.writelines(json.dumps(c_sort_dict, indent=4))
-    tag_result_f.writelines(json.dumps(t_sort_dict, indent=4))
-    category_f.close()
-    tag_f.close()
-    category_result_f.close()
-    tag_result_f.close()
-
-
-def translate_hi_to_en(te):
-    # header = {"User-Agent": "Mozilla/5.0 (Windows NT 6.1; rv:22.0) Gecko/20130405 Firefox/22.0"}
-    # url = "https://translate.google.cn/#view=home&op=translate&sl=auto&tl=en&text={}".format(text)
-    # r = requests.get(url, headers=header)
-    # print(r.text)
-    proxy = {'http': '119.101.112.106:9999'}
-    translator = Translator(service_urls=['translate.google.com'],proxies=proxy)
-    # lang = translator.detect(text).lang
-    result = translator.translate(te, dest='en').text
-    return result
-
-
-def get_translation_of_category(file, outfile):
-    hi_f = open(file, 'r')
-    hi_en_f = open(outfile, 'w')
-    lines_ = hi_f.read()
-    hi_f.close()
-    lines = json.loads(lines_)
-    en_dict = dict()
-    with open("/home/zoushuai/algoproject/algo-python/nlp/preprocess/in_hi_data/category.txt", 'w') as f:
-        for i, k in enumerate(lines.keys()):
-            print(k)
-            if i < 2300:
-                # line_en = dict()
-                k_clean = k.replace(">", "").replace("<", "").strip()
-                print(k_clean)
-                f.write(k_clean + "\n")
-            # _k = translate_hi_to_en(k_clean).title()
-            # en_dict[k] = _k
-            # out = "{} -> {}".format(k, _k)
-            # print(out)
-            # hi_en_f.write(out + "\n")
-    hi_en_f.close()
-
-def rewrite_translation(file, hi_en_file):
-    hi_f = open(file, 'r')
-    hi_en_f = open(hi_en_file, 'w')
-    lines_ = hi_f.read()
-    lines = json.loads(lines_)
-    hi = list()
-    for i, k in enumerate(lines.keys()):
-        if i < 2300:
-            hi.append(k.strip())
-    with open("/home/zoushuai/algoproject/algo-python/nlp/preprocess/in_hi_data/category_en.txt", 'r') as f:
-        c_lines = f.readlines()
-    en = list()
-    for i, line in enumerate(c_lines):
-        en.append(line.strip())
-    hi_en = dict(zip(hi, en))
-    hi_en_f.writelines(json.dumps(hi_en, indent=4))
-
-
-def get_stadnard_category(category_file, stand_file, out_file):
-    with open(stand_file, 'r') as sf:
-        # lines = sf.readline()
-        dict_line = json.load(sf)
-    print(dict_line.keys())
-    out_file = open(out_file, 'w')
-    with open(category_file, 'r') as cf:
-        _lines = cf.readlines()
-    for _li in _lines:
-        li = json.loads(_li.strip())
-        if 'category' in li['result'].keys():
-            cates = li['result']['category']
-            true_cate = list()
-            # print(cates[:3])
-            for c in cates[:4]:
-                if c in dict_line.keys():
-                    c_out = dict_line[c]['top']
-                else:
-                    c_out = ""
-                true_cate.append(c_out)
-            s = set(true_cate)
-            if "" in s:
-                s.remove("")
-            if len(s):
-                if len(s) == 1:
-                    _s = s.pop()
-                    li['top_category'] = _s
-                    out_file.write(json.dumps(li) + "\n")
-                else:
-                    print(",".join(s))
-                    # li['top_category'] = "||".join(s)
-
 
 
 def main():
-    file = os.path.join(data_base_dir, 'in_hi_news_nonempty_all')
-    c_file = os.path.join(data_base_dir, 'in_hi_news_category_all')
-    c_s_file = os.path.join(data_base_dir, 'in_hi_news_category_all_stat')
-    c_en_file = os.path.join(data_base_dir, 'in_hi_news_category_en_all')
-    t_file = os.path.join(data_base_dir, 'in_hi_news_tag_all')
-    # c_stand_file = os.path.join(data_base_dir, 'category_standard.txt')
-    c_stand_file = "/home/zoushuai/algoproject/algo-python/nlp/preprocess/in_hi_data/category_standard.txt"
-    # c_out_file = os.path.join(data_base_dir, 'in_hi_news_standard_category')
-    c_out_file = "/home/zoushuai/algoproject/algo-python/nlp/preprocess/in_hi_data/in_hi_news_standard_category"
-    # get_category_result(file, c_file, t_file)
-    # get_translation_of_category(c_s_file, c_en_file)
-    # rewrite_translation(c_s_file, c_en_file)
+    data_base_dir = r'/data/in_hi_news_parser_result'
+    fname1 = 'result_nonempty_all'
+    fname2 = 'result_empty_all'
+    nonemp_file = os.path.join(data_base_dir, fname1)
+    emp_file = os.path.join(data_base_dir, fname2)
+    # 获取解析成功、失败的文件
+    # CleanResult(data_base_dir, fname1, fname2)
+    # 从解析成功的文件里提取分类、tag信息及相关统计
+    c_file = os.path.join(data_base_dir, 'result_category_all')
+    t_file = os.path.join(data_base_dir, 'result_tag_all')
+    # GetCT(nonemp_file, c_file, t_file)
+    # 获取印地语与英语转换的映射文件
+    c_s_file = os.path.join(data_base_dir, 'result_category_all_stat')
+    h_c_file = os.path.join(data_base_dir, 'result_hi_category.txt')
+    e_c_file = os.path.join(data_base_dir, 'result_en_category.txt')
+    h2e_c_file = os.path.join(data_base_dir, 'result_hi2en_category.json')
+    # Hi2EnMap(c_s_file, h_c_file, e_c_file, h2e_c_file)
+    # 从映射文件获取印地语新闻一级分类
+    # todo:人工挑选出标准分类体系
+    standard_file = os.path.join(data_base_dir, "result_category_standard.json")
+    t_file = os.path.join(data_base_dir, 'result_topcategory_all')
+    GetTopcategory(nonemp_file, standard_file, t_file)
+    # 印地语分类
 
-    get_stadnard_category(c_file, c_stand_file, c_out_file)
+
 
 
 
