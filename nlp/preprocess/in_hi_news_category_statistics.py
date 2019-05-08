@@ -20,92 +20,99 @@ from googletrans import Translator
 
 data_base_dir = r'/data/in_hi_news_parser_result'
 
+class CleanResult(object):
 
-def write_file(file, res_file, nores_file):
-    f = open(file, 'r')
-    res_f = open(res_file, 'a')
-    nores_f = open(nores_file, 'a')
-    none_result = {"category": [], "title": [], "tag": [], "hyperlink_text": [], "hyperlink_url": []}
-    none_result_str = {"category": [], "title": "", "tag": [], "hyperlink_text": [], "hyperlink_url": []}
-    s = 0
-    for _line in f:
-        line = json.loads(_line.strip())
-        if 'result' in line.keys():
-            if type(line['result']) == dict:
-                if line['result'] == none_result:
-                    line['result'] = none_result_str
-                    nores_f.write(json.dumps(line) + "\n")
-                else:
-                    # print(type(line['result']['title']))
-                    if len(line['result']['title']):
-                        line['result']['title'] = line['result']['title'][0]
+    def __init__(self, data_base_dir):
+        self._dir = data_base_dir
+        self.get_result()
+
+    def get_result(self):
+        for i in range(17, 23):
+            data_file = os.path.join(self._dir, 'parsered_hi_news_201904{}'.format(i))
+            print(">>>>> 正在处理文件:{}".format(data_file))
+            nonempty_result_file = os.path.join(self._dir, 'nonempty_category_all')
+            empty_result_file = os.path.join(self._dir, 'empty_category_all')
+            if os.path.exists(data_file):
+                self.write_file(data_file, nonempty_result_file, empty_result_file)
+
+    def write_file(self, file, res_file, nores_file):
+        f = open(file, 'r')
+        res_f = open(res_file, 'a')
+        nores_f = open(nores_file, 'a')
+        none_result = {"category": [], "title": [], "tag": [], "hyperlink_text": [], "hyperlink_url": []}
+        none_result_str = {"category": [], "title": "", "tag": [], "hyperlink_text": [], "hyperlink_url": []}
+        s = 0
+        for _line in f:
+            line = json.loads(_line.strip())
+            if 'result' in line.keys():
+                if type(line['result']) == dict:
+                    if line['result'] == none_result:
+                        line['result'] = none_result_str
+                        nores_f.write(json.dumps(line) + "\n")
                     else:
-                        line['result']['title'] = ""
-                    res_f.write(json.dumps(line) + "\n")
-            elif type(line['result']) == str:
-                out = str2dict(line['result'])
-                line['result'] = out
-                if out == none_result_str:
-                    nores_f.write(json.dumps(line) + "\n")
+                        # print(type(line['result']['title']))
+                        if len(line['result']['title']):
+                            line['result']['title'] = line['result']['title'][0]
+                        else:
+                            line['result']['title'] = ""
+                        res_f.write(json.dumps(line) + "\n")
+                elif type(line['result']) == str:
+                    out = self.str2dict(line['result'])
+                    line['result'] = out
+                    if out == none_result_str:
+                        nores_f.write(json.dumps(line) + "\n")
+                    else:
+                        res_f.write(json.dumps(line) + "\n")
+            else:
+                s += 1
+        print("{}条没有result字段".format(s))
+        f.close()
+        res_f.close()
+        nores_f.close()
+
+
+    def str2dict(self, s):
+        result = re.findall(r"'category': (.*?), 'title': (.*?), 'tag': (.*?), 'hyperlink_text': (.*?), 'hyperlink_url': (.*?)}", s)
+        out = dict()
+        if result:
+            if len(result[0]) == 5:
+                if result[0][0] != '[]':
+                    cat_str = result[0][0].replace("['", "").replace("']", "")
+                    clean_cat = [i.strip() for i in cat_str.split("', '")]
                 else:
-                    res_f.write(json.dumps(line) + "\n")
+                    clean_cat = list()
+                if result[0][1] != '[]':
+                    tit_str = result[0][1].replace("['", "").replace("']", "")
+                else:
+                    tit_str = ''
+                if result[0][2] != '[]':
+                    tag_str = result[0][2].replace("['", "").replace("']", "")
+                    clean_tag = [i.strip() for i in tag_str.split("', '")]
+                else:
+                    clean_tag = list()
+                if result[0][3] != '[]':
+                    hre_str = result[0][3].replace("['", "").replace("']", "")
+                    clean_hre = [i.strip() for i in hre_str.split("', '")]
+                else:
+                    clean_hre = list()
+                if result[0][4] != '[]':
+                    ref_str = result[0][4].replace("['", "").replace("']", "")
+                    clean_ref = [i.strip() for i in ref_str.split("', '")]
+                else:
+                    clean_ref = list()
+
+                out["category"] = clean_cat
+                out["title"] = tit_str
+                out["tag"] = clean_tag
+                out["hyperlink_text"] = clean_hre
+                out["hyperlink_url"] = clean_ref
+            else:
+                out = {"category": [], "title": "", "tag": [], "hyperlink_text": [], "hyperlink_url": []}
         else:
-            s += 1
-    print("{}条没有result字段".format(s))
-    f.close()
-    res_f.close()
-    nores_f.close()
+            print(s)
+        return out
 
 
-def str2dict(s):
-    result = re.findall(r"'category': (.*?), 'title': (.*?), 'tag': (.*?), 'hyperlink_text': (.*?), 'hyperlink_url': (.*?)}", s)
-    out = dict()
-    if result:
-        if len(result[0]) == 5:
-            if result[0][0] != '[]':
-                cat_str = result[0][0].replace("['", "").replace("']", "")
-                clean_cat = [i.strip() for i in cat_str.split("', '")]
-            else:
-                clean_cat = list()
-            if result[0][1] != '[]':
-                tit_str = result[0][1].replace("['", "").replace("']", "")
-            else:
-                tit_str = ''
-            if result[0][2] != '[]':
-                tag_str = result[0][2].replace("['", "").replace("']", "")
-                clean_tag = [i.strip() for i in tag_str.split("', '")]
-            else:
-                clean_tag = list()
-            if result[0][3] != '[]':
-                hre_str = result[0][3].replace("['", "").replace("']", "")
-                clean_hre = [i.strip() for i in hre_str.split("', '")]
-            else:
-                clean_hre = list()
-            if result[0][4] != '[]':
-                ref_str = result[0][4].replace("['", "").replace("']", "")
-                clean_ref = [i.strip() for i in ref_str.split("', '")]
-            else:
-                clean_ref = list()
-
-            out["category"] = clean_cat
-            out["title"] = tit_str
-            out["tag"] = clean_tag
-            out["hyperlink_text"] = clean_hre
-            out["hyperlink_url"] = clean_ref
-        else:
-            out = {"category": [], "title": "", "tag": [], "hyperlink_text": [], "hyperlink_url": []}
-    else:
-        print(s)
-    return out
-
-
-def get_not_none_result():
-    for i in range(17, 23):
-        data_file = os.path.join(data_base_dir, 'parsered_hi_news_201904{}'.format(i))
-        result_file = os.path.join(data_base_dir, 'in_hi_news_category_all')
-        noresult_file = os.path.join(data_base_dir, 'in_hi_news_no_category_all')
-        if os.path.exists(data_file):
-            write_file(data_file, result_file, noresult_file)
 
 
 def dict_sort(result, limit_num=None):
@@ -124,7 +131,7 @@ def dict_sort(result, limit_num=None):
 
 
 
-def get_category_result(file, category_file, tag_file):
+def get_category_and_tag(file, category_file, tag_file):
     result_f = open(file, 'r')
     category_f = open(category_file, 'w')
     tag_f = open(tag_file, 'w')
@@ -248,12 +255,6 @@ def get_stadnard_category(category_file, stand_file, out_file):
                 else:
                     print(",".join(s))
                     # li['top_category'] = "||".join(s)
-
-
-
-
-
-
 
 
 

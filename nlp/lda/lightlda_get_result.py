@@ -324,17 +324,34 @@ class LDAResult:
 
 if __name__ == "__main__":
 
-    topic_num = 256
-    base_dir = r'/data/zoushuai/lightlda/video_topic{}'.format(topic_num)
+    # 视频topic
+    # topic_num = 256
+    # base_dir = r'/data/zoushuai/lightlda/video_topic{}'.format(topic_num)
+    # vocab_path = os.path.join(base_dir, "vocab")
+    # output_doc_topn_words = os.path.join(base_dir, "doc.topn")
+    # output_topic_topn_words = os.path.join(base_dir, "topic{}.top100".format(topic_num))
+    # re_write_topic_topn_words = os.path.join(base_dir, "topic.top100")
+    #
+    # ldar = LDAResult(alpha=0.19, beta=0.1, topic_num=topic_num, vocab_num=1224992, doc_num=355284,
+    #                 model_result_basedir=base_dir)
+    #
+    # ldar.dump_topic_topn_words(output_topic_topn_words, topn=100)
+    # perp = ldar.perplexity()
+    # print("模型[{}]困惑度：{}".format(base_dir, perp))
+    # lda.get_list_of_topic_topn(output_topic_topn_words, re_write_topic_topn_words)
+
+    # 新闻topic
+
+    topic_num = 64
+    base_dir = r'/data/zoushuai/lightlda/topic_v1/topic{}'.format(topic_num)
     vocab_path = os.path.join(base_dir, "vocab")
     output_doc_topn_words = os.path.join(base_dir, "doc.topn")
     output_topic_topn_words = os.path.join(base_dir, "topic{}.top100".format(topic_num))
     re_write_topic_topn_words = os.path.join(base_dir, "topic.top100")
 
-    ldar = LDAResult(alpha=0.19, beta=0.1, topic_num=topic_num, vocab_num=1224992, doc_num=355284,
-                    model_result_basedir=base_dir)
+    ldar = LDAResult(alpha=0.19, beta=0.1, topic_num=topic_num, vocab_num=1238320, doc_num=4995860,
+                     model_result_basedir=base_dir)
 
     ldar.dump_topic_topn_words(output_topic_topn_words, topn=100)
     perp = ldar.perplexity()
     print("模型[{}]困惑度：{}".format(base_dir, perp))
-    # lda.get_list_of_topic_topn(output_topic_topn_words, re_write_topic_topn_words)
