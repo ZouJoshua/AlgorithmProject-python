@@ -349,7 +349,7 @@ if __name__ == "__main__":
     output_topic_topn_words = os.path.join(base_dir, "topic{}.top100".format(topic_num))
     re_write_topic_topn_words = os.path.join(base_dir, "topic.top100")
 
-    ldar = LDAResult(alpha=0.19, beta=0.1, topic_num=topic_num, vocab_num=1238320, doc_num=4995860,
+    ldar = LDAResult(alpha=0.78, beta=0.1, topic_num=topic_num, vocab_num=1238320, doc_num=4995860,
                      model_result_basedir=base_dir)
 
     ldar.dump_topic_topn_words(output_topic_topn_words, topn=100)
