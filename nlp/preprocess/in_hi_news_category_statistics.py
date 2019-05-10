@@ -147,7 +147,7 @@ class GetCT(object):
             if 'tag' in line['result'].keys():
                 if line['result']['tag'] != []:
                     tag_f.write(_line)
-                    for t in line['result']['category']:
+                    for t in line['result']['tag']:
                         if t in tag_dict.keys():
                             tag_dict[t] += 1
                         else:
@@ -309,7 +309,7 @@ def main():
     # 从解析成功的文件里提取分类、tag信息及相关统计
     c_file = os.path.join(data_base_dir, 'result_category_all')
     t_file = os.path.join(data_base_dir, 'result_tag_all')
-    # GetCT(nonemp_file, c_file, t_file)
+    GetCT(nonemp_file, c_file, t_file)
     # 获取印地语与英语转换的映射文件
     c_s_file = os.path.join(data_base_dir, 'result_category_all_stat')
     h_c_file = os.path.join(data_base_dir, 'result_hi_category.txt')
@@ -318,9 +318,9 @@ def main():
     # Hi2EnMap(c_s_file, h_c_file, e_c_file, h2e_c_file)
     # 从映射文件获取印地语新闻一级分类
     # todo:人工挑选出标准分类体系
-    standard_file = os.path.join(data_base_dir, "result_category_standard.json")
-    t_file = os.path.join(data_base_dir, 'result_topcategory_all')
-    GetTopcategory(nonemp_file, standard_file, t_file)
+    # standard_file = os.path.join(data_base_dir, "result_category_standard.json")
+    # t_file = os.path.join(data_base_dir, 'result_topcategory_all')
+    # GetTopcategory(nonemp_file, standard_file, t_file)
     # 印地语分类
 
 
