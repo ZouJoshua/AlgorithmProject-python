@@ -12,7 +12,7 @@ import json
 import re
 from collections import OrderedDict
 import requests
-
+from urllib.parse import urlparse
 # 谷歌翻译api
 from googletrans import Translator
 
@@ -21,7 +21,7 @@ from googletrans import Translator
 
 
 class CleanResult(object):
-
+    """从解析结果中提取出结果为空的、非空的结果，并写入文件"""
     def __init__(self, data_base_dir, fname1, fname2):
         self._dir = data_base_dir
         self.fn1 = fname1
@@ -116,6 +116,7 @@ class CleanResult(object):
 
 
 class GetCT(object):
+    """从非空结果中统计出分类、tag文件及相关信息"""
     def __init__(self, nonempty_parsered_file, category_file, tag_file):
         self.ncf = nonempty_parsered_file
         self.cf = category_file
@@ -171,7 +172,7 @@ class GetCT(object):
 
 
 class Hi2EnMap(object):
-
+    """获取分类的印地语到英语的映射"""
     def __init__(self, category_stat_file, hi_category_list_file, en_category_list_file, hi2en_map_file):
         self.csf = category_stat_file
         self.hclf = hi_category_list_file
@@ -232,7 +233,7 @@ class Hi2EnMap(object):
 
 
 class GetTopcategory(object):
-
+    """从解析的分类中提取出一级分类"""
     def __init__(self, nonempty_category_file, hi2en_map_file, out_file):
         self.ncf = nonempty_category_file
         self.mf = hi2en_map_file
@@ -281,6 +282,7 @@ class GetTopcategory(object):
         print("<<<<< 已生成印地语新闻的一级分类文件：{} ".format(self._of))
 
 def dict_sort(result, limit_num=None):
+    print(">>>>> 正在排序...")
     _result_sort = sorted(result.items(), key=lambda x: x[1], reverse=True)
     result_sort = OrderedDict()
 
@@ -295,7 +297,67 @@ def dict_sort(result, limit_num=None):
     return result_sort
 
 
+class WebsiteCategory(object):
+    """从网址中提取一级分类"""
+    def __init__(self, urls_file, urlpath_stat_file, mapping_file):
+        self.uf = urls_file
+        self.usf = urlpath_stat_file
+        self.mf = mapping_file
 
+    def get_topcategory_from_website(self):
+        with open(self.mf, 'r') as f:
+            top_dict = json.load(f)
+
+
+    def get_web2category(self):
+        with open(self.mf, 'r') as f:
+            web2category_dict = json.load(f)
+
+        return web2category_dict
+    def website_category_stat(self):
+        print(">>>>> 正在从网址中获取分类统计信息")
+        category_dict = dict()
+        lines = self.get_url_from_file()
+        line_count = 0
+        for line in lines:
+            line_count += 1
+            if line_count % 100000 == 0:
+                print("已处理{}行".format(line_count))
+            if 'url' in line.keys():
+                _url = line['url']
+                _paths = self.split_website(_url)
+                for p in _paths:
+                    if p in category_dict.keys():
+                        category_dict[p] += 1
+                    else:
+                        category_dict[p] = 1
+        t_sort_dict = dict_sort(category_dict, limit_num=10)
+        with open(self.usf, 'w') as f:
+            f.writelines(json.dumps(t_sort_dict, indent=4))
+        print("<<<<< 分类统计结果已生成：{}".format(self.usf))
+
+
+
+    def split_website(self, url, lower=True):
+        paths = list()
+        if url:
+            _url = url
+            if lower:
+                _url = url.lower()
+            _path = urlparse(_url).path
+            for p in _path.split("/"):
+                if p:
+                    paths.append(p)
+        return paths
+
+    def get_url_from_file(self):
+        with open(self.uf, 'r') as f:
+            while True:
+                _line = f.readline()
+                if not _line:
+                    break
+                line = json.loads(_line)
+                yield line
 
 
 def main():
@@ -309,7 +371,7 @@ def main():
     # 从解析成功的文件里提取分类、tag信息及相关统计
     c_file = os.path.join(data_base_dir, 'result_category_all')
     t_file = os.path.join(data_base_dir, 'result_tag_all')
-    GetCT(nonemp_file, c_file, t_file)
+    # GetCT(nonemp_file, c_file, t_file)
     # 获取印地语与英语转换的映射文件
     c_s_file = os.path.join(data_base_dir, 'result_category_all_stat')
     h_c_file = os.path.join(data_base_dir, 'result_hi_category.txt')
@@ -321,7 +383,13 @@ def main():
     # standard_file = os.path.join(data_base_dir, "result_category_standard.json")
     # t_file = os.path.join(data_base_dir, 'result_topcategory_all')
     # GetTopcategory(nonemp_file, standard_file, t_file)
-    # 印地语分类
+    # 印地语网址获取一级分类
+    u_file = os.path.join(data_base_dir, "in_hi_html.json")
+    us_file = os.path.join(data_base_dir, "in_hi_url_category_stat")
+    m_file = os.path.join(data_base_dir, "in_hi_url_category_mapping")
+    tw_file = os.path.join(data_base_dir, 'result_topcategory_website_all')
+    wc = WebsiteCategory(u_file, us_file, m_file)
+    wc.website_category_stat()
 
 
 
