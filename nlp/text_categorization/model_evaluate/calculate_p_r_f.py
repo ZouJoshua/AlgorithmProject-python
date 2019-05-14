@@ -15,7 +15,7 @@ def evaluate_model(dataPath, model_level='two_level', model_num='national_model_
         lines = fr.readlines()
         for line in lines:
             line = json.loads(line)
-            true_category = line[model_level].lower().strip()
+            true_category = line["top_category"].lower().strip()
             if true_category in ['shopping', 'aoto', 'world', 'sport']:
                 continue
             labels_right.append(true_category)

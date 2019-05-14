@@ -1,0 +1,24 @@
+{
+    "one_level":{
+        "international":"3",
+        "national":"4",
+        "sports":"6",
+        "business":"8",
+        "science":"9",
+        "technology":"10",
+        "auto":"11",
+        "lifestyle":"12",
+        "entertainment":"15"
+    },
+    "one_level_new":{
+        "international":"international",
+        "national":"national",
+        "sports":"sports",
+        "business":"business",
+        "science":"science",
+        "technology":"technology",
+        "auto":"auto",
+        "lifestyle":"lifestyle",
+        "entertainment":"entertainment"
+    }
+}

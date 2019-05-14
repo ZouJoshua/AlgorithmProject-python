@@ -299,14 +299,56 @@ def dict_sort(result, limit_num=None):
 
 class WebsiteCategory(object):
     """从网址中提取一级分类"""
-    def __init__(self, urls_file, urlpath_stat_file, mapping_file):
+    def __init__(self, urls_file, urlpath_stat_file, mapping_file, raw_file, out_file):
         self.uf = urls_file
         self.usf = urlpath_stat_file
         self.mf = mapping_file
+        self.rf = raw_file
+        self.of = out_file
 
     def get_topcategory_from_website(self):
         with open(self.mf, 'r') as f:
             top_dict = json.load(f)
+        _count = 0
+        _top_count = 0
+        of = open(self.of, 'w')
+        for line in self.read_json_format_file(self.rf):
+            if 'url' in line.keys():
+                paths = self.split_website(line['url'])
+                true_cate = list()
+                for path in paths:
+                    if path in top_dict.keys():
+                        _out = top_dict[path]['top']
+                    else:
+                        _out = ''
+                    true_cate.append(_out)
+                s = set(true_cate)
+                if "" in s:
+                    s.remove("")
+                if len(s):
+                    if len(s) == 1:
+                        _s = s.pop()
+                        line['top_category'] = _s
+                        of.write(json.dumps(line) + "\n")
+                        _top_count += 1
+                    else:
+                        _count += 1
+        of.close()
+        print(">>>>> {}篇新闻有明确的一级分类".format(_top_count))
+        print(">>>>> {}篇新闻存在映射出多个一级分类".format(_count))
+        print("<<<<< 已生成印地语新闻的一级分类文件：{} ".format(self.of))
+
+
+    def read_json_format_file(self, file):
+        print(">>>>> 正在读原始取数据文件：{}".format(file))
+        with open(file, 'r') as f:
+            while True:
+                _line = f.readline()
+                if not _line:
+                    break
+                else:
+                    line = json.loads(_line)
+                    yield line
 
 
     def get_web2category(self):
@@ -386,10 +428,11 @@ def main():
     # 印地语网址获取一级分类
     u_file = os.path.join(data_base_dir, "in_hi_html.json")
     us_file = os.path.join(data_base_dir, "in_hi_url_category_stat")
-    m_file = os.path.join(data_base_dir, "in_hi_url_category_mapping")
+    # m_file = os.path.join(data_base_dir, "in_hi_url_category_mapping")
+    m_file = "/home/zoushuai/algoproject/algo-python/nlp/data/n_hi_category_data/keywords_features.json"
     tw_file = os.path.join(data_base_dir, 'result_topcategory_website_all')
-    wc = WebsiteCategory(u_file, us_file, m_file)
-    wc.website_category_stat()
+    wc = WebsiteCategory(u_file, us_file, m_file, u_file, tw_file)
+    wc.get_topcategory_from_website()
 
 
 
