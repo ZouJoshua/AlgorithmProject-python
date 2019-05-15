@@ -5,45 +5,45 @@ import pickle
 import codecs
 import json
 import re
-# from gensim.models import Word2Vec
+from gensim.models import Word2Vec
 
 
-# def create_vocabulary(word2vec_model_path, name_scope=''):
-#     """
-#     创建词汇索引表
-#     :param word2vec_model_path: 训练好的word2vec模型存放路径
-#     :return: {单词：索引}表和{索引：单词}表
-#     """
-#     # TODO：这里需要加参数
-#     cache_path = "/data/caifuli/news_classification/textcnn/cache_vocabulary_pik/" + name_scope + "_word_vocabulary.pik"
-#     print("cache_path:", cache_path, "file_exists:", os.path.exists(cache_path))
-#
-#     if os.path.exists(cache_path):  # 如果缓存文件存在，则直接读取
-#         with open(cache_path, 'rb') as data_f:
-#             vocabulary_word2idx, vocabulary_idx2word = pickle.load(data_f)
-#             return vocabulary_word2idx, vocabulary_idx2word
-#     else:
-#         vocabulary_word2idx = {}
-#         vocabulary_idx2word = {}
-#
-#         print("building vocabulary（words with frequency above 5 are included). word2vec_path:", word2vec_model_path)
-#         vocabulary_word2idx['PAD_ID'] = 0
-#         vocabulary_idx2word[0] = 'PAD_ID'
-#         special_index = 0
-#
-#         model = Word2Vec.load(word2vec_model_path)
-#         # model = word2vec.load(word2vec_model_path, kind='bin')
-#
-#         for i, vocab in enumerate(model.wv.vocab):
-#             if vocab.isalpha():
-#                 vocabulary_word2idx[vocab] = i+1+special_index  # 只设了一个special ID
-#                 vocabulary_idx2word[i+1+special_index] = vocab
-#
-#         # 如果不存在写到缓存文件中
-#         if not os.path.exists(cache_path):
-#             with open(cache_path, 'ab') as data_f:
-#                 pickle.dump((vocabulary_word2idx, vocabulary_idx2word), data_f)
-#     return vocabulary_word2idx, vocabulary_idx2word
+def create_vocabulary(word2vec_model_path, name_scope=''):
+    """
+    创建词汇索引表
+    :param word2vec_model_path: 训练好的word2vec模型存放路径
+    :return: {单词：索引}表和{索引：单词}表
+    """
+    # TODO：这里需要加参数
+    cache_path = "/data/caifuli/news_classification/textcnn/cache_vocabulary_pik/" + name_scope + "_word_vocabulary.pik"
+    print("cache_path:", cache_path, "file_exists:", os.path.exists(cache_path))
+
+    if os.path.exists(cache_path):  # 如果缓存文件存在，则直接读取
+        with open(cache_path, 'rb') as data_f:
+            vocabulary_word2idx, vocabulary_idx2word = pickle.load(data_f)
+            return vocabulary_word2idx, vocabulary_idx2word
+    else:
+        vocabulary_word2idx = {}
+        vocabulary_idx2word = {}
+
+        print("building vocabulary（words with frequency above 5 are included). word2vec_path:", word2vec_model_path)
+        vocabulary_word2idx['PAD_ID'] = 0
+        vocabulary_idx2word[0] = 'PAD_ID'
+        special_index = 0
+
+        model = Word2Vec.load(word2vec_model_path)
+        # model = word2vec.load(word2vec_model_path, kind='bin')
+
+        for i, vocab in enumerate(model.wv.vocab):
+            if vocab.isalpha():
+                vocabulary_word2idx[vocab] = i+1+special_index  # 只设了一个special ID
+                vocabulary_idx2word[i+1+special_index] = vocab
+
+        # 如果不存在写到缓存文件中
+        if not os.path.exists(cache_path):
+            with open(cache_path, 'ab') as data_f:
+                pickle.dump((vocabulary_word2idx, vocabulary_idx2word), data_f)
+    return vocabulary_word2idx, vocabulary_idx2word
 
 
 def create_label_vocabulary(training_data_dir_path='/data/caifuli/news_classification/data', name_scope=''):
