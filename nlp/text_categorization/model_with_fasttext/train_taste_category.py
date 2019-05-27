@@ -42,12 +42,14 @@ class TasteCategoryModel(object):
             raise Exception('数据路径不存在，请检查路径')
 
     def preprocess_data(self):
+        print(">>>>> 预处理数据文件...")
         fnames = os.listdir(self._datadir)
         datafiles = [os.path.join(self._datadir, fname) for fname in fnames]
         data_all = list()
         class_cnt = dict()
         s = time.time()
         for datafile in datafiles:
+            print(">>>>> 正在处理数据文件：{}".format(datafile))
             dataf = open(datafile, 'r', encoding='utf-8')
             data = dataf.readlines()
             random.shuffle(data)
@@ -66,8 +68,8 @@ class TasteCategoryModel(object):
                     continue
             dataf.close()
         e = time.time()
-        print('数据分类耗时：\n{}'.format(e - s))
-        print('所有数据分类情况:\n{}'.format(class_cnt))
+        print('数据分类耗时：\n{}s'.format(e - s))
+        print('所有数据分类情况:\n{}s'.format(class_cnt))
         self._generate_kfold_data(data_all)
         return
 
