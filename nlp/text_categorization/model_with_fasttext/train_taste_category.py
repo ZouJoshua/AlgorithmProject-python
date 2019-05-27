@@ -41,6 +41,18 @@ class TasteCategoryModel(object):
         else:
             raise Exception('数据路径不存在，请检查路径')
 
+    def read_json_format_file(self, file):
+        print(">>>>> 正在读原始取数据文件：{}".format(file))
+        with open(file, 'r') as f:
+            while True:
+                _line = f.readline()
+                if not _line:
+                    break
+                else:
+                    line = json.loads(_line)
+                    yield line
+
+
     def preprocess_data(self):
         print(">>>>> 预处理数据文件...")
         fnames = os.listdir(self._datadir)
@@ -48,16 +60,20 @@ class TasteCategoryModel(object):
         data_all = list()
         class_cnt = dict()
         s = time.time()
+        line_count = 0
         for datafile in datafiles:
             print(">>>>> 正在处理数据文件：{}".format(datafile))
-            dataf = open(datafile, 'r', encoding='utf-8')
-            data = dataf.readlines()
+            data = list()
+            for line in self.read_json_format_file(datafile):
+                data.append(line)
             random.shuffle(data)
             # data_count = len(data)
-            for li in data:
-                line = li.strip('\n')
-                dataX, dataY = self._preline(line).split('\t__label__')
+            for line in data:
+                line_count += 1
+                if line_count % 10000 == 0:
+                    print("已处理{}行".format(line_count))
 
+                dataX, dataY = self._preline(line).split('\t__label__')
                 if dataY in class_cnt and dataX != "":
                     class_cnt[dataY] += 1
                 elif dataX != "":
@@ -66,15 +82,14 @@ class TasteCategoryModel(object):
                     data_all.append(line)
                 else:
                     continue
-            dataf.close()
         e = time.time()
         print('数据分类耗时：\n{}s'.format(e - s))
         print('所有数据分类情况:\n{}s'.format(class_cnt))
         self._generate_kfold_data(data_all)
         return
 
-    def _preline(self, line):
-        line_json = json.loads(line)
+    def _preline(self, line_json):
+        # line_json = json.loads(line)
         title = line_json["title"]
         content = ""
         dataY = str(line_json["taste"])
