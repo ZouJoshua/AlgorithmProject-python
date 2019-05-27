@@ -210,7 +210,7 @@ class EmotionCategoryModel(object):
                 labels = classifier.predict_proba([_data])
                 del line["timeliness"]
                 del line["region"]
-                del line["emotion"]
+                del line["taste"]
                 line['predict_{}'.format(self._level)] = labels[0][0][0].replace("'", "").replace("__label__", "")
                 # print(line['predict_top_category'])
                 line['predict_{}_proba'.format(self._level)] = labels[0][0][1]
@@ -246,7 +246,7 @@ class EmotionCategoryModel(object):
 
 if __name__ == '__main__':
     s = time.time()
-    dataDir = "/data/zoushuai/news_content/emotion_region_taste_timeliness/emotion_ft_model"
+    dataDir = "/data/zoushuai/news_content/emotion_region_taste_timeliness/emotion_tf_model"
     # dataDir = "/data/emotion_analysis/taste_ft_model"
     top_model = EmotionCategoryModel(dataDir, category='emotion', k=5, model_level='emotion')
     top_model.preprocess_data()
