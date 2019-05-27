@@ -63,12 +63,7 @@ class TasteCategoryModel(object):
         line_count = 0
         for datafile in datafiles:
             print(">>>>> 正在处理数据文件：{}".format(datafile))
-            data = list()
             for line in self.read_json_format_file(datafile):
-                data.append(line)
-            random.shuffle(data)
-            # data_count = len(data)
-            for line in data:
                 line_count += 1
                 if line_count % 10000 == 0:
                     print("已处理{}行".format(line_count))
@@ -84,7 +79,7 @@ class TasteCategoryModel(object):
                     continue
         e = time.time()
         print('数据分类耗时：\n{}s'.format(e - s))
-        print('所有数据分类情况:\n{}s'.format(class_cnt))
+        print('所有数据分类情况:\n{}'.format(class_cnt))
         self._generate_kfold_data(data_all)
         return
 
@@ -168,8 +163,8 @@ class TasteCategoryModel(object):
                     f.write('\n')
             elif file_format == 'json':
                 for line in data:
-                    # line_json = json.dumps(line)
-                    f.write(line)
+                    line_json = json.dumps(line)
+                    f.write(line_json)
                     f.write('\n')
         e = time.time()
         print('写文件耗时{}'.format(e -s))
