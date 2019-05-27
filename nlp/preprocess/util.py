@@ -192,14 +192,14 @@ def load_data_predict(vocabulary_word2idx, questionid_question_lists, uni_to_tri
 
 
 # 将一句话转化为(uigram,bigram,trigram)后的字符串
-def process_one_sentence_to_get_ui_bi_tri_gram(title, n_gram=3):
+def process_one_sentence_to_get_ui_bi_tri_gram(text, n_gram=3):
     """
     :param title: string. example:'w17314 w5521 w7729 w767 w10147 w111'
     :param n_gram:最大上文窗口
     :return:string. example:'w17314 w17314w5521 w17314w5521w7729 w5521 w5521w7729 w5521w7729w767 w7729 w7729w767 w7729w767w10147 w767 w767w10147 w767w10147w111 w10147 w10147w111 w111'
     """
     result = []
-    word_list = title.split(" ")  # [sentence[i] for i in range(len(sentence))]
+    word_list = text.split(" ")  # [sentence[i] for i in range(len(sentence))]
     unigram = ''
     bigram = ''
     length_sentence = len(word_list)
