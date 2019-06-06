@@ -57,7 +57,9 @@ class DataPreprocess(object):
     def split_predict_data(self, path, outpath):
         _country = dict()
         source_data = list()
-        for line in self.read_json_format_file(path):
+        lines = [i for i in self.read_json_format_file(path)]
+        random.shuffle(lines)
+        for line in lines:
             country = line["country"]
             if country in _country.keys():
                 if _country[country] > 100:
@@ -72,7 +74,7 @@ class DataPreprocess(object):
             else:
                 _country[country] = 1
                 source_data.append(line)
-        random.shuffle(source_data)
+        # random.shuffle(source_data)
         self.write_json_format_file(source_data, outpath)
 
 
@@ -113,11 +115,55 @@ class Predict(object):
             f.write(json.dumps(line) + "\n")
         f.close()
 
+class ResultCheck(object):
+
+    def __init__(self,result_file):
+        self.file = result_file
+        self.get_result()
+
+    def get_result(self):
+        out_dict = dict()
+        with open(self.file, 'r') as f:
+            lines = f.readlines()
+        for line in lines:
+            l_dict = json.loads(line.strip())
+            is_right = l_dict["is_right"]
+            category = l_dict["category"]
+            country = l_dict["country"]
+            if country in out_dict.keys():
+                out_dict[country]["totle"] += 1
+                if category in out_dict[country].keys():
+                    if is_right == "y":
+                        out_dict[country][category] += 1
+                    else:
+                        out_dict[country][category + "_wrong"] += 1
+                else:
+                    out_dict[country][category] = 0
+                    out_dict[country][category + "_wrong"] = 0
+                    if is_right == "y":
+                        out_dict[country][category] = 1
+                    else:
+                        out_dict[country][category + "_wrong"] += 1
+            else:
+                out_dict[country] = dict()
+                out_dict[country]["totle"] = 1
+                out_dict[country][category] = 0
+                out_dict[country][category+"_wrong"] = 0
+                if is_right == 'y':
+                    out_dict[country][category] = 1
+                else:
+                    out_dict[country][category + "_wrong"] = 1
+
+        print(json.dumps(out_dict, indent=4))
+
+
 if __name__ == '__main__':
     raw_data_path = "/data/multi_country_news/raw_train_data"
     predict_data_file = "/data/multi_country_news/raw_test_example"
     out_file = "/data/multi_country_news/raw_test_example_predict"
-    DataPreprocess(raw_data_path, predict_data_file)
-    url = 'http://127.0.0.1:19901/nlp_category/category'
-    p = Predict(url, predict_data_file, out_file)
-    p.predict()
+    result_file = "/data/multi_country_news/predict_check_result"
+    # DataPreprocess(raw_data_path, predict_data_file)
+    # url = 'http://127.0.0.1:19901/nlp_category/category'
+    # p = Predict(url, predict_data_file, out_file)
+    # p.predict()
+    ResultCheck(result_file)
