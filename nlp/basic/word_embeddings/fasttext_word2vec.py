@@ -4,41 +4,36 @@ import fasttext
 import os
 import json
 import logging
-from util import clean_string
 
 train_dataDir = "/data"
 train_dataPath = "/traindata"
 
-# 制作label映射map
-label_idx_map = {"entertainment": "15", "sports": "6", "sport": "6", "national": "4", "international": "3", "world": "3",
-                 "business": "8", "lifestyle": "12", "technology": "10", "tech": "10", "auto": "7", "science": "7"}
 
 
-fnames = os.listdir(train_dataDir)
-for fname in fnames:
-    with open(os.path.join(train_dataDir, fname),  "r") as input_f, open(train_dataPath, "a") as train_f:
-        lines = input_f.readlines()
-        # random.shuffle(lines)
-        for line in lines:
-            try:
-                line = json.loads(line)
-                title = line["title"]
-                top_category = line["top_category"].strip().lower()
-                content = ""
-                if top_category in ['404', 'aoto']:
-                    continue
-                else:
-                    label = str(label_idx_map[top_category])
-                    if "html" in line:
-                        content = line["html"].strip()
-                    elif "content" in line:
-                        content = line["content"].strip()
-                    desc = clean_string((title + content).lower())  # 清洗数据
-                    new_line = desc + "\t" + "__label__" + label
-                    train_f.write(new_line + "\n")
-            except:
-                print(line)
-                pass
 
-logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
-model = fasttext.skipgram(train_dataPath, "w2vmodel", dim=300)
+def train_word2vec_embed_by_fasttext(save_path=None, model_file="word2vec.model", word2vec_file="word2vec.bin"):
+    """
+    gensim训练词向量
+    :param doc_word_list:
+    :param save_path:
+    :param model_file:
+    :param word2vec_file:
+    :return:
+    """
+    # 引入日志配置
+    import logging
+    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+
+    #skip gram（预测更准确些）
+    if save_path:
+        model_path = os.path.join(save_path, model_file)
+        vector_path = os.path.join(save_path, word2vec_file)
+    else:
+        model_path = model_file
+        vector_path = word2vec_file
+    print(">>>>> 正在使用skip gram模型训练词向量")
+    model = fasttext.skipgram(train_dataPath, model_file, dim=300)
+    model.save(model_path)
+    model.wv.save_word2vec_format(vector_path, binary=True)
+    print("<<<<< 词向量模型已保存【{}】".format(model_path))
+    print("<<<<< 词向量embedding已保存【{}】".format(vector_path))
