@@ -73,7 +73,8 @@ class TasteCategoryModel(object):
                     class_cnt[dataY] += 1
                 elif dataX != "":
                     class_cnt[dataY] = 1
-                if class_cnt[dataY] < 65000 and dataX != "":
+                # if class_cnt[dataY] < 65000 and dataX != "":
+                if class_cnt[dataY] < 40000 and dataX != "":
                     data_all.append(line)
                 else:
                     continue
@@ -208,9 +209,9 @@ class TasteCategoryModel(object):
             for line in self.read_json_format_file(json_file):
                 _data = self._preline(line)
                 labels = classifier.predict_proba([_data])
-                del line["timeliness"]
-                del line["region"]
-                del line["emotion"]
+                # del line["timeliness"]
+                # del line["region"]
+                # del line["emotion"]
                 line['predict_{}'.format(self._level)] = labels[0][0][0].replace("'", "").replace("__label__", "")
                 # print(line['predict_top_category'])
                 line['predict_{}_proba'.format(self._level)] = labels[0][0][1]
@@ -246,8 +247,8 @@ class TasteCategoryModel(object):
 
 if __name__ == '__main__':
     s = time.time()
-    dataDir = "/data/zoushuai/news_content/emotion_region_taste_timeliness/taste_ft_model"
-    # dataDir = "/data/emotion_analysis/taste_ft_model"
+    # dataDir = "/data/zoushuai/news_content/emotion_region_taste_timeliness/taste_ft_model"
+    dataDir = "/data/emotion_analysis/taste_ft_model_update"
     top_model = TasteCategoryModel(dataDir, category='taste', k=5, model_level='taste')
     # top_model.preprocess_data()
     train_precision, test_precision = top_model.train_model()

@@ -252,4 +252,4 @@ if __name__ == '__main__':
     top_model.preprocess_data()
     train_precision, test_precision = top_model.train_model()
     e = time.time()
-    print('训练浏览口味分类模型耗时{}'.format(e - s))
+    print('训练情感分类模型耗时{}'.format(e - s))
