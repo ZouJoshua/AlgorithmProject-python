@@ -66,15 +66,15 @@ def get_translate(origin_str):
     }
     s = requests.session()
     url = 'http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule'
-    p = s.post(url,data= data,headers = head)
+    p = s.post(url,data=data, headers=head)
     try:
         json_dict = json.loads(p.text)
         return json_dict["translateResult"][0][0]["tgt"]
     except:
-        print "json error"
+        print("json error")
         return origin_str
     
 
 if __name__ == "__main__":
     origin_str = u'malicious sites'
-    print '%s <=> %s' % (origin_str, get_translate(origin_str))
+    print('%s <=> %s' % (origin_str, get_translate(origin_str)))
