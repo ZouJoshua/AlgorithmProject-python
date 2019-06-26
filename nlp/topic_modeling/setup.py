@@ -10,7 +10,7 @@ setup(
       url="https://git.apusapps.in/nlp/topic_modeling",
       packages=find_packages(),
       #package_dir = {'':'topic_modeling'},
-      package_data = {
+      package_data={
           'topic_modeling': ['stopwords/*.txt']
           },
       install_requires=['gensim'],
