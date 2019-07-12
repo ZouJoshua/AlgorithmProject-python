@@ -511,7 +511,7 @@ def extract_tag(title, text, tag_dict, stopwords):
     print(text2_ner_list)
 
 
-    title_nerlist = []
+    title_ner_list = list()
     for title_trunk in title2.split('#'):
         title_trunk = title_trunk.strip()
         title_trunk_lower = title_trunk.lower()
@@ -522,24 +522,27 @@ def extract_tag(title, text, tag_dict, stopwords):
                 if title_trunk_lower not in mergetagdict:
                     mergetaglist.append([title_trunk_lower, 'title_trunk_vtag'])
                     mergetagdict[title_trunk_lower] = None
-            else:
+            elif len(title_trunk_tokens) < 6:
+
                 for tok in title_trunk_tokens:
                     if tok in tag_dict:
                         if title_trunk_lower not in mergetagdict:
                             mergetaglist.append([title_trunk_lower, 'title_trunk_kw'])
                             mergetagdict[title_trunk_lower] = None
-        else:
-            continue
+            else:
+                continue
 
         title_trunk_list = get_continuous_chunks(title_trunk_lower)
         print(">>>>> title_trunk:{}".format(title_trunk))
         print(">>>>> title_trunk_list:{}".format(title_trunk_list))
-        title_nerlist.extend(title_trunk_list)
-    tfdict = {}
-    for trunk in title_nerlist:
+        title_ner_list.extend(title_trunk_list)
+
+    tfdict = dict()
+    for trunk in title_ner_list:
         trunk_lower = trunk.lower()
         if trunk_lower == '': continue
         if trunk_lower in stopwords: continue
+        if len(trunk_lower) < 3: continue
         n = len(trunk_lower.split(' '))
         x = 1.5
         if n >= 2:
@@ -548,6 +551,7 @@ def extract_tag(title, text, tag_dict, stopwords):
             tfdict[trunk_lower] = x
         else:
             tfdict[trunk_lower] += x
+
     for trunk in text2_ner_list:
         trunk_lower = trunk.lower()
         if trunk_lower in stopwords: continue
