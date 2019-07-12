@@ -45,7 +45,7 @@ class Logger(object):
 
         # create logger
         self.logger = logging.getLogger(loggername)
-        self.logger.setLevel(logging.INFO)
+        self.logger.setLevel(logging.DEBUG)
 
         # set formater
         formatstr = '[%(asctime)s] [%(levelname)s] [%(filename)s-%(lineno)d] [PID:%(process)d-TID:%(thread)d] [%(message)s]'
