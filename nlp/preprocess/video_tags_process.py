@@ -104,14 +104,37 @@ def es_tags_process(raw_file, tag_file, tag_tokens_file, standard_tag_file):
         tag = tag.lower()
         _tag = tag.split(" ")
         for ta in _tag:
+            ta = ta.replace("(", "").replace(")", "").replace("#", "")
             if ta in tag_tokens_dict.keys():
                 tag_tokens_dict[ta] += 1
             else:
                 tag_tokens_dict[ta] = 1
 
+    proofed_tag_tokens_dict = dict()
+    # print(json.dumps(tag_tokens_dict, ensure_ascii=False, indent=4))
+    for k in tag_tokens_dict.keys():
+        k = k.replace("(", "").replace(")", "").replace("#", "")
+        if k.isdigit(): continue
+        if not k.endswith("s") and k + "s" in tag_tokens_dict.keys():
+            if k + "s" not in proofed_tag_tokens_dict:
+                proofed_tag_tokens_dict[k + "s"] = tag_tokens_dict[k + "s"] + tag_tokens_dict[k]
+        elif not k.endswith("s") and k + "s" not in tag_tokens_dict.keys():
+            if k not in proofed_tag_tokens_dict:
+                proofed_tag_tokens_dict[k] = tag_tokens_dict[k]
+            else:
+                proofed_tag_tokens_dict[k] += tag_tokens_dict[k]
+        elif k.endswith("s"):
+            if k not in proofed_tag_tokens_dict:
+                proofed_tag_tokens_dict[k] = tag_tokens_dict[k]
+            else:
+                proofed_tag_tokens_dict[k] += tag_tokens_dict[k]
+        else:
+            continue
+
+
     print("<<<<< 正在写入tag tokens字典")
     with open(tag_tokens_file, "w") as f:
-        f.writelines(json.dumps(dict_sort(tag_tokens_dict), ensure_ascii=False, indent=4))
+        f.writelines(json.dumps(dict_sort(proofed_tag_tokens_dict), ensure_ascii=False, indent=4))
     print("<<<<< 原始tag tokens 已写入文件【{}】".format(tag_tokens_file))
 
     print("\n>>>>> 正在获取常用一元tag列表")
@@ -119,15 +142,15 @@ def es_tags_process(raw_file, tag_file, tag_tokens_file, standard_tag_file):
     for k, v in tags_dict.items():
         _k = k.split(" ")
         if len(_k) == 1:
-            if not k.endswith("s") and k + "s" in tag_tokens_dict.keys():
+            if not k.endswith("s") and k + "s" in proofed_tag_tokens_dict.keys():
                 if len(k) > 2:
-                    proof_tag_dict[k] = tag_tokens_dict[k] + tag_tokens_dict[k + "s"]
+                    proof_tag_dict[k] = proofed_tag_tokens_dict[k + "s"]
                 else:
                     continue
 
     print(">>>>> 标准化tag写入文件")
-    # with open(standard_tag_file, "w") as f:
-    #     f.writelines(json.dumps(dict_sort(proof_tag_dict, limit_num=60), ensure_ascii=False, indent=4))
+    with open(standard_tag_file, "w") as f:
+        f.writelines(json.dumps(dict_sort(proof_tag_dict, limit_num=60), ensure_ascii=False, indent=4))
     print("<<<<< 标准化tag已写入文件【{}】".format(standard_tag_file))
 
 
@@ -172,9 +195,12 @@ def get_clean_tag_dict(tag_list_file, standard_tag_file, type_tag_file):
     print("\n>>>>> 正在处理统计一元类型tag")
     one_gram_dict = dict()
     for k, v in clean_tags_dict.items():
+        year = clean_period(k)
+        if year: continue
         _k = k.split(" ")
+
         if len(_k) == 1:
-            if not k.isdigit():
+            if not k.isdigit() and len(k) > 2:
                 if k not in one_gram_dict.keys():
                     one_gram_dict[k] = dict()
                     if v > 5:
@@ -183,7 +209,7 @@ def get_clean_tag_dict(tag_list_file, standard_tag_file, type_tag_file):
                     continue
         else:
             for kk in _k:
-                if kk in one_gram_dict.keys():
+                if kk in one_gram_dict.keys() and len(kk) > 2:
                     one_gram_dict[kk][k] = v
                 else:
                     continue
@@ -192,7 +218,7 @@ def get_clean_tag_dict(tag_list_file, standard_tag_file, type_tag_file):
         if v:
             _v = dict()
             for i in v.keys():
-                if len(i.split(" ")) < 5 and v[i] > 5:
+                if len(i.split(" ")) < 6 and v[i] > 10:
                     _v[i] = v[i]
                 else:
                     continue
@@ -522,17 +548,28 @@ def extract_tag(title, text, tag_dict, stopwords):
                 if title_trunk_lower not in mergetagdict:
                     mergetaglist.append([title_trunk_lower, 'title_trunk_vtag'])
                     mergetagdict[title_trunk_lower] = None
-            elif len(title_trunk_tokens) < 6:
+            elif len(title_trunk_tokens) < 5:
 
                 for tok in title_trunk_tokens:
                     if tok in tag_dict:
                         if title_trunk_lower not in mergetagdict:
                             mergetaglist.append([title_trunk_lower, 'title_trunk_kw'])
                             mergetagdict[title_trunk_lower] = None
+                    else:
+                        if len(title_trunk_tokens) < 3 and title_trunk_lower not in mergetagdict:
+                            mergetaglist.append([title_trunk_lower, 'title_trunk_kw'])
+                            mergetagdict[title_trunk_lower] = None
+
+            elif len(title_trunk_tokens) >= 5:
+                for tok in title_trunk_tokens:
+                    if tok in tag_dict:
+                        if tok not in mergetagdict and len(tok) > 3:
+                            mergetaglist.append([tok, 'title_trunk_kw'])
+                            mergetagdict[tok] = None
             else:
                 continue
 
-        title_trunk_list = get_continuous_chunks(title_trunk_lower)
+        title_trunk_list = get_continuous_chunks(title_trunk)
         print(">>>>> title_trunk:{}".format(title_trunk))
         print(">>>>> title_trunk_list:{}".format(title_trunk_list))
         title_ner_list.extend(title_trunk_list)
@@ -542,7 +579,7 @@ def extract_tag(title, text, tag_dict, stopwords):
         trunk_lower = trunk.lower()
         if trunk_lower == '': continue
         if trunk_lower in stopwords: continue
-        if len(trunk_lower) < 3: continue
+        if len(trunk_lower) < 4: continue
         n = len(trunk_lower.split(' '))
         x = 1.5
         if n >= 2:
@@ -556,7 +593,7 @@ def extract_tag(title, text, tag_dict, stopwords):
         trunk_lower = trunk.lower()
         if trunk_lower in stopwords: continue
         if trunk_lower == '': continue
-        if len(trunk_lower) < 3: continue
+        if len(trunk_lower) < 4: continue
         if trunk_lower not in tfdict:
             tfdict[trunk_lower] = 1
         else:
@@ -641,7 +678,7 @@ if __name__ == "__main__":
     es_tag_type_file = "/home/zoushuai/algoproject/algo-python/nlp/preprocess/tags/ES_tag_type"
     stopwords_file = "/home/zoushuai/algoproject/nlp_server/src/data/video_tags/stopwords.txt"
     # es_tags_process(es_raw_file, es_tag_list_file, es_tag_tokens_file, es_standard_tag_file)
-    # get_clean_tag_dict(es_tag_list_file, es_standard_tag_file, es_tag_type_file)
+    get_clean_tag_dict(es_tag_list_file, es_standard_tag_file, es_tag_type_file)
     # tt_trim_tag(es_tag_type_file, es_standard_tag_file)
-    tt_exract_tag(es_raw_file, es_tag_type_file, stopwords_file)
+    # tt_exract_tag(es_raw_file, es_tag_type_file, stopwords_file)
     # tt_clean_emoji()

@@ -232,6 +232,31 @@ class TopCategoryModel(object):
         # TODO:解析html内容
         pass
 
+def write_file(file, out_file):
+    idmap = {"international":"3",
+        "national":"4",
+        "sports":"6",
+        "business":"8",
+        "science":"9",
+        "tech":"10",
+        "auto":"11",
+        "lifestyle":"12",
+        "entertainment":"15"}
+    with open(out_file, 'w') as oof:
+        with open(file, 'r') as f:
+            lines = f.readlines()
+            for line in lines:
+                line = json.loads(line.strip())
+                _title = line["title"]
+                category = idmap.get(line["one_level"])
+                title = clean_string(_title)
+                result = title + "\t__label__" + category
+                oof.write(result + "\n")
+
+
+
+
+
 if __name__ == '__main__':
     s = time.time()
     dataDir = "/data/zoushuai/news_content/top_classification_model/traincorpus"
