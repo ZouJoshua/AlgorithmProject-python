@@ -3,8 +3,8 @@
 """
 @Author  : Joshua
 @Time    : 19-7-3 下午5:44
-@File    : video_tags_process.py
-@Desc    : 视频tag处理
+@File    : es_video_tags_process.py
+@Desc    : 西班牙视频tag处理
 """
 
 
@@ -52,7 +52,7 @@ def split_data_by_country(data_dir):
         country_tag_file = os.path.join(data_dir, "{}_video_tags".format(c))
         with open(country_tag_file, 'w') as f:
             for li in value:
-                f.write(json.dumps(li) + "\n")
+                f.write(json.dumps(li, ensure_ascii=False) + "\n")
         print("<<<<< 国家{}的tag已写入文件【{}】".format(c, country_tag_file))
 
 
@@ -150,7 +150,7 @@ def es_tags_process(raw_file, tag_file, tag_tokens_file, standard_tag_file):
 
     print(">>>>> 标准化tag写入文件")
     with open(standard_tag_file, "w") as f:
-        f.writelines(json.dumps(dict_sort(proof_tag_dict, limit_num=60), ensure_ascii=False, indent=4))
+        f.writelines(json.dumps(dict_sort(proof_tag_dict, limit_num=100), ensure_ascii=False, indent=4))
     print("<<<<< 标准化tag已写入文件【{}】".format(standard_tag_file))
 
 
@@ -670,7 +670,7 @@ tag 处理逻辑
 
 if __name__ == "__main__":
     data_dir = "/data/video_tags"
-    # split_data_by_country(data_dir)
+    split_data_by_country(data_dir)
     es_raw_file = "/home/zoushuai/algoproject/algo-python/nlp/preprocess/tags/ES_video_tags"
     es_tag_list_file = "/home/zoushuai/algoproject/algo-python/nlp/preprocess/tags/ES_tag_list"
     es_tag_tokens_file = "/home/zoushuai/algoproject/algo-python/nlp/preprocess/tags/ES_tag_list_tokens"
@@ -678,7 +678,7 @@ if __name__ == "__main__":
     es_tag_type_file = "/home/zoushuai/algoproject/algo-python/nlp/preprocess/tags/ES_tag_type"
     stopwords_file = "/home/zoushuai/algoproject/nlp_server/src/data/video_tags/stopwords.txt"
     # es_tags_process(es_raw_file, es_tag_list_file, es_tag_tokens_file, es_standard_tag_file)
-    get_clean_tag_dict(es_tag_list_file, es_standard_tag_file, es_tag_type_file)
+    # get_clean_tag_dict(es_tag_list_file, es_standard_tag_file, es_tag_type_file)
     # tt_trim_tag(es_tag_type_file, es_standard_tag_file)
     # tt_exract_tag(es_raw_file, es_tag_type_file, stopwords_file)
     # tt_clean_emoji()
