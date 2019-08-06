@@ -4,7 +4,7 @@
 @Author  : Joshua
 @Time    : 19-7-22 上午10:47
 @File    : ko_video_tags_process.py
-@Desc    : 德国视频tag处理
+@Desc    : 巴西视频tag处理
 """
 
 import json
@@ -12,6 +12,8 @@ from collections import OrderedDict
 import os
 import re
 import langdetect
+import emoji
+import string
 from nltk.corpus import stopwords
 
 
@@ -45,8 +47,8 @@ def dict_sort(result, limit_num=None):
     return result_sort
 
 
-def de_tags_process(raw_file, tag_file, tag_tokens_file, tag_type_file, tag_standard_file):
-    print(">>>>> 正在读取德国原始tag")
+def pt_tags_process(raw_file, tag_file, tag_tokens_file, tag_type_file, tag_standard_file):
+    print(">>>>> 正在读取巴西原始tag")
     tag_list = list()
     for line in read_json_format_file(raw_file):
         vtag_str = line["vtaglist"]
@@ -65,69 +67,9 @@ def de_tags_process(raw_file, tag_file, tag_tokens_file, tag_type_file, tag_stan
                 tags_dict[tag] += 1
             else:
                 tags_dict[tag] = 1
-    tag_set = set(tags_dict.keys())
-    print(">>>>> 原始tag总共{}个".format(len(tag_set)))
-    print(">>>>> 正在写入tag字典")
-    with open(tag_file, "w") as f:
-        f.writelines(json.dumps(dict_sort(tags_dict), ensure_ascii=False, indent=4))
-    print("<<<<< 原始tag list 已写入文件【{}】".format(tag_file))
-
-    # new_tags_dict = dict()
-    # for tag in tags_dict.keys():
-    #     new_tags_dict[tag] = dict()
-    #     for _tag, v in tags_dict.items():
-    #         if _tag.find(tag + " ") >= 0 or _tag.find(" " + tag) >= 0 or _tag == tag:
-    #             new_tags_dict[tag][_tag] = v
-    #
-    # print(">>>>> 正在写入tag字典")
-    # with open(tag_file, "w") as f:
-    #     f.writelines(json.dumps(new_tags_dict, ensure_ascii=False, indent=4))
-    # print("<<<<< 原始tag list 已写入文件【{}】".format(tag_file))
-
-    substr_tag_list = list()
-    substr_tag_dict = dict()
-    for tag in tags_dict.keys():
-        for _tag in tags_dict.keys():
-            sub_str, _ = find_lcsubstr(tag, _tag)
-            if sub_str:
-                substr_tag_list.append(sub_str)
-
-    str_patten = re.compile("^vs | vs$|^vs$|^- | -$|^-$", flags=0)
-
-    for tag in substr_tag_list:
-        if not tag.isdigit():
-            if tag not in stopwords.words('english'):
-                new_tag = str_patten.sub("", tag).strip()
-                new_tag_tmp = new_tag.replace(" ", "")
-                if new_tag_tmp in substr_tag_list:
-                    if new_tag_tmp in substr_tag_dict:
-                        substr_tag_dict[new_tag_tmp] += 1
-                    else:
-                        substr_tag_dict[new_tag_tmp] = 1
-                    continue
-                else:
-                    pass
-
-                if new_tag.find(" vs ") >= 0:
-                    new_tag_ = new_tag.split(" vs ")
-                elif new_tag.find(" - ") >= 0:
-                    new_tag_ = new_tag.split(" - ")
-                else:
-                    new_tag_ = new_tag.split("\n")
-                for tg in new_tag_:
-                    if tg in substr_tag_dict:
-                        substr_tag_dict[tg] += 1
-                    else:
-                        substr_tag_dict[tg] = 1
-    print(">>>>> 正在写入tag字典")
-    with open(tag_file+"_substr", "w") as f:
-        f.writelines(json.dumps(dict_sort(substr_tag_dict), ensure_ascii=False, indent=4))
-    print("<<<<< 原始tag list 已写入文件【{}】".format(tag_file+"_substr"))
-
     print("\n>>>>> 正在获取tag tokens字典")
     tag_tokens_dict = dict()
-    for tag in tag_list:
-        tag = tag.lower()
+    for tag in tags_dict.keys():
         _tag = tag.split(" ")
         for ta in _tag:
             if ta in tag_tokens_dict.keys():
@@ -139,71 +81,56 @@ def de_tags_process(raw_file, tag_file, tag_tokens_file, tag_type_file, tag_stan
     with open(tag_tokens_file, "w") as f:
         f.writelines(json.dumps(dict_sort(tag_tokens_dict), ensure_ascii=False, indent=4))
     print("<<<<< 原始tag tokens 已写入文件【{}】".format(tag_tokens_file))
-    #
-    # print(">>>>> 正在获取tag type")
-    # tmp_proofed_tag_tokens_dict = dict()
-    # for r_tag in tags_dict.keys():
-    #     tag = standard_tag(r_tag)
-    #     if tag == r_tag:
-    #         if tag not in tmp_proofed_tag_tokens_dict:
-    #             tmp_proofed_tag_tokens_dict[tag] = tags_dict[r_tag]
-    #         else:
-    #             tmp_proofed_tag_tokens_dict[tag] += tags_dict[r_tag]
-    #     else:
-    #         if tag in tags_dict:
-    #             if tag not in tmp_proofed_tag_tokens_dict:
-    #                 tmp_proofed_tag_tokens_dict[tag] = tags_dict[tag] + tags_dict[r_tag]
-    #             else:
-    #                 tmp_proofed_tag_tokens_dict[tag] += tags_dict[r_tag]
-    #         else:
-    #             if tag not in tmp_proofed_tag_tokens_dict:
-    #                 tmp_proofed_tag_tokens_dict[tag] = tags_dict[r_tag]
-    #             else:
-    #                 tmp_proofed_tag_tokens_dict[tag] += tags_dict[r_tag]
-    #
-    # proofed_tag_tokens_dict = dict()
-    #
-    # for p_tag, v in tmp_proofed_tag_tokens_dict.items():
-    #     tag_tok = p_tag.split(" ")
-    #     if len(tag_tok) == 1:
-    #         if p_tag not in proofed_tag_tokens_dict.keys():
-    #             proofed_tag_tokens_dict[p_tag] = dict()
-    #             proofed_tag_tokens_dict[p_tag][p_tag] = v
-    #         else:
-    #             continue
-    #     else:
-    #         for k in tag_tok:
-    #             if k in proofed_tag_tokens_dict.keys():
-    #                 proofed_tag_tokens_dict[k][p_tag] = v
-    #             else:
-    #                 continue
-    #
-    # print("\n>>>>> 正在获取常用一元tag列表")
-    #
-    # new_proofed_tag_tokens_dict = dict()
-    # one_gram_tag_dict = dict()
-    # for k, v in proofed_tag_tokens_dict.items():
-    #     k_count = 0
-    #     for _k, _v in v.items():
-    #         k_count += _v
-    #     if k_count > 10:
-    #         new_proofed_tag_tokens_dict[k] = v
-    #     if k_count > 50:
-    #         one_gram_tag_dict[k] = k_count
-    #
-    #
-    #
-    # print(">>>>> 标准化一元tag写入文件")
-    # with open(tag_standard_file, "w") as f:
-    #     f.writelines(json.dumps(dict_sort(one_gram_tag_dict, limit_num=100), ensure_ascii=False, indent=4))
-    # print("<<<<< 标准化tag已写入文件【{}】".format(tag_standard_file))
-    #
-    #
-    #
-    # print("\n>>>>> 正在写入分类tag到文件")
-    # with open(tag_type_file, "w") as f:
-    #     f.writelines(json.dumps(new_proofed_tag_tokens_dict, ensure_ascii=False, indent=4))
-    # print("<<<<< 分类tag已写入【{}】文件".format(tag_type_file))
+
+    schedule = 0
+    result = dict()
+    for tag in tags_dict.keys():
+        schedule += 1
+        if schedule % 10000 == 0:
+            print("已处理{}行".format(schedule))
+        tag_str = tag.replace(" ", "")
+        # tag_tokens = tag.split(" ")
+        # tag_tok_len = len(tag_tokens)
+        sim_dict = dict()
+        for _tag in tags_dict.keys():
+            tag_str_ = _tag.replace(" ", "")
+            tag_tokens_ = _tag.split(" ")
+            if tag_str == tag_str_:
+                sim_dict[_tag] = len(tag_tokens_)
+
+        if len(sim_dict.keys()) > 1:
+            sim_dict_sort = sorted(sim_dict.items(), key=lambda x: x[1], reverse=True)
+            # print(sim_dict_sort)
+            tf_dict = {k: tags_dict[k] for k in sim_dict.keys()}
+            tf_dict_sort = sorted(tf_dict.items(), key=lambda x: x[1], reverse=True)
+            tf_standard_tag = tf_dict_sort[0][0]
+            len_standard_tag = sim_dict_sort[0][0]
+            if tf_standard_tag == len_standard_tag:
+                standard_tag = len_standard_tag
+            else:
+                standard_tag = tf_standard_tag
+
+            # print(standard_tag)
+            if standard_tag not in result:
+                count = 0
+                for k, v in sim_dict_sort:
+                    count += tags_dict[k]
+                result[standard_tag] = count
+            else:
+                continue
+        else:
+            result[tag] = tags_dict[tag]
+
+
+
+    tag_set = set(result.keys())
+    print(">>>>> 原始tag总共{}个".format(len(tag_set)))
+    print(">>>>> 正在写入tag字典")
+    with open(tag_file, "w") as f:
+        f.writelines(json.dumps(dict_sort(result), ensure_ascii=False, indent=4))
+    print("<<<<< 原始tag list 已写入文件【{}】".format(tag_file))
+
+
 
 
 def find_lcsubstr(s1, s2):
@@ -224,6 +151,47 @@ def find_lcsubstr(s1, s2):
     return substr, mmax
 
 
+def get_standard_tag(tag_file, tag_file_new):
+    with open(tag_file, 'r') as f:
+        tag_dict = json.load(f)
+
+    clean_tag_dict = dict()
+
+    for tag in tag_dict.keys():
+        k = pre_clean(tag).strip()
+        if k.isdigit(): continue
+        if k:
+            if k in clean_tag_dict:
+                clean_tag_dict[k] += tag_dict[tag]
+            else:
+                clean_tag_dict[k] = tag_dict[tag]
+
+    new_tag_dict = dict()
+    for k in clean_tag_dict:
+        if not k.endswith("s") and k + "s" in clean_tag_dict.keys():
+            if clean_tag_dict[k] >= clean_tag_dict[k+"s"]:
+                new_tag_dict[k] = clean_tag_dict[k] + clean_tag_dict[k+"s"]
+            else:
+                new_tag_dict[k+"s"] = clean_tag_dict[k] + clean_tag_dict[k+"s"]
+        elif k.endswith("s") and k[:-1] in clean_tag_dict.keys():
+            if clean_tag_dict[k[:-1]] >= clean_tag_dict[k]:
+                if k[:-1] in new_tag_dict:
+                    continue
+                else:
+                    new_tag_dict[k[:-1]] = clean_tag_dict[k[:-1]] + clean_tag_dict[k]
+            else:
+                if k in new_tag_dict:
+                    continue
+                else:
+                    new_tag_dict[k] = clean_tag_dict[k[:-1]] + clean_tag_dict[k]
+
+        else:
+            new_tag_dict[k] = clean_tag_dict[k]
+
+    print(">>>>> 正在写入tag字典")
+    with open(tag_file_new, "w") as f:
+        f.writelines(json.dumps(dict_sort(new_tag_dict), ensure_ascii=False, indent=4))
+    print("<<<<< 原始tag list 已写入文件【{}】".format(tag_file_new))
 
 
 def get_new_tag(tag_file, substr_file):
@@ -287,32 +255,30 @@ def get_type_tag(tag_list_file, tag_standard_file, tag_type_file):
     new_proofed_tag_tokens_dict = dict()
     one_gram_tag_dict = dict()
     for k, v in tags_dict.items():
-        if v > 10:
+        if v > 10 and k not in stopwords.words('english'):
             one_gram_tag_dict[k] = v
 
     for k, v in tags_dict.items():
         if v > 10:
             new_proofed_tag_tokens_dict[k] = dict()
             for _k in tags_dict.keys():
-                if _k.find(k+" ") >= 0 or _k.find(" "+k) >= 0 or _k == k:
-                    if _k in new_proofed_tag_tokens_dict[k]:
-                        new_proofed_tag_tokens_dict[k][_k] += tags_dict[_k]
-                    else:
-                        new_proofed_tag_tokens_dict[k][_k] = tags_dict[_k]
+                if tags_dict[_k] > 5:
+                    if _k.find(k+" ") >= 0 or _k.find(" "+k) >= 0 or _k == k:
+                        if _k in new_proofed_tag_tokens_dict[k]:
+                            new_proofed_tag_tokens_dict[k][_k] += tags_dict[_k]
+                        else:
+                            new_proofed_tag_tokens_dict[k][_k] = tags_dict[_k]
 
 
     print(">>>>> 标准化一元tag写入文件")
     with open(tag_standard_file, "w") as f:
-        f.writelines(json.dumps(dict_sort(one_gram_tag_dict, limit_num=10), ensure_ascii=False, indent=4))
+        f.writelines(json.dumps(dict_sort(one_gram_tag_dict, limit_num=5), ensure_ascii=False, indent=4))
     print("<<<<< 标准化tag已写入文件【{}】".format(tag_standard_file))
 
     print("\n>>>>> 正在写入分类tag到文件")
     with open(tag_type_file, "w") as f:
         f.writelines(json.dumps(new_proofed_tag_tokens_dict, ensure_ascii=False, indent=4))
     print("<<<<< 分类tag已写入【{}】文件".format(tag_type_file))
-
-
-
 
 
 def get_stardard_list(tag_tokens_file):
@@ -401,8 +367,6 @@ def standard_tag(raw_tag):
 
 
 
-
-
 def pre_clean(text):
     """
     预处理文本
@@ -412,7 +376,9 @@ def pre_clean(text):
     :return:
     """
     l_tag = text.lower()
-    no_num = rm_num(l_tag)
+    no_emoji = clean_emoji(l_tag)
+    no_url = clean_url(no_emoji)
+    no_num = rm_num(no_url)
     no_sym = remove_symbol(no_num)
 
     return no_sym
@@ -423,35 +389,13 @@ def remove_symbol(text):
     :param text:
     :return:
     """
-    sym_patten = re.compile(r"\.$|#|!", flags=0)
+    sym_patten = re.compile(r"#|!|;|\(|\)|\[|\]", flags=0)
     if text.find("=") < 0:
         text = sym_patten.sub("", text)
-        text = text.replace(" vs. ", " vs ")
+        # text = text.replace(" vs. ", " vs ")
     else:
         text = ''
     return text.strip()
-
-
-
-
-def detect_lang(text):
-    """
-    检测非韩语、非英语外的tag
-    :param text:
-    :return:
-    """
-    detail = ''
-    try:
-        lang = langdetect.detect(text)
-    except:
-        lang = 'none'
-    finally:
-        if lang not in ['ko', 'en']:
-            detail = 'non_ko_en_tag'
-            return "", detail
-        else:
-            detail = 'ko_or_en_tag'
-            return text, detail
 
 
 
@@ -477,18 +421,83 @@ def clean_period(input_str):
     return year_tag
 
 
+def clean_emoji(text):
+    """
+    清洗表情符号
+    :param text:
+    :return:
+    """
+    token_list = text.replace("¡", "").replace("¿", "").split(" ")
+    em_str = r":.*?:"
+    em_p = re.compile(em_str, flags=0)
+    clean_token = list()
+    for token in token_list:
+        em = emoji.demojize(token)
+        emj = em_p.search(em)
+        if emj:
+            _e = emj.group(0)
+            # print(_e)
+        else:
+            clean_token.append(token)
+    cleaned_text = " ".join(clean_token)
+    return cleaned_text.strip()
+
+
+def clean_punc(text):
+    """
+    清洗标点符号
+    :param text:
+    :return:
+    """
+    del_symbol = string.punctuation  # ASCII 标点符号
+    remove_punctuation_map = dict((ord(char), " ") for char in del_symbol)
+    new_text = text.translate(remove_punctuation_map)  # 去掉ASCII 标点符号
+    new_text = re.sub(r"\s+", " ", new_text).strip()
+    return new_text
+
+def clean_mail(text):
+    """
+    清洗邮箱
+    :param text:
+    :return:
+    """
+    pattern = re.compile(r"\w+[-_.]*[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}")
+    mail_list = re.findall(pattern, text)
+    for mail in mail_list:
+        text = text.replace(mail, " ")
+    return text
+
+
+def clean_url(text):
+    """
+    清洗url网址
+    :param text:
+    :return:
+    """
+    pattern = re.compile(
+        r'(?:(?:https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|])|(?:www\.[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|])')
+    # pattern = re.compile(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-zA-Z][0-9a-zA-Z]))+')
+    url_list = re.findall(pattern, text)
+    for url in url_list:
+        text = text.replace(url, " ")
+    return text.replace("( )", " ")
+
+
+
 
 
 if __name__ == '__main__':
     tag_dir = r"/home/zoushuai/algoproject/algo-python/nlp/preprocess/tags"
-    raw_file = os.path.join(tag_dir, 'DE_video_tags')
-    tag_file = os.path.join(tag_dir, 'DE_tag_list')
-    tag_tokens_file = os.path.join(tag_dir, 'DE_tag_list_tokens')
-    tag_type_file = os.path.join(tag_dir, "DE_tag_type")
-    tag_standard_file = os.path.join(tag_dir, "DE_base_tags")
+    raw_file = os.path.join(tag_dir, 'BR_video_tags')
+    tag_file = os.path.join(tag_dir, 'BR_tag_list')
+    tag_file_new = os.path.join(tag_dir, 'BR_tag_list_new')
+    tag_tokens_file = os.path.join(tag_dir, 'BR_tag_list_tokens')
+    tag_type_file = os.path.join(tag_dir, "BR_tag_type")
+    tag_standard_file = os.path.join(tag_dir, "BR_base_tags")
 
-    # de_tags_process(raw_file, tag_file, tag_tokens_file, tag_type_file, tag_standard_file)
+    # get_standard_tag(tag_file, tag_file_new)
+    # pt_tags_process(raw_file, tag_file, tag_tokens_file, tag_type_file, tag_standard_file)
     # get_new_tag(tag_file, "{}_substr".format(tag_file))
-    get_type_tag(tag_file+"_new", tag_standard_file, tag_type_file)
+    get_type_tag(tag_file_new, tag_standard_file, tag_type_file)
     # get_stardard_list_v1(tag_file)
     # get_stardard_list(tag_tokens_file)
