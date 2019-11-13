@@ -4,13 +4,13 @@
 @Author  : Joshua
 @Time    : 19-4-24 下午6:57
 @File    : test_hdp_lda.py
-@Desc    : 
+@Desc    : hdp lda单元测试
 """
 
 
 import unittest
 import numpy
-import hdp_lda
+from ba_lda import hdp_lda
 
 class TestHDPLDA(unittest.TestCase):
     def test1(self):

@@ -80,6 +80,9 @@ class Loader:
 
 def main():
     import optparse
+    import numpy as np
+    from ba_lda import cvb_lda as lda
+
     parser = optparse.OptionParser()
     parser.add_option("--alpha", dest="alpha", type="float", help="parameter alpha", default=0.1)
     parser.add_option("--beta", dest="beta", type="float", help="parameter beta", default=0.001)
@@ -90,14 +93,12 @@ def main():
     parser.add_option("--docs_threshold_each_label", dest="docs_threshold_each_label", type="int", default=100)
     parser.add_option("-d", dest="dir", help="directory of 20-newsgroups dataset", default="./20groups/mini_newsgroups/")
     (options, args) = parser.parse_args()
-    import numpy
-    numpy.random.seed(options.seed)
+    np.random.seed(options.seed)
 
     corpus = Loader(options.dir, options.word_freq_threshold, options.docs_threshold_each_label, True)
     V = len(corpus.vocabulary)
 
-    import cvb_lda as lda
-    model = lda.LDA_CVB0(options.K, options.alpha, options.beta, corpus.docs, V, True)
+    model = lda.LDA_CVB(options.K, options.alpha, options.beta, corpus.docs, V, True)
     print("corpus=%d, words=%d, K=%d, a=%f, b=%f" % (len(corpus.docs), V, options.K, options.alpha, options.beta))
 
     pre_perp = model.perplexity()

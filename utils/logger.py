@@ -11,16 +11,6 @@ import logging.handlers
 import sys
 import os
 from os.path import dirname
-import configparser
-
-_dirname = dirname(os.path.realpath(__file__))
-sys.path.append(dirname(_dirname))
-confpath = os.path.join(dirname(_dirname), 'conf') + os.sep + 'Default.conf'
-
-config = configparser.ConfigParser()
-config.read(confpath, encoding='utf-8')
-# print(config.sections())
-DEFAULT_LOGGING_LEVEL = config.getint('DEFAULT.log', 'DEFAULT_LOGGING_LEVEL')
 
 
 class Logger(object):
@@ -28,8 +18,8 @@ class Logger(object):
     """
 
     def __init__(self, loggername,
-                 loglevel2console=DEFAULT_LOGGING_LEVEL,
-                 loglevel2file=DEFAULT_LOGGING_LEVEL,
+                 loglevel2console=20,
+                 loglevel2file=20,
                  log2console=True, log2file=False, logfile=None):
         """Logger initialization
         Args:

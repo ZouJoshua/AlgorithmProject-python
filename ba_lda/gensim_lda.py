@@ -3,7 +3,7 @@
 """
 @Author  : Joshua
 @Time    : 2018/11/8 22:13
-@File    : news_lda_gensim.py
+@File    : gensim_lda.py
 @Desc    : 
 """
 
@@ -30,7 +30,7 @@ import json
 import time
 from ast import literal_eval
 
-from nlp.lda.basic import log
+from ba_lda.lda import log
 
 
 class EnPreprocess(object):

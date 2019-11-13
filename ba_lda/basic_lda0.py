@@ -3,8 +3,8 @@
 """
 @Author  : Joshua
 @Time    : 2018/11/12 17:22
-@File    : news_lda_customize.py
-@Desc    : 
+@File    : base_lda0.py
+@Desc    : LDA模型
 """
 
 import numpy as np
@@ -13,6 +13,7 @@ import codecs
 import os
 from os.path import dirname
 from collections import OrderedDict
+from utils import logger
 
 try:
     import configparser
@@ -20,26 +21,40 @@ except:
     from six.moves import configparser
 
 
+
 # 导入配置文件
-_dirname = dirname(os.path.realpath(__file__))
-confpath = os.path.join(dirname(_dirname), 'conf') + os.sep + 'Default.conf'
+root_dir = dirname(dirname(os.path.realpath(__file__)))
+confpath = os.path.join(root_dir, 'conf', 'lda','Default.conf')
 conf = configparser.ConfigParser()
 conf.read(confpath, encoding='utf-8')
+data_path = os.path.join(root_dir, 'data', conf.get("DEFAULT.data", "DEFAULT_DATA_PATH"))
+
 # 文件路径
-trainfile = os.path.join(path, os.path.normpath(conf.get("filepath", "trainfile")))
-wordidmapfile = os.path.join(path, os.path.normpath(conf.get("filepath", "wordidmapfile")))
-thetafile = os.path.join(path, os.path.normpath(conf.get("filepath", "thetafile")))
-phifile = os.path.join(path, os.path.normpath(conf.get("filepath", "phifile")))
-paramfile = os.path.join(path, os.path.normpath(conf.get("filepath", "paramfile")))
-topNfile = os.path.join(path, os.path.normpath(conf.get("filepath", "topNfile")))
-tassginfile = os.path.join(path, os.path.normpath(conf.get("filepath", "tassginfile")))
+trainfile = os.path.join(data_path, os.path.normpath(conf.get("filepath", "trainfile")))
+wordidmapfile = os.path.join(data_path, os.path.normpath(conf.get("filepath", "wordidmapfile")))
+thetafile = os.path.join(data_path, os.path.normpath(conf.get("filepath", "thetafile")))
+phifile = os.path.join(data_path, os.path.normpath(conf.get("filepath", "phifile")))
+paramfile = os.path.join(data_path, os.path.normpath(conf.get("filepath", "paramfile")))
+topNfile = os.path.join(data_path, os.path.normpath(conf.get("filepath", "topNfile")))
+tassginfile = os.path.join(data_path, os.path.normpath(conf.get("filepath", "tassginfile")))
 # 模型初始参数
 K = int(conf.get("model_args", "K"))
 alpha = float(conf.get("model_args", "alpha"))
 beta = float(conf.get("model_args", "beta"))
 iter_times = int(conf.get("model_args", "iter_times"))
 top_words_num = int(conf.get("model_args", "top_words_num"))
+def init_log():
+    log_dir = os.path.join(root_dir, conf.get("DEFAULT.log", "DEFAULT_LOGGING_ROOT_PATH"))
+    if not os.path.exists(log_dir):
+        os.mkdir(log_dir)
 
+    loger_name = conf.get("DEFAULT.log","DEFAULT_LOGGER_NAME")
+    loger_level = conf.getint("DEFAULT.log","DEFAULT_LOGGING_LEVEL")
+    loger_file = os.path.join(log_dir, conf.get("DEFAULT.log","DEFAULT_LOGGING_FILE"))
+    log = logger.Logger(loger_name,loglevel2file=loger_level,log2console=False, log2file=True, logfile=loger_file).get_logger()
+    return log
+
+log = init_log()
 
 class Document(object):
     def __init__(self):
@@ -164,12 +179,12 @@ class LDAModel(object):
                 for j in range(self.dpre.docs[i].length):
                     topic = self.sampling(i, j)
                     self.Z[i][j] = topic
-        logger.info(u"迭代完成。")
-        logger.debug(u"计算文章-主题分布")
+        log.info("迭代完成。")
+        log.debug("计算文章-主题分布")
         self._theta()
-        logger.debug(u"计算词-主题分布")
+        log.debug("计算词-主题分布")
         self._phi()
-        logger.debug(u"保存模型")
+        log.debug("保存模型")
         self.save()
 
     def _theta(self):
@@ -182,29 +197,29 @@ class LDAModel(object):
 
     def save(self):
         # 保存theta文章-主题分布
-        logger.info(u"文章-主题分布已保存到%s" % self.thetafile)
+        log.info("文章-主题分布已保存到%s" % self.thetafile)
         with codecs.open(self.thetafile, 'w') as f:
             for x in range(self.dpre.docs_count):
                 for y in range(self.K):
                     f.write(str(self.theta[x][y]) + '\t')
                 f.write('\n')
         # 保存phi词-主题分布
-        logger.info(u"词-主题分布已保存到%s" % self.phifile)
+        log.info("词-主题分布已保存到%s" % self.phifile)
         with codecs.open(self.phifile, 'w') as f:
             for x in range(self.K):
                 for y in range(self.dpre.words_count):
                     f.write(str(self.phi[x][y]) + '\t')
                 f.write('\n')
         # 保存参数设置
-        logger.info(u"参数设置已保存到%s" % self.paramfile)
+        log.info("参数设置已保存到%s" % self.paramfile)
         with codecs.open(self.paramfile, 'w', 'utf-8') as f:
             f.write('K=' + str(self.K) + '\n')
             f.write('alpha=' + str(self.alpha) + '\n')
             f.write('beta=' + str(self.beta) + '\n')
-            f.write(u'迭代次数  iter_times=' + str(self.iter_times) + '\n')
-            f.write(u'每个类的高频词显示个数  top_words_num=' + str(self.top_words_num) + '\n')
+            f.write('迭代次数  iter_times=' + str(self.iter_times) + '\n')
+            f.write('每个类的高频词显示个数  top_words_num=' + str(self.top_words_num) + '\n')
         # 保存每个主题topic的词
-        logger.info(u"主题topN词已保存到%s" % self.topNfile)
+        log.info("主题topN词已保存到%s" % self.topNfile)
 
         with codecs.open(self.topNfile, 'w', 'utf-8') as f:
             self.top_words_num = min(self.top_words_num, self.dpre.words_count)
@@ -217,21 +232,21 @@ class LDAModel(object):
                     word = OrderedDict({value: key for key, value in self.dpre.word2id.items()})[twords[y][0]]
                     f.write('\t' * 2 + word + '\t' + str(twords[y][1]) + '\n')
         # 保存最后退出时，文章的词分派的主题的结果
-        logger.info(u"文章-词-主题分派结果已保存到%s" % self.tassginfile)
+        log.info("文章-词-主题分派结果已保存到%s" % self.tassginfile)
         with codecs.open(self.tassginfile, 'w') as f:
             for x in range(self.dpre.docs_count):
                 for y in range(self.dpre.docs[x].length):
                     f.write(str(self.dpre.docs[x].words[y]) + ':' + str(self.Z[x][y]) + '\t')
                 f.write('\n')
-        logger.info("模型训练完成。")
+        log.info("模型训练完成。")
 
 
 # 数据预处理，即：生成d（）单词序列，以及词汇表
 def preprocessing():
-    logger.info('载入数据......')
+    log.info('载入数据......')
     with codecs.open(trainfile, 'r', 'utf-8') as f:
         docs = f.readlines()
-    logger.debug("载入完成,准备生成字典对象和统计文本数据...")
+    log.debug("载入完成,准备生成字典对象和统计文本数据...")
     # 大的文档集
     dpre = DataPreProcessing()
     items_idx = 0
@@ -241,7 +256,7 @@ def preprocessing():
             # 生成一个文档对象：包含单词序列（w1,w2,w3,,,,,wn）可以重复的
             doc = Document()
             for item in tmp:
-                if dpre.word2id.has_key(item):  # 已有的话，只是当前文档追加
+                if item in dpre.word2id:  # 已有的话，只是当前文档追加
                     doc.words.append(dpre.word2id[item])
                 else:  # 没有的话，要更新vocabulary中的单词词典及wordidmap
                     dpre.word2id[item] = items_idx
@@ -253,9 +268,9 @@ def preprocessing():
             pass
     dpre.docs_count = len(dpre.docs)  # 文档数
     dpre.words_count = len(dpre.word2id)  # 词汇数
-    logger.info(u"共有%s个文档" % dpre.docs_count)
+    log.info(u"共有%s个文档" % dpre.docs_count)
     dpre.cachewordidmap()
-    logger.info(u"词与序号对应关系已保存到%s" % wordidmapfile)
+    log.info(u"词与序号对应关系已保存到%s" % wordidmapfile)
     return dpre
 
 

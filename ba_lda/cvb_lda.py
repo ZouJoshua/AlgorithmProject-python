@@ -7,10 +7,12 @@
 @Desc    : 变分推断lda
 """
 
+import optparse
+import numpy as np
+from ba_lda import pre_corpus
 
-import numpy
 
-class LDA_CVB0:
+class LDA_CVB:
     def __init__(self, K, alpha, beta, docs, V, smartinit=True):
         self.K = K
         self.alpha = alpha
@@ -19,9 +21,9 @@ class LDA_CVB0:
 
         self.docs = []
         self.gamma_jik = []
-        self.n_wk = numpy.zeros((V, K)) + beta
-        self.n_jk = numpy.zeros((len(docs), K)) + alpha
-        self.n_k = numpy.zeros(K) + V * beta
+        self.n_wk = np.zeros((V, K)) + beta
+        self.n_jk = np.zeros((len(docs), K)) + alpha
+        self.n_k = np.zeros(K) + V * beta
         self.N = 0
         for j, doc in enumerate(docs):
             self.N += len(doc)
@@ -31,13 +33,13 @@ class LDA_CVB0:
                 if smartinit:
                     p_k = self.n_wk[w] * self.n_jk[j] / self.n_k
                     try:
-                        gamma_k = numpy.random.mtrand.dirichlet(p_k / p_k.sum() * alpha)
+                        gamma_k = np.random.mtrand.dirichlet(p_k / p_k.sum() * alpha)
                     except ZeroDivisionError:
                         gamma_k = [float("nan")]
                 else:
                     gamma_k = [float("nan")]
-                if not numpy.isfinite(gamma_k[0]): # maybe NaN or Inf
-                    gamma_k = numpy.random.mtrand.dirichlet([alpha] * K)
+                if not np.isfinite(gamma_k[0]):  # maybe NaN or Inf
+                    gamma_k = np.random.mtrand.dirichlet([alpha] * K)
                 if w in term_freq:
                     term_freq[w] += 1
                     term_gamma[w] += gamma_k
@@ -53,8 +55,8 @@ class LDA_CVB0:
 
     def inference(self):
         """learning once iteration"""
-        new_n_wk = numpy.zeros((self.V, self.K)) + self.beta
-        new_n_jk = numpy.zeros((len(self.docs), self.K)) + self.alpha
+        new_n_wk = np.zeros((self.V, self.K)) + self.beta
+        new_n_jk = np.zeros((len(self.docs), self.K)) + self.alpha
         n_k = self.n_k
         for j, doc in enumerate(self.docs):
             gamma_ik = self.gamma_jik[j]
@@ -76,7 +78,7 @@ class LDA_CVB0:
 
     def worddist(self):
         """get topic-word distribution"""
-        return numpy.transpose(self.n_wk / self.n_k)
+        return np.transpose(self.n_wk / self.n_k)
 
     def perplexity(self, docs=None):
         if docs == None: docs = self.docs
@@ -87,9 +89,9 @@ class LDA_CVB0:
             theta = self.n_jk[j]
             theta = theta / theta.sum()
             for w, freq in doc:
-                log_per -= numpy.log(numpy.inner(phi[:,w], theta)) * freq
+                log_per -= np.log(np.inner(phi[:,w], theta)) * freq
                 N += freq
-        return numpy.exp(log_per / N)
+        return np.exp(log_per / N)
 
 def lda_learning(lda, iteration, voca):
     pre_perp = lda.perplexity()
@@ -110,12 +112,11 @@ def output_word_topic_dist(lda, voca):
     phi = lda.worddist()
     for k in range(lda.K):
         print("\n-- topic: %d" % k)
-        for w in numpy.argsort(-phi[k])[:20]:
+        for w in np.argsort(-phi[k])[:20]:
             print("%s: %f" % (voca[w], phi[k,w]))
 
 def main():
-    import optparse
-    import vocabulary
+
     parser = optparse.OptionParser()
     parser.add_option("-f", dest="filename", help="corpus filename")
     parser.add_option("-c", dest="corpus", help="using range of Brown corpus' files(start:end)")
@@ -131,18 +132,18 @@ def main():
     if not (options.filename or options.corpus): parser.error("need corpus filename(-f) or corpus range(-c)")
 
     if options.filename:
-        corpus = vocabulary.load_file(options.filename)
+        corpus = pre_corpus.load_file(options.filename)
     else:
-        corpus = vocabulary.load_corpus(options.corpus)
+        corpus = pre_corpus.load_corpus(options.corpus)
         if not corpus: parser.error("corpus range(-c) forms 'start:end'")
     if options.seed != None:
-        numpy.random.seed(options.seed)
+        np.random.seed(options.seed)
 
-    voca = vocabulary.Vocabulary(options.stopwords)
+    voca = pre_corpus.Vocabulary(options.stopwords)
     docs = [voca.doc_to_ids(doc) for doc in corpus]
     if options.df > 0: docs = voca.cut_low_freq(docs, options.df)
 
-    lda = LDA_CVB0(options.K, options.alpha, options.beta, docs, voca.size(), options.smartinit)
+    lda = LDA_CVB(options.K, options.alpha, options.beta, docs, voca.size(), options.smartinit)
     print("corpus=%d, words=%d, voca=%d, K=%d, a=%f, b=%f" % (len(corpus), lda.N, len(voca.vocas), options.K, options.alpha, options.beta))
 
     #import cProfile

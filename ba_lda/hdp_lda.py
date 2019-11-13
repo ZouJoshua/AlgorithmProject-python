@@ -8,8 +8,10 @@
 """
 
 
-import numpy
+import numpy as np
 from scipy.special import gammaln
+import optparse
+from ba_lda import pre_corpus
 
 class DefaultDict(dict):
     def __init__(self, v):
@@ -38,17 +40,17 @@ class HDPLDA:
         self.using_k = [0]
 
         self.x_ji = docs # vocabulary for each document and term
-        self.k_jt = [numpy.zeros(1 ,dtype=int) for j in range(self.M)]   # topics of document and table
-        self.n_jt = [numpy.zeros(1 ,dtype=int) for j in range(self.M)]   # number of terms for each table of document
+        self.k_jt = [np.zeros(1 ,dtype=int) for j in range(self.M)]   # topics of document and table
+        self.n_jt = [np.zeros(1 ,dtype=int) for j in range(self.M)]   # number of terms for each table of document
         self.n_jtv = [[None] for j in range(self.M)]
 
         self.m = 0
-        self.m_k = numpy.ones(1 ,dtype=int)  # number of tables for each topic
-        self.n_k = numpy.array([self.beta * self.V]) # number of terms for each topic ( + beta * V )
+        self.m_k = np.ones(1, dtype=int)  # number of tables for each topic
+        self.n_k = np.array([self.beta * self.V]) # number of terms for each topic ( + beta * V )
         self.n_kv = [DefaultDict(0)]            # number of terms for each topic and vocabulary ( + beta )
 
         # table for each document and term (-1 means not-assigned)
-        self.t_ji = [numpy.zeros(len(x_i), dtype=int) - 1 for x_i in docs]
+        self.t_ji = [np.zeros(len(x_i), dtype=int) - 1 for x_i in docs]
 
     def inference(self):
         for j, x_i in enumerate(self.x_ji):
@@ -68,7 +70,7 @@ class HDPLDA:
         """return document-topic distribution with new topic"""
 
         # am_k = effect from table-dish assignment
-        am_k = numpy.array(self.m_k, dtype=float)
+        am_k = np.array(self.m_k, dtype=float)
         am_k[0] = self.gamma
         am_k *= self.alpha / am_k[self.using_k].sum()
 
@@ -82,7 +84,7 @@ class HDPLDA:
             p_jk = p_jk[self.using_k]
             theta.append(p_jk / p_jk.sum())
 
-        return numpy.array(theta)
+        return np.array(theta)
 
     def perplexity(self):
         phi = [DefaultDict(1.0/self.V)] + self.worddist()
@@ -92,9 +94,9 @@ class HDPLDA:
         for x_ji, p_jk in zip(self.x_ji, theta):
             for v in x_ji:
                 word_prob = sum(p * p_kv[v] for p, p_kv in zip(p_jk, phi))
-                log_likelihood -= numpy.log(word_prob)
+                log_likelihood -= np.log(word_prob)
             N += len(x_ji)
-        return numpy.exp(log_likelihood / N)
+        return np.exp(log_likelihood / N)
 
 
 
@@ -124,10 +126,10 @@ class HDPLDA:
         # sampling from posterior p(t_ji=t)
         p_t = self.calc_table_posterior(j, f_k)
         if len(p_t) > 1 and p_t[1] < 0: self.dump()
-        t_new = self.using_t[j][numpy.random.multinomial(1, p_t).argmax()]
+        t_new = self.using_t[j][np.random.multinomial(1, p_t).argmax()]
         if t_new == 0:
             p_k = self.calc_dish_posterior_w(f_k)
-            k_new = self.using_k[numpy.random.multinomial(1, p_k).argmax()]
+            k_new = self.using_k[np.random.multinomial(1, p_k).argmax()]
             if k_new == 0:
                 k_new = self.add_new_dish()
             t_new = self.add_new_table(j, k_new)
@@ -168,7 +170,7 @@ class HDPLDA:
     def calc_table_posterior(self, j, f_k):
         using_t = self.using_t[j]
         p_t = self.n_jt[j][using_t] * f_k[self.k_jt[j][using_t]]
-        p_x_ji = numpy.inner(self.m_k, f_k) + self.gamma / self.V
+        p_x_ji = np.inner(self.m_k, f_k) + self.gamma / self.V
         p_t[0] = p_x_ji * self.alpha / (self.gamma + self.m)
         #print("un-normalized p_t = ", p_t)
         return p_t / p_t.sum()
@@ -220,7 +222,7 @@ class HDPLDA:
 
         # sampling of k
         p_k = self.calc_dish_posterior_t(j, t)
-        k_new = self.using_k[numpy.random.multinomial(1, p_k).argmax()]
+        k_new = self.using_k[np.random.multinomial(1, p_k).argmax()]
         if k_new == 0:
             k_new = self.add_new_dish()
 
@@ -249,25 +251,25 @@ class HDPLDA:
         n_jt = self.n_jt[j][t]
         n_k[k_old] -= n_jt
         n_k = n_k[self.using_k]
-        log_p_k = numpy.log(self.m_k[self.using_k]) + gammaln(n_k) - gammaln(n_k + n_jt)
-        log_p_k_new = numpy.log(self.gamma) + gammaln(Vbeta) - gammaln(Vbeta + n_jt)
+        log_p_k = np.log(self.m_k[self.using_k]) + gammaln(n_k) - gammaln(n_k + n_jt)
+        log_p_k_new = np.log(self.gamma) + gammaln(Vbeta) - gammaln(Vbeta + n_jt)
         #print("log_p_k_new+=gammaln(",Vbeta,") - gammaln(",Vbeta + n_jt,")")
 
         gammaln_beta = gammaln(self.beta)
         for w, n_jtw in self.n_jtv[j][t].items():
             assert n_jtw >= 0
             if n_jtw == 0: continue
-            n_kw = numpy.array([n.get(w, self.beta) for n in self.n_kv])
+            n_kw = np.array([n.get(w, self.beta) for n in self.n_kv])
             n_kw[k_old] -= n_jtw
             n_kw = n_kw[self.using_k]
             n_kw[0] = 1 # dummy for logarithm's warning
-            if numpy.any(n_kw <= 0): print(n_kw) # for debug
+            if np.any(n_kw <= 0): print(n_kw) # for debug
             log_p_k += gammaln(n_kw + n_jtw) - gammaln(n_kw)
             log_p_k_new += gammaln(self.beta + n_jtw) - gammaln_beta
             #print("log_p_k_new+=gammaln(",self.beta + n_jtw,") - gammaln(",self.beta,"), w=",w)
         log_p_k[0] = log_p_k_new
-        #print("un-normalized p_k = ", numpy.exp(log_p_k))
-        p_k = numpy.exp(log_p_k - log_p_k.max())
+        #print("un-normalized p_k = ", np.exp(log_p_k))
+        p_k = np.exp(log_p_k - log_p_k.max())
         return p_k / p_k.sum()
 
     def seat_at_dish(self, j, t, k_new):
@@ -293,8 +295,8 @@ class HDPLDA:
         else:
             k_new = len(self.using_k)
             if k_new >= len(self.n_kv):
-                self.n_k = numpy.resize(self.n_k, k_new + 1)
-                self.m_k = numpy.resize(self.m_k, k_new + 1)
+                self.n_k = np.resize(self.n_k, k_new + 1)
+                self.m_k = np.resize(self.m_k, k_new + 1)
                 self.n_kv.append(None)
             assert k_new == self.using_k[-1] + 1
             assert k_new < len(self.n_kv)
@@ -319,7 +321,7 @@ def output_summary(hdplda, voca, fp=None):
         fp = sys.stdout
     K = len(hdplda.using_k) - 1
     kmap = dict((k,i-1) for i, k in enumerate(hdplda.using_k))
-    dishcount = numpy.zeros(K, dtype=int)
+    dishcount = np.zeros(K, dtype=int)
     wordcount = [DefaultDict(0) for k in range(K)]
     for j, x_ji in enumerate(hdplda.x_ji):
         for v, t in zip(x_ji, hdplda.t_ji[j]):
@@ -344,12 +346,11 @@ def output_summary(hdplda, voca, fp=None):
 
 
 def main():
-    import optparse
     parser = optparse.OptionParser()
     parser.add_option("-f", dest="filename", help="corpus filename")
     parser.add_option("-c", dest="corpus", help="using range of Brown corpus' files(start:end)")
-    parser.add_option("--alpha", dest="alpha", type="float", help="parameter alpha", default=numpy.random.gamma(1, 1))
-    parser.add_option("--gamma", dest="gamma", type="float", help="parameter gamma", default=numpy.random.gamma(1, 1))
+    parser.add_option("--alpha", dest="alpha", type="float", help="parameter alpha", default=np.random.gamma(1, 1))
+    parser.add_option("--gamma", dest="gamma", type="float", help="parameter gamma", default=np.random.gamma(1, 1))
     parser.add_option("--beta", dest="beta", type="float", help="parameter of beta measure H", default=0.5)
     parser.add_option("-i", dest="iteration", type="int", help="iteration count", default=10)
     parser.add_option("-s", dest="stopwords", type="int", help="0=exclude stop words, 1=include stop words", default=1)
@@ -358,16 +359,16 @@ def main():
     (options, args) = parser.parse_args()
     if not (options.filename or options.corpus): parser.error("need corpus filename(-f) or corpus range(-c)")
     if options.seed != None:
-        numpy.random.seed(options.seed)
+        np.random.seed(options.seed)
 
-    import vocabulary
+
     if options.filename:
-        corpus = vocabulary.load_file(options.filename)
+        corpus = pre_corpus.load_file(options.filename)
     else:
-        corpus = vocabulary.load_corpus(options.corpus)
+        corpus = pre_corpus.load_corpus(options.corpus)
         if not corpus: parser.error("corpus range(-c) forms 'start:end'")
 
-    voca = vocabulary.Vocabulary(options.stopwords==0)
+    voca = pre_corpus.Vocabulary(options.stopwords==0)
     docs = [voca.doc_to_ids(doc) for doc in corpus]
     if options.df > 0: docs = voca.cut_low_freq(docs, options.df)
 
