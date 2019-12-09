@@ -10,11 +10,6 @@
 
 import os
 from os.path import dirname
-import sys
-root_path = dirname(dirname(dirname(dirname(os.path.realpath(__file__)))))
-class_path = dirname(dirname(os.path.realpath(__file__)))
-sys.path.append(root_path)
-sys.path.append(dirname(class_path))
 
 import math
 from collections import Counter
@@ -60,7 +55,7 @@ class CalculateTFIDF(object):
 
 def main():
     keyword_list = list()
-    stopwordsDir = dirname(dirname(os.path.realpath(__file__)))
+    stopwordsDir = os.path.dirname(dirname(os.path.realpath(__file__)))
     stopword_file = os.path.join(stopwordsDir, 'stopwords_en.txt')
     preprocess = WordSegmenPreprocess(text, stopwordsfile=stopword_file)
     words = preprocess.get_words()
