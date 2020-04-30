@@ -2,13 +2,15 @@
 # -*- coding: utf-8 -*-
 """
 @Author  : Joshua
-@Time    : 2019/1/25 12:32
-@File    : chunking_ner.py
-@Desc    :  英文chunking and NER
+@Time    : 12/12/19 4:24 PM
+@File    : ner_with_spacy.py
+@Desc    : 
+
 """
 
 
 import spacy
+# python -m spacy download en
 #import pattern
 import nltk
 
